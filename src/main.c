@@ -155,7 +155,7 @@ void sendMessageInt (int acceptedSocketDescriptor, int messageSize) {
  * @param size
  */
 void sendMessageString (int acceptedSocketDescriptor, char *message, int size) {
-    ssize_t sendReturn3 = send(acceptedSocketDescriptor, message, sizeof(char) * ntohl(size), 0);
+    ssize_t sendReturn3 = send(acceptedSocketDescriptor, message, sizeof(char) *size, 0);
     // verif erreur
     if(sendReturn3 == -1){
         throwError("Erreur lors de l'envoi du message. \n", 1);
