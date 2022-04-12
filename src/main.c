@@ -138,10 +138,8 @@ char *receiveMessageString (int acceptedSocketDescriptor, int size) {
  * @param messageSize
  */
 void sendMessageInt (int acceptedSocketDescriptor, int messageSize) {
-    // Sending the message to first client
-    ssize_t sendSizeReturn = send(acceptedSocketDescriptor, &messageSize, sizeof(int), 0);
-    // verif erreur
-    if(sendSizeReturn == -1){
+    // Sending the message's size to the client.
+    if(send(acceptedSocketDescriptor, &messageSize, sizeof(int), 0) == -1){
         throwError("Erreur lors de l'envoi du message. \n", 1);
     }
     else {
@@ -157,9 +155,8 @@ void sendMessageInt (int acceptedSocketDescriptor, int messageSize) {
  * @param size
  */
 void sendMessageString (int acceptedSocketDescriptor, char *message, int size) {
-    ssize_t sendReturn3 = send(acceptedSocketDescriptor, message, sizeof(char) * size, 0);
-    // verif erreur
-    if(sendReturn3 == -1){
+    // Sending the message to the client.
+    if(send(acceptedSocketDescriptor, message, sizeof(char) * size, 0) == -1){
         throwError("Erreur lors de l'envoi du message. \n", 1);
     }
     else {
