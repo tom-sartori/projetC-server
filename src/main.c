@@ -4,7 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 
+int socketDescriptor = -1;
 
 /**
  * Perror the message in params and exit the programme.
@@ -155,7 +157,7 @@ void sendMessageInt (int acceptedSocketDescriptor, int messageSize) {
  * @param size
  */
 void sendMessageString (int acceptedSocketDescriptor, char *message, int size) {
-    ssize_t sendReturn3 = send(acceptedSocketDescriptor, message, sizeof(char) *size, 0);
+    ssize_t sendReturn3 = send(acceptedSocketDescriptor, message, sizeof(char) * size, 0);
     // verif erreur
     if(sendReturn3 == -1){
         throwError("Erreur lors de l'envoi du message. \n", 1);
@@ -180,11 +182,27 @@ void sendMessage (int acceptedSocketDescriptor, char *message, int size) {
     sendMessageString(acceptedSocketDescriptor, message, size);
 }
 
+void closeServer(){
+    /**
+    * Shutting down the server.
+    */
+
+    // If the socket is set, we run shutdown on it
+    if(socketDescriptor != -1){
+        shutdown(socketDescriptor, 2);
+    }
+    // End of program with success
+    printf("Fin du programme. \n");
+    exit(EXIT_SUCCESS);
+}
 
 /**
  * Server side.
  */
 int main(int argc, char *argv[]) {
+
+    //Assigning function closeServer() to SIGTERM signal
+    signal(SIGTERM, closeServer);
 /**
  * Server Start.
  */
@@ -200,7 +218,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    // Erreur si port < 1024 (argv 2)
+    // Error if port < 1024 (argv 2)
     if(atoi(argv[1]) < 1024){
         throwError("Erreur: le port doit être supérieur à 1024. \n", 0);
     }
@@ -209,61 +227,72 @@ int main(int argc, char *argv[]) {
 /**
  * Launch server.
  */
-    int socketDescriptor = launchServer(atoi(argv[1]));
+    socketDescriptor = launchServer(atoi(argv[1]));
 
     // Server is launched
 
-
 /**
- * Connect clients.
+ * Starting server loop
  */
-    // Waiting for a client connection.
-    int client1 = connectToClient(socketDescriptor);
-    // Waiting for the second client to connect.
-    int client2 = connectToClient(socketDescriptor);
+
+/// TODO continue following code to implement in the server loop
+/* Code for conversation loop inside server loop
+running
+//stopped
+char* stopStatus = (char*)malloc(sizeof(char)*7);
+
+stopStatus = "running";
+
+while (strcmp(stopStatus,"stopped")!=0) {
+}*/
+
+    while(1){
+    /**
+     * Connect clients.
+     */
+        // Waiting for a client connection.
+        int client1 = connectToClient(socketDescriptor);
+        // Waiting for the second client to connect.
+        int client2 = connectToClient(socketDescriptor);
 
 
-/**
- * Send status to clients (wait/send).
- * TODO : A voir si possible d'utiliser sendMessage(...), en fonction du cli.
- */
-    // First client will wait for a message
-    if(send(client1, "wait\0", sizeof(char) * 5, 0) == -1){
-        throwError("Erreur lors de l'envoi du message. \n", 1);
+    /**
+     * Send status to clients (wait/send).
+     * TODO : A voir si possible d'utiliser sendMessage(...), en fonction du cli.
+     */
+        // First client will wait for a message
+        if (send(client1, "wait\0", sizeof(char) * 5, 0) == -1) {
+            throwError("Erreur lors de l'envoi du message. \n", 1);
+        } else {
+            printf("Message envoyé \n");
+        }
+
+        // Second client is invited to send a message
+        if (send(client2, "send\0", sizeof(char) * 5, 0) == -1) {
+            throwError("Erreur lors de l'envoi du message. \n", 1);
+        } else {
+            printf("Message envoyé \n");
+        }
+
+
+    /**
+     * Now, we wait for the client 2 to send a message.
+     */
+        // Receive messageSize.
+        int messageSize = receiveMessageInt(client2);
+        // Receive message.
+        char *message = receiveMessageString(client2, messageSize);
+
+
+    /**
+     * Send the message to the first client.
+     */
+        sendMessage(client1, message, messageSize);
+
+    /**
+     * shutting down clients stream
+     */
+        shutdown(client1, 2);
+        shutdown(client2, 2);
     }
-    else {
-        printf("Message envoyé \n");
-    }
-
-    // Second client is invited to send a message
-    if(send(client2, "send\0", sizeof(char) * 5, 0) == -1){
-        throwError("Erreur lors de l'envoi du message. \n", 1);
-    }
-    else {
-        printf("Message envoyé \n");
-    }
-
-
-/**
- * Now, we wait for the client 2 to send a message.
- */
-    // Receive messageSize.
-    int messageSize = receiveMessageInt(client2);
-    // Receive message.
-    char* message = receiveMessageString(client2, messageSize);
-
-
-/**
- * Send the message to the first client.
- */
-    sendMessage(client1, message, messageSize);
-
-
-/**
- * Shutdown the server.
- */
-    shutdown(client1, 2);
-    shutdown(client2, 2);
-    shutdown(socketDescriptor, 2);
-    printf("Fin du programme. \n");
 }
