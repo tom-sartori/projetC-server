@@ -116,10 +116,10 @@ int receiveMessageInt (int acceptedSocketDescriptor) {
  * @return the gotten message.
  */
 char *receiveMessageString (int acceptedSocketDescriptor, int size) {
-    int test = ntohl(size);
-    char *msg = (char*)malloc(sizeof(char)*(test+1));
+    //int test = ntohl(size);
+    char *msg = (char*)malloc(sizeof(char)*(size+1));
 
-    if(recv(acceptedSocketDescriptor, msg, sizeof(char)*test, 0)==-1){
+    if(recv(acceptedSocketDescriptor, msg, sizeof(char)*size, 0)==-1){
         throwError("Erreur lors de la reception du message. \n", 0);
     }
     else {
