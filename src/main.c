@@ -5,8 +5,13 @@
 #include <string.h>
 #include <errno.h>
 #include <signal.h>
+#include <pthread.h>
+#define MAX_CLIENT_NUMBER 1000
 
 int socketDescriptor = -1;
+int clientList[MAX_CLIENT_NUMBER];
+int currentClientCount = 0;
+
 
 /**
  * Perror the message in params and exit the programme.
@@ -131,6 +136,18 @@ char *receiveMessageString (int acceptedSocketDescriptor, int size) {
 }
 
 /**
+ *
+ * @param acceptedSocketDescriptor
+ * @return
+ */
+char *receiveMessage (int acceptedSocketDescriptor) {
+    // Receive messageSize.
+    int messageSize = receiveMessageInt(acceptedSocketDescriptor);
+    // Receive message.
+    return receiveMessageString(acceptedSocketDescriptor, messageSize);
+}
+
+/**
  * For an accepted socket descriptor in params, send a message of type int.
  * This message is usually used to send the message's size which will be sent after.
  *
@@ -165,18 +182,20 @@ void sendMessageString (int acceptedSocketDescriptor, char *message, int size) {
 }
 
 /**
- * Firstly, send the size through the accepted socket descriptor.
+ * Firstly, send the messageSize through the accepted socket descriptor.
  * Secondly, send the message.
  *
  * @param acceptedSocketDescriptor
  * @param message
- * @param size
+ * @param messageSize
  */
-void sendMessage (int acceptedSocketDescriptor, char *message, int size) {
-    // Send message size.
-    sendMessageInt(acceptedSocketDescriptor, size);
+void sendMessage (int acceptedSocketDescriptor, char *message) {
+    int messageSize = (int)strlen(message);
+    printf("Size of sent message: %d \n", messageSize);
+    // Send message messageSize.
+    sendMessageInt(acceptedSocketDescriptor, messageSize);
     // Send message.
-    sendMessageString(acceptedSocketDescriptor, message, size);
+    sendMessageString(acceptedSocketDescriptor, message, messageSize);
 }
 
 void closeServer(){
@@ -193,6 +212,16 @@ void closeServer(){
     exit(EXIT_SUCCESS);
 }
 
+void readingLoop(int acceptedSocketDescriptor){
+    while(1){
+        /**
+        * Now, we wait for the client 2 to send a message.
+        */
+        char* message = receiveMessage(acceptedSocketDescriptor);
+        printf("%s \n", message);
+    }
+}
+
 /**
  * Server side.
  */
@@ -200,6 +229,7 @@ int main(int argc, char *argv[]) {
 
     //Assigning function closeServer() to SIGTERM signal
     signal(SIGTERM, closeServer);
+
 /**
  * Server Start.
  */
@@ -231,65 +261,51 @@ int main(int argc, char *argv[]) {
 /**
  * Starting server loop
  */
+    int newClient;
+    // create pthread list
+    pthread_t pthread[MAX_CLIENT_NUMBER];
 
-/// TODO continue following code to implement in the server loop
-/* Code for conversation loop inside server loop
-running
-//stopped
-char* stopStatus = (char*)malloc(sizeof(char)*7);
+    // if new client
+        //recup socket -> ajoute a liste a l'indice current
+        // crée le thread a l'indice current
+            // Fonction de lecture a l'infini qui affiche les messages qu'elle reçoit
+            /// 2 Si message reçu fin,
+                // shutdown client (voir si c'est suffisant pour shutdown le client où s'il faut le faire à la main)
+                // on kill le thread
+                // Amélioration implémenter une liste chainée
+            /// 3 Broadcast
+            /// 4 commandes -> MP, etc
+        // current += 1
 
-stopStatus = "running";
 
-while (strcmp(stopStatus,"stopped")!=0) {
-}*/
+
 
     while(1){
     /**
      * Connect clients.
      */
         // Waiting for a client connection.
-        int client1 = connectToClient(socketDescriptor);
-        // Waiting for the second client to connect.
-        int client2 = connectToClient(socketDescriptor);
+        newClient = connectToClient(socketDescriptor);
+
+        // adding client socket to clientList
+        clientList[currentClientCount] = newClient;
 
 
-    /**
-     * Send status to clients (wait/send).
-     * TODO : A voir si possible d'utiliser sendMessage(...), en fonction du cli.
-     */
-        // First client will wait for a message
-        if (send(client1, "wait\0", sizeof(char) * 5, 0) == -1) {
-            throwError("Erreur lors de l'envoi du message. \n", 1);
-        } else {
-            printf("Message envoyé \n");
-        }
+        // launch client thread
 
-        // Second client is invited to send a message
-        if (send(client2, "send\0", sizeof(char) * 5, 0) == -1) {
-            throwError("Erreur lors de l'envoi du message. \n", 1);
-        } else {
-            printf("Message envoyé \n");
+        int testThread = pthread_create(&pthread[currentClientCount],NULL,readingLoop,newClient);
+
+        if (testThread) {
+            throwError("Error:unable to create thread, %d\n", 0);
         }
 
 
-    /**
-     * Now, we wait for the client 2 to send a message.
-     */
-        // Receive messageSize.
-        int messageSize = receiveMessageInt(client2);
-        // Receive message.
-        char *message = receiveMessageString(client2, messageSize);
+        // upping currentClientCount
+        currentClientCount+=1;
 
-
-    /**
-     * Send the message to the first client.
-     */
-        sendMessage(client1, message, messageSize);
-
-    /**
-     * shutting down clients stream
-     */
-        shutdown(client1, 2);
-        shutdown(client2, 2);
     }
+    /**
+ * shutting down clients stream
+ * shutdown(newClient, 2);
+ */
 }
