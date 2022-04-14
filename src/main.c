@@ -6,9 +6,11 @@
 #include <errno.h>
 #include <signal.h>
 #include <pthread.h>
+#include <unistd.h>
 #define MAX_CLIENT_NUMBER 1000
+#define ENDING_MESSAGE "Fin\n\0"
 
-int socketDescriptor = -1;
+int serverSocketDescriptor;
 int clientList[MAX_CLIENT_NUMBER];
 int currentClientCount = 0;
 
@@ -77,22 +79,22 @@ int launchServer(int port) {
  * For a socket descriptor in params, connect it to the client.
  * Use accept function.
  *
- * @param socketDescriptor
+ * @param serverSocketDescriptor
  * @return an accepted socket descriptor.
  */
-int connectToClient (int socketDescriptor) {
+int connectToClient () {
     struct sockaddr_in aC;
     socklen_t lg = sizeof(struct sockaddr_in);
 
     // Waiting for a clients connection
-    int acceptedSocketDescriptor = accept(socketDescriptor, (struct sockaddr*) &aC, &lg);
+    int acceptedSocketDescriptor = accept(serverSocketDescriptor, (struct sockaddr*) &aC, &lg);
 
     // Checking for errors
     if (acceptedSocketDescriptor == -1) {
         throwError("Erreur lors de la connection. \n", 1);
     }
     else {
-        printf("Client Connecté\n");
+        printf("Client Connecté. \n");
     }
     return acceptedSocketDescriptor;
 }
@@ -109,9 +111,9 @@ int receiveMessageInt (int acceptedSocketDescriptor) {
     if(recv(acceptedSocketDescriptor, &size, sizeof(int), 0) == -1){
         throwError("Erreur lors de la reception du message. \n", 0);
     }
-    else {
-        printf("Message reçu : %d\n", size);
-    }
+//    else {
+//        printf("Message reçu : %d\n", size);
+//    }
     return size;
 }
 
@@ -124,19 +126,19 @@ int receiveMessageInt (int acceptedSocketDescriptor) {
  */
 char *receiveMessageString (int acceptedSocketDescriptor, int size) {
     //int test = ntohl(size);
-    char *msg = (char*)malloc(sizeof(char)*(size+1));
+    char *message = (char*)malloc(sizeof(char) * (size + 1));
 
-    if(recv(acceptedSocketDescriptor, msg, sizeof(char)*size, 0)==-1){
+    if(recv(acceptedSocketDescriptor, message, sizeof(char) * size, 0) == -1){
         throwError("Erreur lors de la reception du message. \n", 0);
     }
-    else {
-        printf("Message reçu : %s\n", msg);
-    }
-    return msg;
+//    else {
+//        printf("Message reçu : %s\n", message);
+//    }
+    return message;
 }
 
 /**
- *
+ * For an accepted socket descriptor in params, wait until receiving a message.
  * @param acceptedSocketDescriptor
  * @return
  */
@@ -198,27 +200,78 @@ void sendMessage (int acceptedSocketDescriptor, char *message) {
     sendMessageString(acceptedSocketDescriptor, message, messageSize);
 }
 
+/**
+* Shut down the server.
+*/
 void closeServer(){
-    /**
-    * Shutting down the server.
-    */
-
     // If the socket is set, we run shutdown on it
-    if(socketDescriptor != -1){
-        shutdown(socketDescriptor, 2);
+    if(serverSocketDescriptor != -1){
+        shutdown(serverSocketDescriptor, 2);
     }
     // End of program with success
     printf("Fin du programme. \n");
     exit(EXIT_SUCCESS);
 }
 
+
+int isSocketConnected (int acceptedSocketDescriptor) {
+    int error = 0;
+    socklen_t len = sizeof (error);
+    int retval = getsockopt (acceptedSocketDescriptor, SOL_SOCKET, SO_ERROR, &error, &len);
+
+    printf("Socket : %d | Status : %d. \n",acceptedSocketDescriptor, retval);
+    return retval == 0;
+}
+
+/**
+ * Shutdown client and kille the thread eassociated.
+ * @param acceptedSocketDescriptor
+ */
+void closeClient (int acceptedSocketDescriptor) {
+    printf("Déconnexion du client : %d\n", acceptedSocketDescriptor);
+    // shutdown client (voir si c'est suffisant pour shutdown le client où s'il faut le faire à la main)
+    // on kill le thread
+    /// TODO : Amélioration implémenter une liste chainée et des struct pour enlever le deleted de la liste.
+//    shutdown(acceptedSocketDescriptor, 2);    // Commented because doesn't close.
+    close(acceptedSocketDescriptor);
+    pthread_exit(NULL);
+}
+
+/**
+ * Send the message to every clients connected, excepted the sender.
+ *
+ * @param acceptedSocketDescriptorSender
+ * @param message
+ */
+void sendBroadcast (int acceptedSocketDescriptorSender, char *message) {
+    printf("sendBroadcast. \n");
+    for (int i = 0; i < currentClientCount; i++) {
+        // If not the sender and socket is connected.
+        if (clientList[i] != acceptedSocketDescriptorSender && isSocketConnected(clientList[i])) {
+            printf("send message to : %d. \n", clientList[i]);
+            sendMessage(clientList[i], message);
+        }
+    }
+}
+
+/**
+ * Receive and print messages received, indefinitely.
+ *
+ * @param acceptedSocketDescriptor
+ */
 void readingLoop(int acceptedSocketDescriptor){
     while(1){
         /**
-        * Now, we wait for the client 2 to send a message.
+        * Now, we wait for the client to send a message.
         */
-        char* message = receiveMessage(acceptedSocketDescriptor);
-        printf("%s \n", message);
+        char *message = receiveMessage(acceptedSocketDescriptor);
+        // If the message is the ending message, then we close the connection with the client.
+        if (strcmp(ENDING_MESSAGE, message) == 0) {
+            // Close the client.
+            closeClient(acceptedSocketDescriptor);
+        }
+        printf("Message reçu : %s", message);
+        sendBroadcast(acceptedSocketDescriptor, message);
     }
 }
 
@@ -226,14 +279,14 @@ void readingLoop(int acceptedSocketDescriptor){
  * Server side.
  */
 int main(int argc, char *argv[]) {
-
-    //Assigning function closeServer() to SIGTERM signal
-    signal(SIGTERM, closeServer);
-
 /**
  * Server Start.
  */
     printf("Début programme. \n");
+
+    // Assigning function closeServer() to SIGTERM signal
+    signal(SIGTERM, closeServer);   // Signal shutdown from ide.
+    signal(SIGINT, closeServer);    // Signal shutdown from ctr+c in terminal.
 
 
 /**
@@ -254,17 +307,12 @@ int main(int argc, char *argv[]) {
 /**
  * Launch server.
  */
-    socketDescriptor = launchServer(atoi(argv[1]));
-
+    serverSocketDescriptor = launchServer(atoi(argv[1]));
     // Server is launched
 
 /**
  * Starting server loop
  */
-    int newClient;
-    // create pthread list
-    pthread_t pthread[MAX_CLIENT_NUMBER];
-
     // if new client
         //recup socket -> ajoute a liste a l'indice current
         // crée le thread a l'indice current
@@ -278,34 +326,22 @@ int main(int argc, char *argv[]) {
         // current += 1
 
 
-
+    int newClientSocketDescriptor;
+    pthread_t listPthread[MAX_CLIENT_NUMBER];
 
     while(1){
     /**
      * Connect clients.
      */
         // Waiting for a client connection.
-        newClient = connectToClient(socketDescriptor);
-
+        newClientSocketDescriptor = connectToClient();
         // adding client socket to clientList
-        clientList[currentClientCount] = newClient;
-
-
+        clientList[currentClientCount] = newClientSocketDescriptor;
         // launch client thread
-
-        int testThread = pthread_create(&pthread[currentClientCount],NULL,readingLoop,newClient);
-
-        if (testThread) {
+        if (pthread_create(&listPthread[currentClientCount], NULL, readingLoop, newClientSocketDescriptor)) {
             throwError("Error:unable to create thread, %d\n", 0);
         }
-
-
         // upping currentClientCount
         currentClientCount+=1;
-
     }
-    /**
- * shutting down clients stream
- * shutdown(newClient, 2);
- */
 }
