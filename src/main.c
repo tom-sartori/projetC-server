@@ -7,11 +7,13 @@
 #include <signal.h>
 #include <pthread.h>
 #include <unistd.h>
+#include "Client.c"
+#include "color.c"
 #define MAX_CLIENT_NUMBER 1000
 #define ENDING_MESSAGE "Fin\n\0"
 
 int serverSocketDescriptor;
-int clientList[MAX_CLIENT_NUMBER];
+Client clientList[MAX_CLIENT_NUMBER];
 int currentClientCount = 0;
 
 
@@ -247,9 +249,9 @@ void sendBroadcast (int acceptedSocketDescriptorSender, char *message) {
     printf("sendBroadcast. \n");
     for (int i = 0; i < currentClientCount; i++) {
         // If not the sender and socket is connected.
-        if (clientList[i] != acceptedSocketDescriptorSender && isSocketConnected(clientList[i])) {
-            printf("send message to : %d. \n", clientList[i]);
-            sendMessage(clientList[i], message);
+        if (clientList[i].acceptedSocketDescriptor != acceptedSocketDescriptorSender && isSocketConnected(clientList[i].acceptedSocketDescriptor)) {
+            printf("send message to : %d. \n", clientList[i].id);
+            sendMessage(clientList[i].acceptedSocketDescriptor, message);
         }
     }
 }
@@ -327,7 +329,7 @@ int main(int argc, char *argv[]) {
 
 
     int newClientSocketDescriptor;
-    pthread_t listPthread[MAX_CLIENT_NUMBER];
+    Client newClient;
 
     while(1){
     /**
@@ -335,10 +337,11 @@ int main(int argc, char *argv[]) {
      */
         // Waiting for a client connection.
         newClientSocketDescriptor = connectToClient();
+        newClient = createClient(currentClientCount, newClientSocketDescriptor);
         // adding client socket to clientList
-        clientList[currentClientCount] = newClientSocketDescriptor;
+        clientList[currentClientCount] = newClient;
         // launch client thread
-        if (pthread_create(&listPthread[currentClientCount], NULL, readingLoop, newClientSocketDescriptor)) {
+        if (pthread_create(newClient.thread, NULL, readingLoop, newClientSocketDescriptor)) {
             throwError("Error:unable to create thread, %d\n", 0);
         }
         // upping currentClientCount
