@@ -8,13 +8,12 @@
 #include <pthread.h>
 #include <unistd.h>
 #include "Client.c"
+#include "List.c"
 #include "color.c"
-#define MAX_CLIENT_NUMBER 1000
 #define ENDING_MESSAGE "Fin\n\0"
 
 int serverSocketDescriptor;
-Client clientList[MAX_CLIENT_NUMBER];
-int currentClientCount = 0;
+List *clientList;
 
 
 /**
@@ -114,7 +113,7 @@ int receiveMessageInt (int acceptedSocketDescriptor) {
         throwError("Erreur lors de la reception du message. \n", 0);
     }
 //    else {
-//        printf("Message reçu : %d\n", size);
+//        printf("Message de taille %d recu. \n", size);
 //    }
     return size;
 }
@@ -229,14 +228,12 @@ int isSocketConnected (int acceptedSocketDescriptor) {
  * Shutdown client and kille the thread eassociated.
  * @param acceptedSocketDescriptor
  */
-void closeClient (int acceptedSocketDescriptor) {
-    printf("Déconnexion du client : %d\n", acceptedSocketDescriptor);
-    // shutdown client (voir si c'est suffisant pour shutdown le client où s'il faut le faire à la main)
-    // on kill le thread
-    /// TODO : Amélioration implémenter une liste chainée et des struct pour enlever le deleted de la liste.
+void closeClient (Client *client) {
+    printf("Déconnexion du client : %d\n", client->id);
 //    shutdown(acceptedSocketDescriptor, 2);    // Commented because doesn't close.
-    close(acceptedSocketDescriptor);
-    pthread_exit(NULL);
+    close(client->acceptedSocketDescriptor);    // Close client's socket.
+    delete(clientList, client);     // Remove from the list, to node which contain the client.
+    pthread_exit(NULL);     // Kill of the thread associated.
 }
 
 /**
@@ -247,12 +244,16 @@ void closeClient (int acceptedSocketDescriptor) {
  */
 void sendBroadcast (int acceptedSocketDescriptorSender, char *message) {
     printf("sendBroadcast. \n");
-    for (int i = 0; i < currentClientCount; i++) {
-        // If not the sender and socket is connected.
-        if (clientList[i].acceptedSocketDescriptor != acceptedSocketDescriptorSender && isSocketConnected(clientList[i].acceptedSocketDescriptor)) {
-            printf("send message to : %d. \n", clientList[i].id);
-            sendMessage(clientList[i].acceptedSocketDescriptor, message);
+    if (isEmpty(clientList)) {
+        throwError("Client list empty. ", 0);
+    }
+
+    Node *current = next(clientList->head);
+    while (current != NULL) {
+        if (current->client.acceptedSocketDescriptor != acceptedSocketDescriptorSender && isSocketConnected(current->client.acceptedSocketDescriptor)) {
+            sendMessage(current->client.acceptedSocketDescriptor, message);
         }
+        current = next(current);
     }
 }
 
@@ -261,19 +262,19 @@ void sendBroadcast (int acceptedSocketDescriptorSender, char *message) {
  *
  * @param acceptedSocketDescriptor
  */
-void readingLoop(int acceptedSocketDescriptor){
+void readingLoop(Client *client){
     while(1){
         /**
         * Now, we wait for the client to send a message.
         */
-        char *message = receiveMessage(acceptedSocketDescriptor);
+        char *message = receiveMessage(client->acceptedSocketDescriptor);
         // If the message is the ending message, then we close the connection with the client.
         if (strcmp(ENDING_MESSAGE, message) == 0) {
             // Close the client.
-            closeClient(acceptedSocketDescriptor);
+            closeClient(client);
         }
         printf("Message reçu : %s", message);
-        sendBroadcast(acceptedSocketDescriptor, message);
+        sendBroadcast(client->acceptedSocketDescriptor, message);
     }
 }
 
@@ -329,7 +330,9 @@ int main(int argc, char *argv[]) {
 
 
     int newClientSocketDescriptor;
-    Client newClient;
+    int currentClientCount = 0; // TODO : Remove me when usernames are set.
+    Client *newClient;
+    clientList = createList();
 
     while(1){
     /**
@@ -338,13 +341,13 @@ int main(int argc, char *argv[]) {
         // Waiting for a client connection.
         newClientSocketDescriptor = connectToClient();
         newClient = createClient(currentClientCount, newClientSocketDescriptor);
-        // adding client socket to clientList
-        clientList[currentClientCount] = newClient;
+        // Adding Client to clientList
+        add(clientList, *newClient);
         // launch client thread
-        if (pthread_create(newClient.thread, NULL, readingLoop, newClientSocketDescriptor)) {
+        if (pthread_create(newClient->thread, NULL, readingLoop, newClient)) {
             throwError("Error:unable to create thread, %d\n", 0);
         }
         // upping currentClientCount
-        currentClientCount+=1;
+        currentClientCount += 1;
     }
 }

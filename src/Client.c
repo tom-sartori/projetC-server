@@ -8,11 +8,11 @@ struct Client {
 };
 typedef struct Client Client;
 
-Client createClient (int id, int acceptedSocketDescriptor) {
-    Client client;
-    client.id = id;
-    client.acceptedSocketDescriptor = acceptedSocketDescriptor;
-    client.thread = (pthread_t)malloc(sizeof(pthread_t));
+Client *createClient (int id, int acceptedSocketDescriptor) {
+    Client *client = (Client *)malloc(sizeof(Client));
+    client->id = id;
+    client->acceptedSocketDescriptor = acceptedSocketDescriptor;
+    client->thread = (pthread_t)malloc(sizeof(pthread_t));
 
     return client;
 }
