@@ -203,7 +203,8 @@ void sendMessage (int acceptedSocketDescriptor, char *message) {
 
 /**
 * Shut down the server.
-*/
+
+ */
 void closeServer(){
     // If the socket is set, we run shutdown on it
     if(serverSocketDescriptor != -1){
@@ -242,7 +243,7 @@ void closeClient (Client *client) {
  * @param acceptedSocketDescriptorSender
  * @param message
  */
-void sendBroadcast (int acceptedSocketDescriptorSender, char *message) {
+void sendBroadcast (Client *client, char *message) {
     printf("sendBroadcast. \n");
     if (isEmpty(clientList)) {
         throwError("Client list empty. ", 0);
@@ -250,8 +251,16 @@ void sendBroadcast (int acceptedSocketDescriptorSender, char *message) {
 
     Node *current = next(clientList->head);
     while (current != NULL) {
-        if (current->client.acceptedSocketDescriptor != acceptedSocketDescriptorSender && isSocketConnected(current->client.acceptedSocketDescriptor)) {
-            sendMessage(current->client.acceptedSocketDescriptor, message);
+        if (current->client.acceptedSocketDescriptor != client->acceptedSocketDescriptor && isSocketConnected(current->client.acceptedSocketDescriptor)) {
+            char* name = client->username;
+            char* msgWithClientName = (char*)malloc(sizeof(char)*(strlen(name)+strlen(message)));
+            strcat(msgWithClientName, name);
+            strcat(msgWithClientName,": ");
+            strcat(msgWithClientName, message);
+            //message[strlen(message)-1] = '\0';
+            //msgWithClientName = strcat(message,name);
+            //strcat(msgWithClientName, "\n");
+            sendMessage(current->client.acceptedSocketDescriptor, msgWithClientName);
         }
         current = next(current);
     }
@@ -273,8 +282,8 @@ void readingLoop(Client *client){
             // Close the client.
             closeClient(client);
         }
-        printf("Message reçu : %s", message);
-        sendBroadcast(client->acceptedSocketDescriptor, message);
+        printf("%s: %s", client->username, message);
+        sendBroadcast(client, message);
     }
 }
 
@@ -340,7 +349,8 @@ int main(int argc, char *argv[]) {
      */
         // Waiting for a client connection.
         newClientSocketDescriptor = connectToClient();
-        newClient = createClient(currentClientCount, newClientSocketDescriptor);
+        char* username = receiveMessage(newClientSocketDescriptor);
+        newClient = createClient(currentClientCount, newClientSocketDescriptor, username);
         // Adding Client to clientList
         add(clientList, *newClient);
         // launch client thread

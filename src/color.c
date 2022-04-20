@@ -63,3 +63,29 @@ void setWhiteText(){
 void setWhiteTextBold(){
     printf("\033[1;37m");
 }
+
+/**
+ * Set color text to Black, bold or not depending on the function you call
+ * Black \033[0;37m -> default color
+ */
+
+void setBlackText(){
+    printf("\033[0;30m ");
+}
+
+void setBlackTextBold(){
+    printf("\033[1;30m ");
+}
+
+/**
+* Set color text to Purple, bold or not depending on the function you call
+* Purple \033[0;35m -> global message you send
+*/
+
+void setPurpleText(){
+    printf("\033[0;35m");
+}
+
+void setPurpleTextBold(){
+    printf("\033[1;35m");
+}
