@@ -152,14 +152,14 @@ char *receiveMessage (int acceptedSocketDescriptor) {
 
 /**
  * For an accepted socket descriptor in params, send a message of type int.
- * This message is usually used to send the message's size which will be sent after.
+ * This message is usually used to send the message's size which will be sent after. Or also, it sends a status.
  *
  * @param acceptedSocketDescriptor
- * @param messageSize
+ * @param messageInt
  */
-void sendMessageInt (int acceptedSocketDescriptor, int messageSize) {
+void sendMessageInt (int acceptedSocketDescriptor, int messageInt) {
     // Sending the message's size to the client.
-    if(send(acceptedSocketDescriptor, &messageSize, sizeof(int), 0) == -1){
+    if(send(acceptedSocketDescriptor, &messageInt, sizeof(int), 0) == -1){
         throwError("Erreur lors de l'envoi du message. \n", 1);
     }
     else {
