@@ -65,3 +65,27 @@ void delete (List *list, Client *client) {
         }
     }
 }
+
+/**
+ * Check if a client's username is contained in the list.
+ *
+ * @param list : Linked list of clients.
+ * @param username
+ * @return 1 if the a user has the username in params.
+ */
+int contains (List *list, char *username) {
+    if (isEmpty(list)) {
+        exit(EXIT_FAILURE);
+    }
+
+    int isFound = 0;
+
+    Node *current = next(list->head);
+    while (!isFound && current != NULL) {
+            if (strcmp(username, current->client.username)) {
+                isFound = 1;
+            }
+            current = next(current);
+    }
+    return isFound;
+}
