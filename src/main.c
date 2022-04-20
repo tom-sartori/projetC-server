@@ -349,8 +349,16 @@ int main(int argc, char *argv[]) {
      */
         // Waiting for a client connection.
         newClientSocketDescriptor = connectToClient();
-        char* username = receiveMessage(newClientSocketDescriptor);
-        // verify if username is unique
+        int hasUniqueUsername = 0;
+        char *username;
+        while(!hasUniqueUsername){
+            username = receiveMessage(newClientSocketDescriptor);
+            if(contains(clientList, username)){
+                sendMessageInt(newClientSocketDescriptor,201);
+            }else{
+                sendMessageInt(newClientSocketDescriptor,409);
+            }
+        }
         newClient = createClient(currentClientCount, newClientSocketDescriptor, username);
         // Adding Client to clientList
         add(clientList, *newClient);
