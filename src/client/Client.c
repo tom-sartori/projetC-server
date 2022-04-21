@@ -1,4 +1,3 @@
-#include <pthread.h>
 
 struct Client {
     int id;
@@ -8,7 +7,7 @@ struct Client {
 };
 typedef struct Client Client;
 
-Client *createClient (int id, int acceptedSocketDescriptor, char* username) {
+Client *createClient (int id, int acceptedSocketDescriptor, char *username) {
     Client *client = (Client *)malloc(sizeof(Client));
     client->id = id;
     client->acceptedSocketDescriptor = acceptedSocketDescriptor;

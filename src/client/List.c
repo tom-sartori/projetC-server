@@ -73,19 +73,17 @@ void delete (List *list, Client *client) {
  * @param username
  * @return 1 if the a user has the username in params.
  */
-int contains (List *list, char *username) {
+Client *contains (List *list, char *username) {
     if (isEmpty(list)) {
         return 0;
     }
 
-    int isFound = 0;
-
     Node *current = next(list->head);
-    while (!isFound && current != NULL) {
+    while (current != NULL) {
             if (strcmp(username, current->client.username) == 0) {
-                isFound = 1;
+                return &current->client;
             }
             current = next(current);
     }
-    return isFound;
+    return NULL;
 }
