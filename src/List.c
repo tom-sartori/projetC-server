@@ -75,14 +75,14 @@ void delete (List *list, Client *client) {
  */
 int contains (List *list, char *username) {
     if (isEmpty(list)) {
-        exit(EXIT_FAILURE);
+        return 0;
     }
 
     int isFound = 0;
 
     Node *current = next(list->head);
     while (!isFound && current != NULL) {
-            if (strcmp(username, current->client.username)) {
+            if (strcmp(username, current->client.username) == 0) {
                 isFound = 1;
             }
             current = next(current);

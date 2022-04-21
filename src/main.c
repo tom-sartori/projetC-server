@@ -353,8 +353,9 @@ int main(int argc, char *argv[]) {
         char *username;
         while(!hasUniqueUsername){
             username = receiveMessage(newClientSocketDescriptor);
-            if(contains(clientList, username)){
+            if(!contains(clientList, username)){
                 sendMessageInt(newClientSocketDescriptor,201);
+                hasUniqueUsername = 1;
             }else{
                 sendMessageInt(newClientSocketDescriptor,409);
             }
