@@ -22,6 +22,8 @@
 #include "socket/send.c"
 #include "command/action.c"
 
+#define ENDING_MESSAGE "Fin\n\0"    /// TODO : Remove it because we now use /disconnect.
+
 
 
 /**
@@ -38,7 +40,11 @@ void readingLoop(Client *client){
         printf("%s: %s", client->username, message);
         // If the message is the ending message, then we close the connection with the client.
         /// TODO Check if message is function.
-        if (isCommand(message)) {
+        if (strcmp(ENDING_MESSAGE, message) == 0) {
+            // Shutdown the client.
+            closeClient(client);
+        }
+        else if (isCommand(message)) {
             doCommandAction(client, message);
         }
         else {
@@ -101,7 +107,6 @@ int main(int argc, char *argv[]) {
 
 
     int newClientSocketDescriptor;
-    int currentClientCount = 0; // TODO : Remove me when usernames are set.
     Client *newClient;
     clientList = createList();
 
@@ -123,14 +128,12 @@ int main(int argc, char *argv[]) {
                 sendMessageInt(newClientSocketDescriptor,409);
             }
         }
-        newClient = createClient(currentClientCount, newClientSocketDescriptor, username);
+        newClient = createClient(username, newClientSocketDescriptor);
         // Adding Client to clientList
         add(clientList, *newClient);
         // launch client thread
         if (pthread_create(newClient->thread, NULL, readingLoop, newClient)) {
             throwError("Error:unable to create thread, %d\n", 0);
         }
-        // upping currentClientCount
-        currentClientCount += 1;
     }
 }

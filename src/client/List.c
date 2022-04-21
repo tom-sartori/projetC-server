@@ -49,7 +49,7 @@ void delete (List *list, Client *client) {
 
     Node *current = next(list->head);
     while (!isDeleted && current != NULL) {
-        if (current->client.id == client->id) {
+        if (strcmp(current->client.username, client->username) == 0) {
             current->previous->next = current->next;
             if (hasNext(current)) {
                 current->next->previous = current->previous;

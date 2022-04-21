@@ -42,7 +42,7 @@ int isSocketConnected (int acceptedSocketDescriptor) {
  * @param acceptedSocketDescriptor
  */
 void closeClient (Client *client) {
-    printf("Déconnexion du client : %d\n", client->id);
+    printf("Déconnexion du client : %s\n", client->username);
 //    shutdown(acceptedSocketDescriptor, 2);    // Commented because doesn't close.
     close(client->acceptedSocketDescriptor);    // Close client's socket.
     delete(clientList, client);     // Remove from the list, to node which contain the client.
