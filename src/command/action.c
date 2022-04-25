@@ -53,10 +53,26 @@ void mpAction (Client *clientSender, Command *command, char *message) {
 
     if (clientTargeted == NULL) {
         /// TODO Send status ?
-        sendMessage(clientSender->acceptedSocketDescriptor, "Used not found. \n");
+        sendMessage(clientSender->acceptedSocketDescriptor, "User not found. \n");
     }
     else {
-        sendMessage(clientTargeted->acceptedSocketDescriptor, regexGroupList[2]);
+        /*char* name = client->username;
+        char* msgWithClientName = (char*)malloc(sizeof(char)*(strlen(name)+strlen(message)));
+        strcat(msgWithClientName, name);
+        strcat(msgWithClientName,": ");
+        strcat(msgWithClientName, message);*/
+        // TODO Rajouter le pseudo du sender
+        // TODO Faire une fonction du realloc
+
+//        regexGroupList[2] = realloc(regexGroupList[2], sizeof(char)* strlen(regexGroupList[2])+2);
+//        strcat(regexGroupList[2], "\n");
+
+        char* messageToSend = (char*)malloc((strlen(regexGroupList[2])+2));
+        strcpy(messageToSend,regexGroupList[2]);
+        strcat(messageToSend,"\n");
+//        sendMessage(clientTargeted->acceptedSocketDescriptor, regexGroupList[2]);
+        sendMessage(clientTargeted->acceptedSocketDescriptor, messageToSend);
+        free(messageToSend);
     }
 
     free(regexGroupList[0]);

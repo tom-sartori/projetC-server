@@ -22,9 +22,6 @@
 #include "socket/send.c"
 #include "command/action.c"
 
-#define ENDING_MESSAGE "Fin\n\0"    /// TODO : Remove it because we now use /disconnect.
-
-
 
 /**
  * Receive and print messages received, indefinitely.
@@ -38,13 +35,8 @@ void readingLoop(Client *client){
         */
         char *message = receiveMessage(client->acceptedSocketDescriptor);
         printf("%s: %s", client->username, message);
-        // If the message is the ending message, then we close the connection with the client.
-        /// TODO Check if message is function.
-        if (strcmp(ENDING_MESSAGE, message) == 0) {
-            // Shutdown the client.
-            closeClient(client);
-        }
-        else if (isCommand(message)) {
+        // If the message is a command, do the command, else send broadcast to all connected clients
+        if (isCommand(message)) {
             doCommandAction(client, message);
         }
         else {
