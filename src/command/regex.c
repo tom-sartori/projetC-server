@@ -64,7 +64,7 @@ void getRegexGroup (char *list[], char *message, char *regexString) {
             strcpy(sourceCopy, message);
             sourceCopy[groupArray[i].rm_eo] = 0;
 
-            list[i] = malloc(sizeof(strlen(sourceCopy + groupArray[i].rm_so) + 1));
+            list[i] = (char *)malloc(strlen(sourceCopy + groupArray[i].rm_so));
             strcpy(list[i], sourceCopy + groupArray[i].rm_so);
         }
     }
