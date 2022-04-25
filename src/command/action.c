@@ -56,19 +56,17 @@ void mpAction (Client *clientSender, Command *command, char *message) {
         sendMessage(clientSender->acceptedSocketDescriptor, "User not found. \n");
     }
     else {
-        /*char* name = client->username;
-        char* msgWithClientName = (char*)malloc(sizeof(char)*(strlen(name)+strlen(message)));
-        strcat(msgWithClientName, name);
-        strcat(msgWithClientName,": ");
-        strcat(msgWithClientName, message);*/
         // TODO Rajouter le pseudo du sender
         // TODO Faire une fonction du realloc
 
 //        regexGroupList[2] = realloc(regexGroupList[2], sizeof(char)* strlen(regexGroupList[2])+2);
 //        strcat(regexGroupList[2], "\n");
-
-        char* messageToSend = (char*)malloc((strlen(regexGroupList[2])+2));
-        strcpy(messageToSend,regexGroupList[2]);
+        // TODO Faire un check client regexp pour savoir si le message est un mp et l'afficher en bleu si c'est le cas
+        char* messageToSend = (char*)malloc((strlen(regexGroupList[2])+2)+ strlen(clientSender->username+2)+3);
+        strcat(messageToSend, "MP ");
+        strcat(messageToSend, clientSender->username);
+        strcat(messageToSend, ": ");
+        strcat(messageToSend,regexGroupList[2]);
         strcat(messageToSend,"\n");
 //        sendMessage(clientTargeted->acceptedSocketDescriptor, regexGroupList[2]);
         sendMessage(clientTargeted->acceptedSocketDescriptor, messageToSend);
