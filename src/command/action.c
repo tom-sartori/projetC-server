@@ -32,6 +32,24 @@ void disconnectAction (Client *client) {
     closeClient(client);
 }
 
+void usersAction (Client *client) {
+    char *text = (char *) malloc(sizeof(char) * 1000);
+    strcpy(text, "Liste des utilisateurs : \n");
+
+    Node *current = next(clientList->head);
+    while (current != NULL) {
+        if (isSocketConnected(current->client.acceptedSocketDescriptor)) {
+            strcat(text, current->client.username);
+            strcat(text, "\n");
+        }
+        current = next(current);
+    }
+
+    strcat(text, "\n");
+    sendMessage(client->acceptedSocketDescriptor, text);
+    free(text);
+}
+
 /**
  * Private message action which is called by command /mp user message.
  *
@@ -107,6 +125,10 @@ void doCommandAction (Client *client, char *message) {
     else if (strcmp("disconnect", command->name) == 0) {
         // Disconnection.
         disconnectAction(client);
+    }
+    else if (strcmp("users", command->name) == 0) {
+        // List of users.
+        usersAction(client);
     }
     else if (strcmp("mp", command->name) == 0) {
         // Private message.

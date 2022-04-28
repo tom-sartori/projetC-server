@@ -24,7 +24,7 @@ Command *createCommand (char *name, char *regex, char *description) {
     return command;
 }
 
-#define NB_COMMAND 3
+#define NB_COMMAND 4
 Command *commandList[NB_COMMAND];
 /**
  * Initialize the global list of available commands, commandList.
@@ -32,7 +32,8 @@ Command *commandList[NB_COMMAND];
 void initCommandList () {
     commandList[0] = createCommand("help", "(^/help *\n$)", "Indique la liste des commandes disponibles. \n");
     commandList[1] = createCommand("disconnect", "(^/disconnect *\n$)", "Déconnecte l'utilisateur. \n");
-    commandList[2] = createCommand("mp", "^/mp +([^ ]+) +([^ ]{1}.*)\n$", "Envoi un message privé. /mp username message \n");
+    commandList[2] = createCommand("users", "(^/users *\n$)", "Affiche la liste des utilisateurs connectés. \n");
+    commandList[3] = createCommand("mp", "^/mp +([^ ]+) +([^ ]{1}.*)\n$", "Envoi un message privé. /mp username message \n");
 }
 
 /**
