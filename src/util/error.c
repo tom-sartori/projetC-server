@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <errno.h>
-#include "color.c"
-
 
 /**
  * Perror the message in params and exit the programme.

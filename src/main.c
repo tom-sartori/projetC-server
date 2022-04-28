@@ -6,8 +6,8 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#include "util/error.c"
 #include "util/color.c"
+#include "util/error.c"
 
 #include "client/Client.c"
 #include "client/List.c"
