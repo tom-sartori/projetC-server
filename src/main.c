@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
+#include "util/semaphore.c"
 #include "util/color.c"
 #include "util/error.c"
 
@@ -21,6 +22,8 @@
 #include "socket/receive.c"
 #include "socket/send.c"
 #include "command/action.c"
+
+#define NB_MAX_CLIENT 100
 
 
 /**
@@ -80,6 +83,7 @@ int main(int argc, char *argv[]) {
     serverSocketDescriptor = launchServer(atoi(argv[1]));
     // Server is launched
 
+    rk_sema_init(&semaphore, NB_MAX_CLIENT);
     initCommandList();
 
 /**
@@ -106,9 +110,12 @@ int main(int argc, char *argv[]) {
     /**
      * Connect clients.
      */
+        // Wait for a place.
+        rk_sema_wait(&semaphore);
         // Waiting for a client connection.
         newClientSocketDescriptor = connectToClient();
         int hasUniqueUsername = 0;
+        /// TODO Function checkUsername.
         char *username;
         while(!hasUniqueUsername){
             username = receiveMessage(newClientSocketDescriptor);
