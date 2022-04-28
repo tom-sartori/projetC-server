@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <errno.h>
+#include "color.c"
 
 
 /**
@@ -9,9 +10,12 @@
  * @param hasErrno
  */
 void throwError (char *errorMessage, int hasErrno) {
-    perror(errorMessage);
     if (hasErrno) {
-        printf("%s", strerror(errno));
+        perror(errorMessage);
+    }else{
+        setRedText();
+        printf("%s \n", errorMessage);
+        setWhiteText();
     }
     exit(EXIT_FAILURE);
 }

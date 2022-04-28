@@ -72,7 +72,6 @@ void mpAction (Client *clientSender, Command *command, char *message) {
         sendMessage(clientTargeted->acceptedSocketDescriptor, messageToSend);
         free(messageToSend);
     }
-
     free(regexGroupList[0]);
     free(regexGroupList[1]);
     free(regexGroupList[2]);
