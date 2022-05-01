@@ -16,7 +16,6 @@
 #include "command/regex.c"
 #include "command/Command.c"
 
-
 #include "socket/serverSocket.c"
 #include "socket/clientSocket.c"
 #include "socket/receive.c"
@@ -24,6 +23,36 @@
 #include "command/action.c"
 
 #define NB_MAX_CLIENT 100
+
+
+/**
+ * Wait for the client to send a valid username.
+ * If the username already exists, ask again.
+ * If the client logout, it returns NULL.
+ *
+ * @param newClientSocketDescriptor
+ * @return the username or NULL if the client logout.
+ */
+char *askForUsername (int newClientSocketDescriptor) {
+    char *username;
+    int hasUniqueUsername = 0;
+    do {
+        username = receiveMessage(newClientSocketDescriptor);
+        if (isMatch(username, commandList[1]->regex)) {
+            return NULL;
+        }
+        else if(contains(clientList, username) == NULL){
+            sendMessageInt(newClientSocketDescriptor,201);
+            hasUniqueUsername = 1;
+        }
+        else{
+            sendMessageInt(newClientSocketDescriptor,409);
+        }
+    }
+    while(!hasUniqueUsername);
+
+    return username;
+}
 
 
 /**
@@ -86,53 +115,36 @@ int main(int argc, char *argv[]) {
     rk_sema_init(&semaphore, NB_MAX_CLIENT);
     initCommandList();
 
+    clientList = createList();
+    int newClientSocketDescriptor;
+    Client *newClient;
+
 /**
  * Starting server loop
  */
-    // if new client
-        //recup socket -> ajoute a liste a l'indice current
-        // crée le thread a l'indice current
-            // Fonction de lecture a l'infini qui affiche les messages qu'elle reçoit
-            /// 2 Si message reçu fin,
-                // shutdown client (voir si c'est suffisant pour shutdown le client où s'il faut le faire à la main)
-                // on kill le thread
-                // Amélioration implémenter une liste chainée
-            /// 3 Broadcast
-            /// 4 commandes -> MP, etc
-        // current += 1
 
-
-    int newClientSocketDescriptor;
-    Client *newClient;
-    clientList = createList();
-
-    while(1){
     /**
      * Connect clients.
      */
+    while(1){
         // Wait for a place.
         rk_sema_wait(&semaphore);
         // Waiting for a client connection.
         newClientSocketDescriptor = connectToClient();
-        int hasUniqueUsername = 0;
-        /// TODO Function checkUsername.
-        char *username;
-        while(!hasUniqueUsername){
-            username = receiveMessage(newClientSocketDescriptor);
-            if(contains(clientList, username) == NULL){
-                sendMessageInt(newClientSocketDescriptor,201);
-                hasUniqueUsername = 1;
-            }
-            else{
-                sendMessageInt(newClientSocketDescriptor,409);
-            }
+        char *username = askForUsername(newClientSocketDescriptor);
+        if (username == NULL) {
+            // User has been logout.
+            close(newClientSocketDescriptor);
+            rk_sema_post(&semaphore);
         }
-        newClient = createClient(username, newClientSocketDescriptor);
-        // Adding Client to clientList
-        add(clientList, *newClient);
-        // launch client thread
-        if (pthread_create(newClient->thread, NULL, readingLoop, newClient)) {
-            throwError("Error:unable to create thread, %d\n", 0);
+        else {
+            newClient = createClient(username, newClientSocketDescriptor);
+            // Adding Client to clientList
+            add(clientList, *newClient);
+            // launch client thread
+            if (pthread_create(newClient->thread, NULL, readingLoop, newClient)) {
+                throwError("Error:unable to create thread, %d\n", 0);
+            }
         }
     }
 }

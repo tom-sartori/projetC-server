@@ -24,7 +24,6 @@ int receiveMessageInt (int acceptedSocketDescriptor) {
  * @return the gotten message.
  */
 char *receiveMessageString (int acceptedSocketDescriptor, int size) {
-    //int test = ntohl(size);
     char *message = (char*)malloc(sizeof(char) * (size + 1));
 
     if(recv(acceptedSocketDescriptor, message, sizeof(char) * size, 0) == -1){
