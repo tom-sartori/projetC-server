@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
+#include "util/global.c"
 #include "util/semaphore.c"
 #include "util/color.c"
 #include "util/error.c"
@@ -22,7 +23,6 @@
 #include "socket/send.c"
 #include "command/action.c"
 
-#define NB_MAX_CLIENT 100
 
 
 /**

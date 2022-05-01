@@ -17,6 +17,9 @@ int isEmpty(List *list) {
 }
 
 void add(List *list, Client client) {
+    // Lock mutex.
+    pthread_mutex_lock(&mutex);
+
     Node *node = createNode();
     node->client = client;
 
@@ -30,6 +33,8 @@ void add(List *list, Client client) {
         list->head->next->previous = node;
         list->head->next = node;
     }
+    // Unlock mutex.
+    pthread_mutex_unlock(&mutex);
 }
 
 Node *next(Node *node){
@@ -45,6 +50,9 @@ void delete (List *list, Client *client) {
         exit(EXIT_FAILURE);
     }
 
+    // Lock mutex.
+    pthread_mutex_lock(&mutex);
+
     int isDeleted = 0;
 
     Node *current = next(list->head);
@@ -55,15 +63,15 @@ void delete (List *list, Client *client) {
                 current->next->previous = current->previous;
             }
 
-            current->previous = NULL;
-            current->next = NULL;
-            free(current);  // FIXME : Ca free le client qui est contenu dedans ?
+            free(current);
             isDeleted = 1;
         }
         else {
             current = next(current);
         }
     }
+    // Unlock mutex.
+    pthread_mutex_unlock(&mutex);
 }
 
 /**
@@ -71,19 +79,26 @@ void delete (List *list, Client *client) {
  *
  * @param list : Linked list of clients.
  * @param username
- * @return 1 if the a user has the username in params.
+ * @return 1 if the a user has the username in params or NULL.
  */
 Client *contains (List *list, char *username) {
     if (isEmpty(list)) {
         return 0;
     }
 
+    // Lock mutex.
+    pthread_mutex_lock(&mutex);
+
     Node *current = next(list->head);
     while (current != NULL) {
             if (strcmp(username, current->client.username) == 0) {
+                // Unlock mutex.
+                pthread_mutex_unlock(&mutex);
                 return &current->client;
             }
             current = next(current);
     }
+    // Unlock mutex.
+    pthread_mutex_unlock(&mutex);
     return NULL;
 }
