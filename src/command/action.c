@@ -96,7 +96,29 @@ void mpAction (Client *clientSender, Command *command, char *message) {
 }
 
 /**
- * Action called when the user call an unknown commad.
+ * Action used to send a file to the server.
+ * Create a thread which use fileActionThreaded(...).
+ *
+ * @param command
+ * @param message
+ */
+void fileAction (Command *command, char *message) {
+    // Create thread
+    // Create socket
+    // Send socket port
+    // Wait client connection at new socket
+    // Recv data and write into file
+    // Client close socket, then exit thread
+
+    char *regexGroupList[3];
+    getRegexGroup(regexGroupList, message, command->regex);
+
+    pthread_t fileThread;
+    pthread_create(&fileThread, NULL, receiveFile, regexGroupList[2]);
+}
+
+/**
+ * Action called when the user call an unknown command.
  *
  * @param client
  */
@@ -133,6 +155,10 @@ void doCommandAction (Client *client, char *message) {
     else if (strcmp("mp", command->name) == 0) {
         // Private message.
         mpAction(client, command, message);
+    }
+    else if (strcmp("file", command->name) == 0) {
+        // File sending.
+        fileAction(command, message);
     }
     else {
         // Unknown action.

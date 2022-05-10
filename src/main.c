@@ -6,7 +6,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#include "util/global.c"
+#include "global.c"
 #include "util/semaphore.c"
 #include "util/color.c"
 #include "util/error.c"
@@ -112,6 +112,9 @@ int main(int argc, char *argv[]) {
     serverSocketDescriptor = launchServer(atoi(argv[1]));
     // Server is launched
 
+    // Launch second socket for files.
+    serverFileSocketDescriptor = launchServer(PORT_SOCKET_FILE);
+
     rk_sema_init(&semaphore, NB_MAX_CLIENT);
     initCommandList();
 
@@ -130,7 +133,7 @@ int main(int argc, char *argv[]) {
         // Wait for a place.
         rk_sema_wait(&semaphore);
         // Waiting for a client connection.
-        newClientSocketDescriptor = connectToClient();
+        newClientSocketDescriptor = connectToClient(serverSocketDescriptor);
         char *username = askForUsername(newClientSocketDescriptor);
         if (username == NULL) {
             // User has been logout.
@@ -143,7 +146,7 @@ int main(int argc, char *argv[]) {
             add(clientList, *newClient);
             // launch client thread
             if (pthread_create(newClient->thread, NULL, readingLoop, newClient)) {
-                throwError("Error:unable to create thread, %d\n", 0);
+                throwError("Error : unable to create thread, %d\n", 0);
             }
         }
     }

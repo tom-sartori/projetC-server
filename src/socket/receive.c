@@ -46,3 +46,49 @@ char *receiveMessage (int acceptedSocketDescriptor) {
     // Receive message.
     return receiveMessageString(acceptedSocketDescriptor, messageSize);
 }
+
+/**
+ * Threaded function receiving a file from a client.
+ * Connect to another client socket and create the file into ./uploads.
+ *
+ * @param fileName
+ * @return
+ */
+void *receiveFile(void *fileName){
+    // Connection to the file socket.
+    int clientFileSocket = connectToClient(serverFileSocketDescriptor);
+
+    // Get file blocSize.
+    long filelen;
+    recv(clientFileSocket, &filelen, sizeof(long), 0);
+
+    // Get current path.
+    char filePath[200];
+    getwd(filePath);
+    if (isMatch(filePath, "cmake-build-debug")) {
+        // Program launched by Cmake project. It means that the current pwd is the directory cmake-build-debug.
+        strcat(filePath, "/../uploads/");
+    } else {
+        // Program launched by the script client.sh.
+        strcat(filePath, "/src/uploads/");
+    }
+    strcat(filePath, fileName);
+
+    // File creation.
+    FILE *file;
+    file = fopen(filePath, "w+");
+
+
+    long blocSize = MAX_SIZE_SENT;
+    char subBuffer[blocSize];
+    for (int i = 0; i < filelen; i += MAX_SIZE_SENT) {
+        blocSize = (i + MAX_SIZE_SENT < filelen) ? MAX_SIZE_SENT : filelen - i; // Calculate the bloc's blocSize.
+        recv(clientFileSocket, subBuffer, blocSize, 0);
+        fwrite(subBuffer, blocSize, 1, file);
+        bzero(subBuffer, MAX_SIZE_SENT);    // Clear the buffer.
+    }
+
+    fclose(file);
+    printf("Fichier importé. \n");
+    pthread_exit(NULL);
+}

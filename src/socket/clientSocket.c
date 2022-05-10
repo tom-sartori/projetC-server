@@ -2,15 +2,15 @@
  * For a socket descriptor in params, connect it to the client.
  * Use accept function.
  *
- * @param serverSocketDescriptor
+ * @param serverSocket
  * @return an accepted socket descriptor.
  */
-int connectToClient () {
+int connectToClient (int serverSocket) {
     struct sockaddr_in aC;
     socklen_t lg = sizeof(struct sockaddr_in);
 
     // Waiting for a clients connection
-    int acceptedSocketDescriptor = accept(serverSocketDescriptor, (struct sockaddr*) &aC, &lg);
+    int acceptedSocketDescriptor = accept(serverSocket, (struct sockaddr*) &aC, &lg);
 
     // Checking for errors
     if (acceptedSocketDescriptor == -1) {

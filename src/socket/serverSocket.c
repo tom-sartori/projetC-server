@@ -1,5 +1,6 @@
 
 int serverSocketDescriptor;
+int serverFileSocketDescriptor;
 List *clientList;
 
 /**
@@ -14,6 +15,12 @@ int socketCreation () {
     }
     else {
         printf("Socket Créé. \n");
+    }
+
+    // Fix errors of bind.
+    int enable = 1;
+    if (setsockopt(socketDescriptor, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0) {
+        throwError("setsockopt(SO_REUSEADDR) failed", 0);
     }
     return socketDescriptor;
 }
@@ -55,8 +62,13 @@ int launchServer(int port) {
 void closeServer(){
     // If the socket is set, we run shutdown on it
     if(serverSocketDescriptor != -1){
-        shutdown(serverSocketDescriptor, 2);
+        shutdown(serverSocketDescriptor, 2);    // Not working for mac.
+        close(serverSocketDescriptor);          // Works for mac.
     }
+
+    shutdown(serverFileSocketDescriptor, 2);    // Not working for mac.
+    close(serverFileSocketDescriptor);          // Works for mac.
+
     // End of program with success
     printf("Fin du programme. \n");
     exit(EXIT_SUCCESS);
