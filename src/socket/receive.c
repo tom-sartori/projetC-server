@@ -64,14 +64,7 @@ void *receiveFile(void *fileName){
 
     // Get current path.
     char filePath[200];
-    getwd(filePath);
-    if (isMatch(filePath, "cmake-build-debug")) {
-        // Program launched by Cmake project. It means that the current pwd is the directory cmake-build-debug.
-        strcat(filePath, "/../uploads/");
-    } else {
-        // Program launched by the script client.sh.
-        strcat(filePath, "/src/uploads/");
-    }
+    getPwd(filePath);
     strcat(filePath, fileName);
 
     // File creation.

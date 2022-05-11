@@ -10,11 +10,12 @@
 #include "util/semaphore.c"
 #include "util/color.c"
 #include "util/error.c"
+#include "util/regex.c"
+#include "util/util.c"
 
 #include "client/Client.c"
 #include "client/List.c"
 
-#include "command/regex.c"
 #include "command/Command.c"
 
 #include "socket/serverSocket.c"
