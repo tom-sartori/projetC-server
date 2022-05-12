@@ -2,7 +2,7 @@
  * Get the filepath.
  * @param filePath
  */
-void getPwd (char *filePath) {
+void getUploadDirectoryPath (char *filePath) {
     getwd(filePath);
     if (isMatch(filePath, "cmake-build-debug")) {
         // Program launched by Cmake project. It means that the current pwd is the directory cmake-build-debug.

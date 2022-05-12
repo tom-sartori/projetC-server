@@ -7,6 +7,7 @@
 #include <unistd.h>
 
 #include "global.c"
+
 #include "util/semaphore.c"
 #include "util/color.c"
 #include "util/error.c"
@@ -16,13 +17,12 @@
 #include "client/Client.c"
 #include "client/List.c"
 
-#include "command/Command.c"
-
 #include "socket/serverSocket.c"
 #include "socket/clientSocket.c"
 #include "socket/receive.c"
 #include "socket/send.c"
-#include "command/action.c"
+
+#include "command/router.c"
 
 
 

@@ -1,3 +1,5 @@
+#include <dirent.h>
+
 /**
  * Regroup every actions which are called by commands.
  */
@@ -60,9 +62,9 @@ void usersAction (Client *client) {
 void mpAction (Client *clientSender, Command *command, char *message) {
     // Get other username and message.
     // If username exists.
-        // Send message to him.
+    // Send message to him.
     // Else
-        // Inform clientSender that username doesn't exist.
+    // Inform clientSender that username doesn't exist.
 
     char *regexGroupList[3];
     getRegexGroup(regexGroupList, message, command->regex);
@@ -114,7 +116,7 @@ void fileAction (Command *command, char *message) {
     getRegexGroup(regexGroupList, message, command->regex);
 
     pthread_t fileThread;
-    pthread_create(&fileThread, NULL, receiveFile, regexGroupList[2]);
+    pthread_create(&fileThread, NULL, receiveFile, regexGroupList[1]);
 }
 
 /**
@@ -127,41 +129,35 @@ void unknownAction (Client *client) {
 }
 
 /**
- * Find the wanted command in the message in params (with regex).
- * Call the action attached to this command.
+ * Print directory's names within uploads/.
  *
  * @param client
- * @param message
  */
-void doCommandAction (Client *client, char *message) {
-    Command *command = getCommand(message);
+void filesAction (Client *client) {
+    // Get uploads path.
+    char uploadDirectoryPath[200];
+    getUploadDirectoryPath(uploadDirectoryPath);
 
-    if (command == NULL) {
-        // Unknown action.
-        unknownAction(client);
+    // Get directory.
+    DIR *directory;
+    struct dirent *file;
+    directory = opendir(uploadDirectoryPath);
+    if (directory == NULL) {
+        throwError("Unable to open the directory. \n", 0);
     }
-    else if (strcmp("help", command->name) == 0) {
-        // Help.
-        helpAction(client->acceptedSocketDescriptor);
+
+    char stringNameFile[300];   // String containing name of files within /uploads.
+    bzero(stringNameFile, 300);    // Clear the buffer.
+    int n = 0;
+    while ((file = readdir(directory)) != NULL) {
+        if (strcmp(file->d_name, ".") != 0 && strcmp(file->d_name, "..") != 0) {  // Don't take files : "." et "..".
+//            printf("File %d : %s\n", n, file->d_name);
+            strcat(stringNameFile, file->d_name); // Add file to the list.
+            strcat(stringNameFile, "\n");
+            n++;
+        }
     }
-    else if (strcmp("disconnect", command->name) == 0) {
-        // Disconnection.
-        disconnectAction(client);
-    }
-    else if (strcmp("users", command->name) == 0) {
-        // List of users.
-        usersAction(client);
-    }
-    else if (strcmp("mp", command->name) == 0) {
-        // Private message.
-        mpAction(client, command, message);
-    }
-    else if (strcmp("file", command->name) == 0) {
-        // File sending.
-        fileAction(command, message);
-    }
-    else {
-        // Unknown action.
-        unknownAction(client);
-    }
+    closedir(directory);
+    strcat(stringNameFile, "\n");
+    sendMessage(client->acceptedSocketDescriptor, stringNameFile);
 }

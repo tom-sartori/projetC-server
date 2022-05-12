@@ -64,7 +64,7 @@ void *receiveFile(void *fileName){
 
     // Get current path.
     char filePath[200];
-    getPwd(filePath);
+    getUploadDirectoryPath(filePath);
     strcat(filePath, fileName);
 
     // File creation.
