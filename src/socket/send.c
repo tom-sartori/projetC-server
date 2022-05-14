@@ -77,3 +77,37 @@ void sendBroadcast (Client *client, char *message) {
         current = next(current);
     }
 }
+
+/**
+ * Send the file in params to the client's socket also in params.
+ * The file is sent by blocs of size MAX_SIZE_SENT.
+ *
+ * @param clientSocketForFile
+ * @param file
+ */
+void sendFile(int clientSocketForFile, FILE *file){
+    // Get file blocSize.
+    long fileSize;
+    fseek(file, 0, SEEK_END);           // Jump to the end of the file.
+    fileSize = ftell(file);             // Get the current byte offset in the file.
+    rewind(file);                      // Jump back to the beginning of the file.
+
+    // Send file blocSize to the server.
+    send(clientSocketForFile, &fileSize, sizeof(long), 0);
+
+    // Send the file bloc per bloc.
+    long blocSize = MAX_SIZE_SENT;
+    char subBuffer[blocSize];
+    for (int i = 0; i < fileSize; i += MAX_SIZE_SENT) {
+        blocSize = (i + MAX_SIZE_SENT < fileSize) ? MAX_SIZE_SENT : fileSize - i;   // Calcul the bloc's size.
+        fread(subBuffer, blocSize, 1, file); // Read in the file.
+
+        if (send(clientSocketForFile, subBuffer, sizeof(subBuffer), 0) == -1) {   // Send bloc of data.
+            throwError("Error in sending file. \n", 1);
+        }
+        bzero(subBuffer, MAX_SIZE_SENT);    // Clear the buffer.
+    }
+
+    fclose(file); // Close the file
+    printf("File sent. \n");
+}

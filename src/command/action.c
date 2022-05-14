@@ -1,4 +1,5 @@
 #include <dirent.h>
+#include "actionThreaded.c"
 
 /**
  * Regroup every actions which are called by commands.
@@ -105,18 +106,37 @@ void mpAction (Client *clientSender, Command *command, char *message) {
  * @param message
  */
 void fileAction (Command *command, char *message) {
-    // Create thread
-    // Create socket
-    // Send socket port
-    // Wait client connection at new socket
-    // Recv data and write into file
-    // Client close socket, then exit thread
+    // /file -send filename 			Envoie un fichier au serveur.
+    // /file -get filename				Récupère un fichier du serveur.
+    // /file username filename 		    Envoie un fichier à un autre utilisateur connecté.
 
+    // Get regex groups.
     char *regexGroupList[3];
     getRegexGroup(regexGroupList, message, command->regex);
+    // regexGroupList[0] = message
+    // regexGroupList[1] = -send || -get || username
+    // regexGroupList[2] = filename
 
     pthread_t fileThread;
-    pthread_create(&fileThread, NULL, receiveFile, regexGroupList[1]);
+
+    if (strcmp("-send", regexGroupList[1]) == 0) {
+        // User send file to the server.
+        printf("file -send filename\n");
+        pthread_create(&fileThread, NULL, receiveFileThreaded, regexGroupList[2]);
+    }
+    else if (strcmp("-get", regexGroupList[1]) == 0) {
+        // User get file from the server.
+        printf("file -get filename\n");
+        pthread_create(&fileThread, NULL, sendFileThreaded, regexGroupList[2]);
+    }
+    else {
+        // User send file to other user.
+        printf("file username filename\n");
+    }
+
+    free(regexGroupList[0]);
+    free(regexGroupList[1]);
+//    free(regexGroupList[2]);
 }
 
 /**

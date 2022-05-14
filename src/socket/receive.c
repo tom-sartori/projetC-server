@@ -48,16 +48,12 @@ char *receiveMessage (int acceptedSocketDescriptor) {
 }
 
 /**
- * Threaded function receiving a file from a client.
- * Connect to another client socket and create the file into ./uploads.
+ * Receive a file from a client.
  *
+ * @param clientFileSocket
  * @param fileName
- * @return
  */
-void *receiveFile(void *fileName){
-    // Connection to the file socket.
-    int clientFileSocket = connectToClient(serverFileSocketDescriptor);
-
+void receiveFile(int clientFileSocket, char *fileName){
     // Get file blocSize.
     long filelen;
     recv(clientFileSocket, &filelen, sizeof(long), 0);
@@ -69,7 +65,7 @@ void *receiveFile(void *fileName){
 
     // File creation.
     FILE *file;
-    file = fopen(filePath, "w+");
+    file = fopen(filePath, "w");
 
 
     long blocSize = MAX_SIZE_SENT;
@@ -82,6 +78,5 @@ void *receiveFile(void *fileName){
     }
 
     fclose(file);
-    printf("Fichier importé. \n");
-    pthread_exit(NULL);
+    printf("File imported. \n");
 }
