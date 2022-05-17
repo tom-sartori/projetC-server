@@ -21,6 +21,7 @@
 #include "socket/clientSocket.c"
 #include "socket/receive.c"
 #include "socket/send.c"
+#include "socket/transfer.c"
 
 #include "command/router.c"
 

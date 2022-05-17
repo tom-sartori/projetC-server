@@ -9,6 +9,8 @@ void *receiveFileThreaded (char *filename) {
     int clientFileSocket = connectToClient(serverFileSocketDescriptor);
 
     receiveFile(clientFileSocket, filename);
+
+    free(filename);
     pthread_exit(NULL);
 }
 
@@ -40,6 +42,49 @@ void *sendFileThreaded (void *filename) {
         printf("File not found. \n");
         sendMessageInt(clientFileSocket, 404);
     }
+
+    free(filename);
+    pthread_exit(NULL);
+}
+
+// Struct used for threaded function.
+struct paramFileThreaded {
+    char *message;
+    char *username;
+};
+/**
+ * Threaded function called when a user wanna mp a file to another user.
+ * Check if targeted user is connected and call transferFile(...).
+ * @param param
+ * @return
+ */
+void *mpFileThreaded (struct paramFileThreaded *param) {
+    // Connection to the file socket.
+    int clientSourceSocket = connectToClient(serverFileSocketDescriptor);
+
+    // Check if client with the username in param exists.
+    Client *client = contains(clientList, param->username);
+    if (client == NULL || ! isSocketConnected(client->acceptedSocketDescriptor)) {
+        // Client doesn't exist or isn't connected.
+        printf("Targeted client invalid. \n");
+        sendMessageInt(clientSourceSocket, 404);
+    } else {
+        // Client exists and is connected.
+        printf("Targeted client valid. \n");
+        // Inform the sender that everything is ok.
+        sendMessageInt(clientSourceSocket, 204);
+        // Send message to the targeted client. He will try to connect to the socket dedicated to file.
+        sendMessage(client->acceptedSocketDescriptor, param->message);
+
+        // Connection of the targeted client at the socket dedicated to file.
+        int clientTargetedSocket = connectToClient(serverFileSocketDescriptor);
+
+        transferFile(clientSourceSocket, clientTargetedSocket);
+    }
+
+    free(param->message);
+    free(param->username);
+    free(param);
 
     pthread_exit(NULL);
 }

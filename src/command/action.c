@@ -123,20 +123,26 @@ void fileAction (Command *command, char *message) {
         // User send file to the server.
         printf("file -send filename\n");
         pthread_create(&fileThread, NULL, receiveFileThreaded, regexGroupList[2]);
-    }
-    else if (strcmp("-get", regexGroupList[1]) == 0) {
+    } else if (strcmp("-get", regexGroupList[1]) == 0) {
         // User get file from the server.
         printf("file -get filename\n");
         pthread_create(&fileThread, NULL, sendFileThreaded, regexGroupList[2]);
-    }
-    else {
+    } else {
         // User send file to other user.
         printf("file username filename\n");
-    }
 
-    free(regexGroupList[0]);
-    free(regexGroupList[1]);
+        struct paramFileThreaded *param;
+        param = malloc(sizeof(struct paramFileThreaded));
+        param->message = message;
+        param->username = regexGroupList[1];    // -send || -get || username
+        param->filename = regexGroupList[2];
+
+        pthread_create(&fileThread, NULL, mpFileThreaded, param);
+
+        free(regexGroupList[0]);
+//    free(regexGroupList[1]);
 //    free(regexGroupList[2]);
+    }
 }
 
 /**
@@ -181,3 +187,4 @@ void filesAction (Client *client) {
     strcat(stringNameFile, "\n");
     sendMessage(client->acceptedSocketDescriptor, stringNameFile);
 }
+
