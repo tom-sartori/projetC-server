@@ -14,6 +14,7 @@
 | Fichier           | Récupère un fichier placé dans le dossier 'uploads' du serveur.      | /file       |    -get    |  filename  |
 | Liste fichier     | Liste les fichiers disponibles dans le dossier 'uploads' du client.  | /files      |     -c     |            |
 | Liste fichier     | Liste les fichiers disponibles dans le dossier 'uploads' du serveur. | /files      |     -s     |            |
+| Renommage         | Se renommer.                                                         | /rename     |  username  |            |
 
 
 Idées commandes

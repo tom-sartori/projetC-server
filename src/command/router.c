@@ -43,6 +43,10 @@ void doCommandAction (Client *client, char *message) {
         // Kick someone.
         kickAction(client, command, message);
     }
+    else if (strcmp("rename", command->name) == 0) {
+        // Kick someone.
+        renameAction(client, command, message);
+    }
     else {
         // Unknown action.
         unknownAction(client);

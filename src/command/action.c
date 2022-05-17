@@ -215,3 +215,17 @@ void kickAction (Client *clientKicker, Command *command, char *message) {
     free(regexGroupList[1]);
     free(regexGroupList[2]);
 }
+
+void renameAction (Client *client, Command *command, char *message) {
+    // Get regex groups.
+    char *regexGroupList[3];
+    getRegexGroup(regexGroupList, message, command->regex);
+    // regexGroupList[1] = new username.
+
+    strcpy(client->username, regexGroupList[1]);
+    sendMessage(client->acceptedSocketDescriptor, "Nom d'utilisateur mis à jour. \n");
+
+    free(regexGroupList[0]);
+    free(regexGroupList[1]);
+    free(regexGroupList[2]);
+}
