@@ -39,6 +39,10 @@ void doCommandAction (Client *client, char *message) {
         // Files listing.
         filesAction(client);
     }
+    else if (strcmp("kick", command->name) == 0) {
+        // Kick someone.
+        kickAction(client, command, message);
+    }
     else {
         // Unknown action.
         unknownAction(client);

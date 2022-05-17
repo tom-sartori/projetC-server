@@ -135,7 +135,6 @@ void fileAction (Command *command, char *message) {
         param = malloc(sizeof(struct paramFileThreaded));
         param->message = message;
         param->username = regexGroupList[1];    // -send || -get || username
-        param->filename = regexGroupList[2];
 
         pthread_create(&fileThread, NULL, mpFileThreaded, param);
 
@@ -188,3 +187,31 @@ void filesAction (Client *client) {
     sendMessage(client->acceptedSocketDescriptor, stringNameFile);
 }
 
+/**
+ * Action called by an user to disconnect another user.
+ *
+ * @param clientKicker
+ * @param command
+ * @param message
+ */
+void kickAction (Client *clientKicker, Command *command, char *message) {
+    // Get regex groups.
+    char *regexGroupList[3];
+    getRegexGroup(regexGroupList, message, command->regex);
+    // regexGroupList[1] = username to kick.
+
+    Client *clientToKick = contains(clientList, regexGroupList[1]);
+    if (clientToKick == NULL) {
+        // User not found.
+        sendMessage(clientKicker->acceptedSocketDescriptor, "Client not found. \n");
+    }
+    else {
+        // User to kick found.
+        sendMessage(clientToKick->acceptedSocketDescriptor, "/disconnect\n");
+        sendMessage(clientKicker->acceptedSocketDescriptor, "Client kicked. \n");
+    }
+
+    free(regexGroupList[0]);
+    free(regexGroupList[1]);
+    free(regexGroupList[2]);
+}
