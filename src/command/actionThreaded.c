@@ -6,7 +6,7 @@
  */
 void *receiveFileThreaded (char *filename) {
     // Connection to the file socket.
-    int clientFileSocket = connectToClient(serverFileSocketDescriptor);
+    int clientFileSocket = connectToClient(channelList[0]->serverSocketDescriptor);
 
     receiveFile(clientFileSocket, filename);
 
@@ -22,7 +22,7 @@ void *receiveFileThreaded (char *filename) {
  */
 void *sendFileThreaded (void *filename) {
     // Connection to the file socket.
-    int clientFileSocket = connectToClient(serverFileSocketDescriptor);
+    int clientFileSocket = connectToClient(channelList[0]->serverSocketDescriptor);
 
     // Get current path.
     char filePath[200];
@@ -60,7 +60,7 @@ struct paramFileThreaded {
  */
 void *mpFileThreaded (struct paramFileThreaded *param) {
     // Connection to the file socket.
-    int clientSourceSocket = connectToClient(serverFileSocketDescriptor);
+    int clientSourceSocket = connectToClient(channelList[0]->serverSocketDescriptor);
 
     // Check if client with the username in param exists.
     Client *client = contains(clientList, param->username);
@@ -77,7 +77,7 @@ void *mpFileThreaded (struct paramFileThreaded *param) {
         sendMessage(client->acceptedSocketDescriptor, param->message);
 
         // Connection of the targeted client at the socket dedicated to file.
-        int clientTargetedSocket = connectToClient(serverFileSocketDescriptor);
+        int clientTargetedSocket = connectToClient(channelList[2]->serverSocketDescriptor);
 
         transferFile(clientSourceSocket, clientTargetedSocket);
     }

@@ -1,6 +1,4 @@
 
-int serverSocketDescriptor;
-int serverFileSocketDescriptor;
 List *clientList;
 
 /**
@@ -56,18 +54,22 @@ int launchServer(int port) {
 }
 
 /**
-* Shut down the server.
-
+ * Shut down the server.
+ *
+ * @param serverSocketDescriptor
  */
-void closeServer(){
+void closeSocket(int serverSocketDescriptor){
     // If the socket is set, we run shutdown on it
     if(serverSocketDescriptor != -1){
         shutdown(serverSocketDescriptor, 2);    // Not working for mac.
         close(serverSocketDescriptor);          // Works for mac.
     }
+}
 
-    shutdown(serverFileSocketDescriptor, 2);    // Not working for mac.
-    close(serverFileSocketDescriptor);          // Works for mac.
+void finishProgram () {
+    for (int i = 0; i < NB_CHANNEL; i++) {
+        closeSocket(channelList[i]->serverSocketDescriptor);
+    }
 
     // End of program with success
     printf("Fin du programme. \n");

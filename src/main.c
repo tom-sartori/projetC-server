@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
+#include "channel/Channel.h"
 #include "global.c"
 
 #include "util/semaphore.c"
@@ -24,6 +25,8 @@
 #include "socket/transfer.c"
 
 #include "command/router.c"
+
+#include "channel/Channel.c"
 
 
 
@@ -56,11 +59,10 @@ char *askForUsername (int newClientSocketDescriptor) {
     return username;
 }
 
-
 /**
  * Receive and print messages received, indefinitely.
  *
- * @param acceptedSocketDescriptor
+ * @param client
  */
 void readingLoop(Client *client){
     while(1){
@@ -88,9 +90,9 @@ int main(int argc, char *argv[]) {
  */
     printf("Début programme. \n");
 
-    // Assigning function closeServer() to SIGTERM signal
-    signal(SIGTERM, closeServer);   // Signal shutdown from ide.
-    signal(SIGINT, closeServer);    // Signal shutdown from ctr+c in terminal.
+    // Assigning function closeSocket() to SIGTERM signal
+    signal(SIGTERM, finishProgram);   // Signal shutdown from ide.
+    signal(SIGINT, finishProgram);    // Signal shutdown from ctr+c in terminal.
 
 
 /**
@@ -111,11 +113,10 @@ int main(int argc, char *argv[]) {
 /**
  * Launch server.
  */
-    serverSocketDescriptor = launchServer(atoi(argv[1]));
-    // Server is launched
+    // Initialize the list of channels and launch them.
+    initChannelList();
+    // Servers are launched
 
-    // Launch second socket for files.
-    serverFileSocketDescriptor = launchServer(PORT_SOCKET_FILE);
 
     rk_sema_init(&semaphore, NB_MAX_CLIENT);
     initCommandList();
@@ -135,7 +136,7 @@ int main(int argc, char *argv[]) {
         // Wait for a place.
         rk_sema_wait(&semaphore);
         // Waiting for a client connection.
-        newClientSocketDescriptor = connectToClient(serverSocketDescriptor);
+        newClientSocketDescriptor = connectToClient(channelList[1]->serverSocketDescriptor);    // Connect to default socket.
         char *username = askForUsername(newClientSocketDescriptor);
         if (username == NULL) {
             // User has been logout.
