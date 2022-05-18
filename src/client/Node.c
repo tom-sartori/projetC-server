@@ -1,11 +1,4 @@
 
-struct Node{
-    struct Node *previous;
-    struct Client client;
-    struct Node *next;
-};
-typedef struct Node Node;
-
 Node *createNode () {
     Node *node = (Node *)malloc(sizeof(Node));
     node->previous = NULL;

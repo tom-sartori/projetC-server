@@ -7,6 +7,9 @@
 #include <unistd.h>
 
 #include "channel/Channel.h"
+#include "client/Client.h"
+#include "client/Node.h"
+#include "client/List.h"
 #include "global.c"
 
 #include "util/semaphore.c"

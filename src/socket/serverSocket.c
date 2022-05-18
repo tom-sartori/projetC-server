@@ -1,6 +1,4 @@
 
-List *clientList;
-
 /**
  * Create a socket and return his descriptor.
  *

@@ -1,11 +1,5 @@
 #include "Node.c"
 
-struct List {
-    Node *head;
-};
-typedef struct List List;
-
-
 List *createList() {
     List *list = (List*)malloc(sizeof(List));
     list->head = createNode();
