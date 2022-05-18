@@ -5,6 +5,7 @@ List *clientList;
 
 #define PORT_SOCKET_FILE 3333
 #define NB_COMMAND 8
+Command *commandList[NB_COMMAND];
 
 #define NB_CHANNEL 3
 Channel *channelList[NB_CHANNEL];

@@ -10,6 +10,7 @@
 #include "client/Client.h"
 #include "client/Node.h"
 #include "client/List.h"
+#include "command/Command.h"
 #include "global.c"
 
 #include "util/semaphore.c"

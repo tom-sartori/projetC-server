@@ -1,10 +1,3 @@
-struct Command {
-    char *name;
-    char *regex;
-    char *description;
-    /// TODO : Add action function associated.
-};
-typedef struct Command Command;
 
 /**
  * Malloc a struct Command and set attributes.
@@ -24,7 +17,6 @@ Command *createCommand (char *name, char *regex, char *description) {
     return command;
 }
 
-Command *commandList[NB_COMMAND];
 /**
  * Initialize the global list of available commands, commandList.
  */
