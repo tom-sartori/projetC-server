@@ -229,3 +229,17 @@ void renameAction (Client *client, Command *command, char *message) {
     free(regexGroupList[1]);
     free(regexGroupList[2]);
 }
+
+void channelsAction (Client *client) {
+    int bufferSize = 300;
+    char resultString[bufferSize];
+    bzero(resultString, bufferSize);
+
+    for (int i = 0; i < NB_CHANNEL; i++) {
+        if (channelList[i]->isPublic) {
+            strcat(resultString, channelList[i]->name);
+            strcat(resultString, "\n");
+        }
+    }
+    sendMessage(client->acceptedSocketDescriptor, resultString);
+}

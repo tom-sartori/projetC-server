@@ -29,7 +29,8 @@ void initCommandList () {
     commandList[5] = createCommand("files", "^/files +-(c|s) *\n$", "Liste des fichier disponibles dans le répertoire client ou serveur. /files -c || -s \n");
     commandList[6] = createCommand("kick", "^/kick +([^ ]+) *\n$", "Déconnecte un l'utilisateur en paramètre. /kick username \n");
     commandList[7] = createCommand("rename", "^/rename +([^ ]+) *\n$", "Se renommer. /rename username \n");
-    // Don't forger to update NB_COMMAND.
+    commandList[8] = createCommand("channels", "^/channels *\n$", "Liste les channels accessibles. \n");
+    // Don't forger to update NB_COMMAND in global.c.
 }
 
 /**
