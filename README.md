@@ -15,6 +15,7 @@
 | Liste fichier     | Liste les fichiers disponibles dans le dossier 'uploads' du client.  | /files      |     -c     |            |
 | Liste fichier     | Liste les fichiers disponibles dans le dossier 'uploads' du serveur. | /files      |     -s     |            |
 | Renommage         | Se renommer.                                                         | /rename     |  username  |            |
+| Channel actuel    | Indique le channel actuel dans lequel est l'utilisateur.             | /channel    |            |            |
 | Liste channel     | Liste les différents channels accessibles.                           | /channels   |            |            |
 
 

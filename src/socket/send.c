@@ -63,15 +63,9 @@ void sendBroadcast (Client *client, char *message) {
 
     Node *current = next(clientList->head);
     while (current != NULL) {
-        if (isSocketConnected(current->client.acceptedSocketDescriptor)) {
-            char* name;
-            if(current->client.acceptedSocketDescriptor != client->acceptedSocketDescriptor){
-                 name = client->username;
-            }
-            else{
-                name = "Me";
-            }
-            char* msgWithClientName = (char*)malloc(sizeof(char)*(strlen(name)+strlen(message)));
+        if (current->client.acceptedSocketDescriptor != client->acceptedSocketDescriptor && isSocketConnected(current->client.acceptedSocketDescriptor)) {
+            char* name = client->username;
+            char* msgWithClientName = (char*)malloc(sizeof(char)*(strlen(name)+strlen(message)));   /// TODO : without malloc ?
             strcat(msgWithClientName, name);
             strcat(msgWithClientName,": ");
             strcat(msgWithClientName, message);
@@ -79,6 +73,7 @@ void sendBroadcast (Client *client, char *message) {
             //msgWithClientName = strcat(message,name);
             //strcat(msgWithClientName, "\n");
             sendMessage(current->client.acceptedSocketDescriptor, msgWithClientName);
+            free(msgWithClientName);
         }
         current = next(current);
     }

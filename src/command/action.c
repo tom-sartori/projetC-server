@@ -230,6 +230,30 @@ void renameAction (Client *client, Command *command, char *message) {
     free(regexGroupList[2]);
 }
 
+/**
+ * Action which send to the client his current channel.
+ *
+ * @param client
+ */
+void channelAction (Client *client) {
+    int bufferSize = 100;
+    char buffer[bufferSize];
+    bzero(buffer, bufferSize);
+
+    sprintf(buffer, "%d", client->indexCurrentChannel);
+//    strcat(buffer, sprintf(NULL));
+    strcat(buffer, " : ");
+    strcat(buffer, channelList[client->indexCurrentChannel]->name);
+    strcat(buffer, "\n");
+
+    sendMessage(client->acceptedSocketDescriptor, buffer);
+}
+
+/**
+ * Action which send to the client a list of every public sockets.
+ *
+ * @param client
+ */
 void channelsAction (Client *client) {
     int bufferSize = 300;
     char resultString[bufferSize];
