@@ -31,7 +31,6 @@ void initCommandList () {
     commandList[7] = createCommand("rename", "^/rename +([^ ]+) *\n$", "Se renommer. /rename username \n");
     commandList[8] = createCommand("channel", "^/channel *\n$", "Indique le channel actuel dans lequel est l'utilisateur. \n");
     commandList[9] = createCommand("channels", "^/channels *\n$", "Liste les channels accessibles. \n");
-    commandList[10] = createCommand("join", "^/join +([0-9]{1,2})", "Rejoint le channel spécifié. \n");
     // Don't forger to update NB_COMMAND in global.c.
 }
 

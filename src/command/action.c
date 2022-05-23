@@ -73,25 +73,30 @@ void mpAction (Client *clientSender, Command *command, char *message) {
     Client *clientTargeted = contains(clientList, regexGroupList[1]);
 
     if (clientTargeted == NULL) {
-        /// TODO Send status ?
         sendMessage(clientSender->acceptedSocketDescriptor, "User not found. \n");
     }
     else {
-        // TODO Rajouter le pseudo du sender
-        // TODO Faire une fonction du realloc
-
-//        regexGroupList[2] = realloc(regexGroupList[2], sizeof(char)* strlen(regexGroupList[2])+2);
-//        strcat(regexGroupList[2], "\n");
-        // TODO Faire un check client regexp pour savoir si le message est un mp et l'afficher en bleu si c'est le cas
         char* messageToSend = (char*)malloc((strlen(regexGroupList[2])+2)+ strlen(clientSender->username+2)+3);
+        bzero(messageToSend, strlen(regexGroupList[2])+2+ strlen(clientSender->username+2)+3);
+        char* messageToSendToSender = (char*)malloc((strlen(regexGroupList[2])+2)+3+2+2+6+strlen(clientTargeted->username));
+        bzero(messageToSendToSender, (strlen(regexGroupList[2])+2)+3+2+2+6+strlen(clientTargeted->username));
+        strcat(messageToSendToSender, "Me: ");
+        strcat(messageToSendToSender, regexGroupList[2]);
+        strcat(messageToSendToSender, "( MP to ");
+        strcat(messageToSendToSender, clientTargeted->username);
+        strcat(messageToSendToSender, " )");
+        strcat(messageToSendToSender, "\n");
+
         strcat(messageToSend, "MP ");
         strcat(messageToSend, clientSender->username);
         strcat(messageToSend, ": ");
         strcat(messageToSend,regexGroupList[2]);
         strcat(messageToSend,"\n");
-//        sendMessage(clientTargeted->acceptedSocketDescriptor, regexGroupList[2]);
+
         sendMessage(clientTargeted->acceptedSocketDescriptor, messageToSend);
+        sendMessage(clientSender->acceptedSocketDescriptor, messageToSendToSender);
         free(messageToSend);
+        free(messageToSendToSender);
     }
     free(regexGroupList[0]);
     free(regexGroupList[1]);
@@ -216,22 +221,14 @@ void kickAction (Client *clientKicker, Command *command, char *message) {
     free(regexGroupList[2]);
 }
 
-/**
- * Action which rename the user.
- *
- * @param client
- * @param command
- * @param message
- */
 void renameAction (Client *client, Command *command, char *message) {
     // Get regex groups.
     char *regexGroupList[3];
     getRegexGroup(regexGroupList, message, command->regex);
     // regexGroupList[1] = new username.
 
-//    if (contains(clientList, regexGroupList[1]))  /// TODO : Send status error.
     strcpy(client->username, regexGroupList[1]);
-    sendMessage(client->acceptedSocketDescriptor, "Nom d'utilisateur mis à jour. \n");  /// TODO : Send status.
+    sendMessage(client->acceptedSocketDescriptor, "Nom d'utilisateur mis à jour. \n");
 
     free(regexGroupList[0]);
     free(regexGroupList[1]);
@@ -249,11 +246,11 @@ void channelAction (Client *client) {
     bzero(buffer, bufferSize);
 
     sprintf(buffer, "%d", client->indexCurrentChannel);
+//    strcat(buffer, sprintf(NULL));
     strcat(buffer, " : ");
     strcat(buffer, channelList[client->indexCurrentChannel]->name);
     strcat(buffer, "\n");
 
-    printf("channelAction : %s", buffer);
     sendMessage(client->acceptedSocketDescriptor, buffer);
 }
 
@@ -264,73 +261,14 @@ void channelAction (Client *client) {
  */
 void channelsAction (Client *client) {
     int bufferSize = 300;
-    char buffer[bufferSize];
-    char bufferInt[2];
-    bzero(buffer, bufferSize);
+    char resultString[bufferSize];
+    bzero(resultString, bufferSize);
 
     for (int i = 0; i < NB_CHANNEL; i++) {
         if (channelList[i]->isPublic) {
-            sprintf(bufferInt, "%d", i);
-            strcat(buffer, bufferInt);
-            strcat(buffer, " : ");
-            strcat(buffer, channelList[i]->name);
-            strcat(buffer, "\n");
+            strcat(resultString, channelList[i]->name);
+            strcat(resultString, "\n");
         }
     }
-    sendMessage(client->acceptedSocketDescriptor, buffer);
-}
-
-/**
- * Switch a client from a channel to another.
- *
- * @param client
- * @param command
- * @param message
- */
-void joinAction (Client *client, Command *command, char *message) {
-    // Check that wanted channel exists.
-    // Send the port of this socket.
-    // Wait for client's connection to the new socket.
-    // Close old socket. Or close from client ?
-    // Modify client->socketDescriptor.
-
-    // Get regex groups.
-    char *regexGroupList[3];
-    getRegexGroup(regexGroupList, message, command->regex);
-    int channelIndex = atoi(regexGroupList[1]);
-
-    // Connect to the switch socket.
-    int clientSwitchSocket = connectToClient(channelList[INDEX_SWITCH_CHANNEL]->serverSocketDescriptor);
-
-    if (channelIndex == client->indexCurrentChannel) {
-        // User already in this channel.
-        // Send error status.
-        sendMessageInt(clientSwitchSocket, 400);
-    }
-    else if (channelIndex < 0 || channelIndex > NB_CHANNEL || ! channelList[channelIndex]->isPublic) {
-        // Channel invalid.
-        // Send error status.
-        sendMessageInt(clientSwitchSocket, 404);
-    }
-    else {
-        // Valid channel.
-        // Connect to switch channel and send port in it.
-        sendMessageInt(clientSwitchSocket, channelList[channelIndex]->port);
-        close(clientSwitchSocket);
-
-        int newClientSocket = connectToClient(channelList[channelIndex]->serverSocketDescriptor);
-
-        int oldSocket = client->acceptedSocketDescriptor;
-        client->acceptedSocketDescriptor = newClientSocket;
-        client->indexCurrentChannel = channelIndex;
-
-        char *resetMessage = "\n";  // Need to send this reset message because the client is blocked in receiveMessage(...).
-        sendMessageInt(oldSocket, 1);  // Client blocked in recv int with the old socket.
-        sendMessageString(newClientSocket, resetMessage, 1);
-        close(oldSocket);
-    }
-
-    free(regexGroupList[0]);
-    free(regexGroupList[1]);
-    free(regexGroupList[2]);
+    sendMessage(client->acceptedSocketDescriptor, resultString);
 }

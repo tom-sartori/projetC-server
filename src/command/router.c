@@ -44,20 +44,16 @@ void doCommandAction (Client *client, char *message) {
         kickAction(client, command, message);
     }
     else if (strcmp("rename", command->name) == 0) {
-        // Rename username.
+        // Kick someone.
         renameAction(client, command, message);
     }
     else if (strcmp("channel", command->name) == 0) {
-        // Current user channel.
+        // Kick someone.
         channelAction(client);
     }
     else if (strcmp("channels", command->name) == 0) {
-        // List of channels.
+        // Kick someone.
         channelsAction(client);
-    }
-    else if (strcmp("join", command->name) == 0) {
-        // Join a channel.
-        joinAction(client, command, message);
     }
     else {
         // Unknown action.
