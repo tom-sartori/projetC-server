@@ -216,14 +216,22 @@ void kickAction (Client *clientKicker, Command *command, char *message) {
     free(regexGroupList[2]);
 }
 
+/**
+ * Action which rename the user.
+ *
+ * @param client
+ * @param command
+ * @param message
+ */
 void renameAction (Client *client, Command *command, char *message) {
     // Get regex groups.
     char *regexGroupList[3];
     getRegexGroup(regexGroupList, message, command->regex);
     // regexGroupList[1] = new username.
 
+//    if (contains(clientList, regexGroupList[1]))  /// TODO : Send status error.
     strcpy(client->username, regexGroupList[1]);
-    sendMessage(client->acceptedSocketDescriptor, "Nom d'utilisateur mis à jour. \n");
+    sendMessage(client->acceptedSocketDescriptor, "Nom d'utilisateur mis à jour. \n");  /// TODO : Send status.
 
     free(regexGroupList[0]);
     free(regexGroupList[1]);
@@ -241,11 +249,11 @@ void channelAction (Client *client) {
     bzero(buffer, bufferSize);
 
     sprintf(buffer, "%d", client->indexCurrentChannel);
-//    strcat(buffer, sprintf(NULL));
     strcat(buffer, " : ");
     strcat(buffer, channelList[client->indexCurrentChannel]->name);
     strcat(buffer, "\n");
 
+    printf("channelAction : %s", buffer);
     sendMessage(client->acceptedSocketDescriptor, buffer);
 }
 
@@ -256,14 +264,73 @@ void channelAction (Client *client) {
  */
 void channelsAction (Client *client) {
     int bufferSize = 300;
-    char resultString[bufferSize];
-    bzero(resultString, bufferSize);
+    char buffer[bufferSize];
+    char bufferInt[2];
+    bzero(buffer, bufferSize);
 
     for (int i = 0; i < NB_CHANNEL; i++) {
         if (channelList[i]->isPublic) {
-            strcat(resultString, channelList[i]->name);
-            strcat(resultString, "\n");
+            sprintf(bufferInt, "%d", i);
+            strcat(buffer, bufferInt);
+            strcat(buffer, " : ");
+            strcat(buffer, channelList[i]->name);
+            strcat(buffer, "\n");
         }
     }
-    sendMessage(client->acceptedSocketDescriptor, resultString);
+    sendMessage(client->acceptedSocketDescriptor, buffer);
+}
+
+/**
+ * Switch a client from a channel to another.
+ *
+ * @param client
+ * @param command
+ * @param message
+ */
+void joinAction (Client *client, Command *command, char *message) {
+    // Check that wanted channel exists.
+    // Send the port of this socket.
+    // Wait for client's connection to the new socket.
+    // Close old socket. Or close from client ?
+    // Modify client->socketDescriptor.
+
+    // Get regex groups.
+    char *regexGroupList[3];
+    getRegexGroup(regexGroupList, message, command->regex);
+    int channelIndex = atoi(regexGroupList[1]);
+
+    // Connect to the switch socket.
+    int clientSwitchSocket = connectToClient(channelList[INDEX_SWITCH_CHANNEL]->serverSocketDescriptor);
+
+    if (channelIndex == client->indexCurrentChannel) {
+        // User already in this channel.
+        // Send error status.
+        sendMessageInt(clientSwitchSocket, 400);
+    }
+    else if (channelIndex < 0 || channelIndex > NB_CHANNEL || ! channelList[channelIndex]->isPublic) {
+        // Channel invalid.
+        // Send error status.
+        sendMessageInt(clientSwitchSocket, 404);
+    }
+    else {
+        // Valid channel.
+        // Connect to switch channel and send port in it.
+        sendMessageInt(clientSwitchSocket, channelList[channelIndex]->port);
+        close(clientSwitchSocket);
+
+        int newClientSocket = connectToClient(channelList[channelIndex]->serverSocketDescriptor);
+
+        int oldSocket = client->acceptedSocketDescriptor;
+        client->acceptedSocketDescriptor = newClientSocket;
+        client->indexCurrentChannel = channelIndex;
+
+        char *resetMessage = "\n";  // Need to send this reset message because the client is blocked in receiveMessage(...).
+        sendMessageInt(oldSocket, 1);  // Client blocked in recv int with the old socket.
+        sendMessageString(newClientSocket, resetMessage, 1);
+        close(oldSocket);
+    }
+
+    free(regexGroupList[0]);
+    free(regexGroupList[1]);
+    free(regexGroupList[2]);
 }
