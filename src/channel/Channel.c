@@ -16,6 +16,8 @@ Channel *createChannel (char *name, int port, int isPublic) {
     channel->port = port;
     channel->serverSocketDescriptor = launchServer(port);
     channel->isPublic = isPublic;
+    channel->size = DEFAULT_CHANNEL_SIZE;
+    channel->clientList = createList();
 
     return channel;
 }
@@ -29,4 +31,8 @@ void initChannelList () {
     channelList[4] = createChannel(CHANNEL_2_NAME, CHANNEL_2_PORT, 1);
     channelList[5] = createChannel(CHANNEL_3_NAME, CHANNEL_3_PORT, 1);
     // Don't forget to update NB_CHANNEL and create at the new index.
+}
+
+int isFull (Channel *channel) {
+    return channel->size <= channel->clientList->size;
 }

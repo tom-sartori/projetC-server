@@ -234,9 +234,15 @@ void renameAction (Client *client, Command *command, char *message) {
     getRegexGroup(regexGroupList, message, command->regex);
     // regexGroupList[1] = new username.
 
-//    if (contains(clientList, regexGroupList[1]))  /// TODO : Send status error.
-    strcpy(client->username, regexGroupList[1]);
-    sendMessage(client->acceptedSocketDescriptor, "Nom d'utilisateur mis à jour. \n");  /// TODO : Send status.
+    if (contains(clientList, regexGroupList[1])) {
+        // Username already exists.
+        sendMessage(client->acceptedSocketDescriptor, "This username is already used. \n");
+    }
+    else {
+        // Username valid.
+        strcpy(client->username, regexGroupList[1]);
+        sendMessage(client->acceptedSocketDescriptor, "Username updated. \n");
+    }
 
     free(regexGroupList[0]);
     free(regexGroupList[1]);
@@ -317,6 +323,11 @@ void joinAction (Client *client, Command *command, char *message) {
         // Send error status.
         sendMessageInt(clientSwitchSocket, 404);
     }
+    else if (isFull(channelList[channelIndex])) {
+        // Channel already full.
+        // Send error status.
+        sendMessageInt(clientSwitchSocket, 409);
+    }
     else {
         // Valid channel.
         // Connect to switch channel and send port in it.
@@ -326,6 +337,7 @@ void joinAction (Client *client, Command *command, char *message) {
         int newClientSocket = connectToClient(channelList[channelIndex]->serverSocketDescriptor);
 
         int oldSocket = client->acceptedSocketDescriptor;
+        int oldIndexChannel = client->indexCurrentChannel;
         client->acceptedSocketDescriptor = newClientSocket;
         client->indexCurrentChannel = channelIndex;
 
@@ -334,6 +346,52 @@ void joinAction (Client *client, Command *command, char *message) {
         sendMessageInt(oldSocket, 1);  // Client blocked in recv int with the old socket.
         sendMessageString(newClientSocket, resetMessage, 1);
         close(oldSocket);
+
+        delete(channelList[oldIndexChannel]->clientList, client);
+        add(channelList[channelIndex]->clientList, client);
+    }
+
+    free(regexGroupList[0]);
+    free(regexGroupList[1]);
+    free(regexGroupList[2]);
+}
+
+void allAction (Client *client, Command *command, char *message) {
+    if (isEmpty(clientList)) {
+        throwError("Client list empty. \n", 0);
+    }
+
+    // Get regex groups.
+    char *regexGroupList[3];
+    getRegexGroup(regexGroupList, message, command->regex);
+    // regexGroupList[1] == message to send.
+
+    Node *current = next(clientList->head);
+    while (current != NULL) {
+        if (isSocketConnected(current->client->acceptedSocketDescriptor)) {
+            char *msgWithClientName;
+            size_t msgSize;
+            if(current->client->acceptedSocketDescriptor != client->acceptedSocketDescriptor){
+                msgSize = strlen(client->username) + strlen(regexGroupList[1]) + 10;
+                msgWithClientName = (char*)malloc(msgSize);
+                bzero(msgWithClientName, msgSize);
+                strcat(msgWithClientName, client->username);
+                strcat(msgWithClientName, "->ALL");
+            }
+            else {
+                msgSize = strlen(regexGroupList[1]) + 12;
+                msgWithClientName = (char*)malloc(msgSize);
+                bzero(msgWithClientName, msgSize);
+                strcat(msgWithClientName, "Me->");
+                strcat(msgWithClientName, "ALL");
+            }
+            strcat(msgWithClientName," : ");
+            strcat(msgWithClientName, regexGroupList[1]);
+            strcat(msgWithClientName, "\n");
+            sendMessage(current->client->acceptedSocketDescriptor, msgWithClientName);
+            free(msgWithClientName);
+        }
+        current = next(current);
     }
 
     free(regexGroupList[0]);

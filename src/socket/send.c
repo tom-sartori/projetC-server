@@ -55,27 +55,30 @@ void sendMessage (int acceptedSocketDescriptor, char *message) {
  * @param acceptedSocketDescriptorSender
  * @param message
  */
-void sendBroadcast (Client *client, char *message) {
-    printf("sendBroadcast. \n");
+void sendToChannel (Client *client, char *message) {
+    printf("sendToChannel. \n");
     if (isEmpty(clientList)) {
         throwError("Client list empty. ", 0);
     }
 
-    Node *current = next(clientList->head);
+    Node *current = next(channelList[client->indexCurrentChannel]->clientList->head);
     while (current != NULL) {
         if (isSocketConnected(current->client->acceptedSocketDescriptor)) {
-            char* msgWithClientName;
+            char *msgWithClientName;
+            size_t msgSize;
             if(current->client->acceptedSocketDescriptor != client->acceptedSocketDescriptor){
-                msgWithClientName = (char*)malloc(strlen(client->username)+strlen(message)+3);
-                bzero(msgWithClientName, strlen(client->username)+strlen(message)+3);
+                msgSize = strlen(client->username)+strlen(message) + 4;
+                msgWithClientName = (char*)malloc(msgSize);
+                bzero(msgWithClientName, msgSize);
                 strcat(msgWithClientName, client->username);
             }
             else{
-                msgWithClientName = (char*)malloc(strlen(message)+5);
-                bzero(msgWithClientName, strlen(message)+5);
+                msgSize = strlen(message) + 6;
+                msgWithClientName = (char*)malloc(msgSize);
+                bzero(msgWithClientName, msgSize);
                 strcat(msgWithClientName, "Me");
             }
-            strcat(msgWithClientName,": ");
+            strcat(msgWithClientName," : ");
             strcat(msgWithClientName, message);
             sendMessage(current->client->acceptedSocketDescriptor, msgWithClientName);
             free(msgWithClientName);

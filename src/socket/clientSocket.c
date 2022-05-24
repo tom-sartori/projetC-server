@@ -49,6 +49,7 @@ void closeClient (Client *client) {
 //    shutdown(acceptedSocketDescriptor, 2);    // Commented because doesn't close.
     close(client->acceptedSocketDescriptor);    // Close client's socket.
     delete(clientList, client);     // Remove from the list, to node which contain the client.
+    delete(channelList[client->indexCurrentChannel]->clientList, client);   // Delete the client from his channel list.
     rk_sema_post(&semaphore);
     pthread_exit(NULL);     // Kill of the thread associated.
 }

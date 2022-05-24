@@ -6,10 +6,10 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#include "channel/Channel.h"
 #include "client/Client.h"
 #include "client/Node.h"
 #include "client/List.h"
+#include "channel/Channel.h"
 #include "command/Command.h"
 #include "global.c"
 
@@ -80,7 +80,7 @@ void readingLoop(Client *client){
             doCommandAction(client, message);
         }
         else {
-            sendBroadcast(client, message);
+            sendToChannel(client, message);
         }
     }
 }
@@ -138,14 +138,14 @@ int main(int argc, char *argv[]) {
      */
     while(1){
         // Wait for a place.
-//        rk_sema_wait(&semaphore);   /// TODO
+        rk_sema_wait(&semaphore);
         // Waiting for a client connection.
         newClientSocketDescriptor = connectToClient(channelList[INDEX_DEFAULT_CHANNEL]->serverSocketDescriptor);    // Connect to default socket.
         char *username = askForUsername(newClientSocketDescriptor);
         if (username == NULL) {
             // User has been logout.
             close(newClientSocketDescriptor);
-//            rk_sema_post(&semaphore);   /// TODO
+            rk_sema_post(&semaphore);
         }
         else {
             newClient = createClient(username, newClientSocketDescriptor, INDEX_DEFAULT_CHANNEL);

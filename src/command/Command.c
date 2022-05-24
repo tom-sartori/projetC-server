@@ -32,6 +32,7 @@ void initCommandList () {
     commandList[8] = createCommand("channel", "^/channel *\n$", "Indique le channel actuel dans lequel est l'utilisateur. \n");
     commandList[9] = createCommand("channels", "^/channels *\n$", "Liste les channels accessibles. \n");
     commandList[10] = createCommand("join", "^/join +([0-9]{1,2})", "Rejoint le channel spécifié. \n");
+    commandList[11] = createCommand("all", "^/all +([^ ]{1}.*)\n$", "Envoi du message à tous les clients de tous les channels. \n");
     // Don't forger to update NB_COMMAND in global.c.
 }
 

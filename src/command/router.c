@@ -59,6 +59,10 @@ void doCommandAction (Client *client, char *message) {
         // Join a channel.
         joinAction(client, command, message);
     }
+    else if (strcmp("all", command->name) == 0) {
+        // Broadcast message to every clients.
+        allAction(client, command, message);
+    }
     else {
         // Unknown action.
         unknownAction(client);

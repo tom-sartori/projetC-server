@@ -18,6 +18,7 @@
 | Channel actuel    | Indique le channel actuel dans lequel est l'utilisateur.             | /channel    |              |            |
 | Liste channel     | Liste les différents channels accessibles.                           | /channels   |              |            |
 | Rejoindre channel | Rejoint le channel spécifié.                                         | /join       | channelIndex |            |
+| Message public    | Envoi du message à tous les clients de tous les channels.            | /all        |   message    |            |
 
 
 Idées commandes
@@ -25,4 +26,3 @@ Idées commandes
 - Admins ? 
 - /rules
 - /important : message important en rouge
-- /all suivant les salons

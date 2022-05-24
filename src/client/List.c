@@ -3,6 +3,7 @@
 List *createList() {
     List *list = (List*)malloc(sizeof(List));
     list->head = createNode();
+    list->size = 0;
     return list;
 }
 
@@ -27,6 +28,9 @@ void add(List *list, Client *client) {
         list->head->next->previous = node;
         list->head->next = node;
     }
+
+    list->size++;
+
     // Unlock mutex.
     pthread_mutex_unlock(&mutex);
 }
@@ -41,7 +45,8 @@ Node *previous (Node *node) {
 
 void delete (List *list, Client *client) {
     if (isEmpty(list)) {
-        exit(EXIT_FAILURE);
+        return;
+//        throwError("List already empty. \n", 0);
     }
 
     // Lock mutex.
@@ -64,6 +69,9 @@ void delete (List *list, Client *client) {
             current = next(current);
         }
     }
+
+    list->size--;
+
     // Unlock mutex.
     pthread_mutex_unlock(&mutex);
 }
