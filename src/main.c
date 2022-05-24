@@ -119,7 +119,6 @@ int main(int argc, char *argv[]) {
  */
     // Initialize the list of channels and launch them.
     initChannelList();
-    int defaultChannelIndex = 1;
     // Servers are launched
 
 
@@ -139,17 +138,17 @@ int main(int argc, char *argv[]) {
      */
     while(1){
         // Wait for a place.
-        rk_sema_wait(&semaphore);
+//        rk_sema_wait(&semaphore);   /// TODO
         // Waiting for a client connection.
-        newClientSocketDescriptor = connectToClient(channelList[defaultChannelIndex]->serverSocketDescriptor);    // Connect to default socket.
+        newClientSocketDescriptor = connectToClient(channelList[INDEX_DEFAULT_CHANNEL]->serverSocketDescriptor);    // Connect to default socket.
         char *username = askForUsername(newClientSocketDescriptor);
         if (username == NULL) {
             // User has been logout.
             close(newClientSocketDescriptor);
-            rk_sema_post(&semaphore);
+//            rk_sema_post(&semaphore);   /// TODO
         }
         else {
-            newClient = createClient(username, newClientSocketDescriptor, defaultChannelIndex);
+            newClient = createClient(username, newClientSocketDescriptor, INDEX_DEFAULT_CHANNEL);
             // Adding Client to clientList
             add(clientList, *newClient);
             // launch client thread
