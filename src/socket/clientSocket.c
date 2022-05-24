@@ -11,8 +11,6 @@ int connectToClient (int serverSocket) {
 
     // Waiting for a clients connection
     int acceptedSocketDescriptor = accept(serverSocket, (struct sockaddr*) &aC, &lg);
-    int t = 1;
-    setsockopt(acceptedSocketDescriptor,SOL_SOCKET,SO_REUSEADDR,&t,sizeof(int));
 
     // Checking for errors
     if (acceptedSocketDescriptor == -1) {

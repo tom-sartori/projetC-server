@@ -1,2 +1,2 @@
 gcc src/main.c -o serveur -pthread
-./serveur 3000
+./serveur 3001

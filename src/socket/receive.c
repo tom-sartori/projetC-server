@@ -10,9 +10,9 @@ int receiveMessageInt (int acceptedSocketDescriptor) {
     if(recv(acceptedSocketDescriptor, &size, sizeof(int), 0) == -1){
         throwError("Erreur lors de la reception du message. \n", 0);
     }
-    else {
-        printf("Message de taille %d recu. \n", size);
-    }
+//    else {
+//        printf("Message de taille %d recu. \n", size);
+//    }
     return size;
 }
 
@@ -25,13 +25,12 @@ int receiveMessageInt (int acceptedSocketDescriptor) {
  */
 char *receiveMessageString (int acceptedSocketDescriptor, int size) {
     char *message = (char*)malloc(sizeof(char) * (size + 1));
+    bzero(message, sizeof(char) * (size + 1));
 
     if(recv(acceptedSocketDescriptor, message, sizeof(char) * size, 0) == -1){
         throwError("Erreur lors de la reception du message. \n", 0);
     }
-    else {
-        printf("Message reçu : %s\n", message);
-    }
+
     return message;
 }
 
