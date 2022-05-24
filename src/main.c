@@ -50,7 +50,7 @@ char *askForUsername (int newClientSocketDescriptor) {
         if (isMatch(username, commandList[1]->regex)) {
             return NULL;
         }
-        else if(contains(clientList, username) == NULL){
+        else if(strcmp("", username) != 0 && contains(clientList, username) == NULL){
             sendMessageInt(newClientSocketDescriptor,201);
             hasUniqueUsername = 1;
         }
@@ -150,7 +150,7 @@ int main(int argc, char *argv[]) {
         else {
             newClient = createClient(username, newClientSocketDescriptor, INDEX_DEFAULT_CHANNEL);
             // Adding Client to clientList
-            add(clientList, *newClient);
+            add(clientList, newClient);
             // launch client thread
             if (pthread_create(newClient->thread, NULL, readingLoop, newClient)) {
                 throwError("Error : unable to create thread, %d\n", 0);

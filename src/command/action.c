@@ -41,8 +41,8 @@ void usersAction (Client *client) {
 
     Node *current = next(clientList->head);
     while (current != NULL) {
-        if (isSocketConnected(current->client.acceptedSocketDescriptor)) {
-            strcat(text, current->client.username);
+        if (isSocketConnected(current->client->acceptedSocketDescriptor)) {
+            strcat(text, current->client->username);
             strcat(text, "\n");
         }
         current = next(current);
@@ -328,9 +328,6 @@ void joinAction (Client *client, Command *command, char *message) {
         int oldSocket = client->acceptedSocketDescriptor;
         client->acceptedSocketDescriptor = newClientSocket;
         client->indexCurrentChannel = channelIndex;
-
-        clientList->head->next->client.acceptedSocketDescriptor = newClientSocket;  /// TODO
-        clientList->head->next->client.indexCurrentChannel = channelIndex;
 
 
         char *resetMessage = "\n";  // Need to send this reset message because the client is blocked in receiveMessage(...).

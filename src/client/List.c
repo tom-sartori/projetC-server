@@ -10,7 +10,7 @@ int isEmpty(List *list) {
     return list->head->next == NULL ? 1 : 0;
 }
 
-void add(List *list, Client client) {
+void add(List *list, Client *client) {
     // Lock mutex.
     pthread_mutex_lock(&mutex);
 
@@ -51,7 +51,7 @@ void delete (List *list, Client *client) {
 
     Node *current = next(list->head);
     while (!isDeleted && current != NULL) {
-        if (strcmp(current->client.username, client->username) == 0) {
+        if (strcmp(current->client->username, client->username) == 0) {
             current->previous->next = current->next;
             if (hasNext(current)) {
                 current->next->previous = current->previous;
@@ -85,10 +85,10 @@ Client *contains (List *list, char *username) {
 
     Node *current = next(list->head);
     while (current != NULL) {
-            if (strcmp(username, current->client.username) == 0) {
+            if (strcmp(username, current->client->username) == 0) {
                 // Unlock mutex.
                 pthread_mutex_unlock(&mutex);
-                return &current->client;
+                return current->client;
             }
             current = next(current);
     }
