@@ -28,40 +28,14 @@
 #include "socket/send.c"
 #include "socket/transfer.c"
 
+#include "util/ask.c"
+
 #include "command/router.c"
 
 #include "channel/Channel.c"
 
 
 
-/**
- * Wait for the client to send a valid username.
- * If the username already exists, ask again.
- * If the client logout, it returns NULL.
- *
- * @param newClientSocketDescriptor
- * @return the username or NULL if the client logout.
- */
-char *askForUsername (int newClientSocketDescriptor) {
-    char *username;
-    int hasUniqueUsername = 0;
-    do {
-        username = receiveMessage(newClientSocketDescriptor);
-        if (isMatch(username, commandList[1]->regex)) {
-            return NULL;
-        }
-        else if(strcmp("", username) != 0 && contains(clientList, username) == NULL){
-            sendMessageInt(newClientSocketDescriptor,201);
-            hasUniqueUsername = 1;
-        }
-        else{
-            sendMessageInt(newClientSocketDescriptor,409);
-        }
-    }
-    while(!hasUniqueUsername);
-
-    return username;
-}
 
 /**
  * Receive and print messages received, indefinitely.
@@ -85,6 +59,27 @@ void readingLoop(Client *client){
     }
 }
 
+void *createNewClient (int newClientSocketDescriptor) {
+    char *username = askForUsername(newClientSocketDescriptor);
+    if (username == NULL) {
+        // User has been logout.
+        close(newClientSocketDescriptor);
+        rk_sema_post(&semaphore);
+        pthread_exit(NULL);
+    }
+    else {
+        Client *newClient = createClient(username, newClientSocketDescriptor, INDEX_DEFAULT_CHANNEL);
+        newClient->thread = pthread_self();
+
+        // Adding Client to clientList
+        add(clientList, newClient);
+        add(channelList[INDEX_DEFAULT_CHANNEL]->clientList, newClient);
+        // launch client thread
+
+        readingLoop(newClient);
+    }
+}
+
 /**
  * Server side.
  */
@@ -97,9 +92,6 @@ int main(int argc, char *argv[]) {
     // Assigning function closeSocket() to SIGTERM signal
     signal(SIGTERM, finishProgram);   // Signal shutdown from ide.
     signal(SIGINT, finishProgram);    // Signal shutdown from ctr+c in terminal.
-
-
-
 
 
 /**
@@ -115,7 +107,7 @@ int main(int argc, char *argv[]) {
 
     clientList = createList();
     int newClientSocketDescriptor;
-    Client *newClient;
+    pthread_t pthread;
 
 /**
  * Starting server loop
@@ -129,21 +121,9 @@ int main(int argc, char *argv[]) {
         rk_sema_wait(&semaphore);
         // Waiting for a client connection.
         newClientSocketDescriptor = connectToClient(channelList[INDEX_DEFAULT_CHANNEL]->serverSocketDescriptor);    // Connect to default socket.
-        char *username = askForUsername(newClientSocketDescriptor);
-        if (username == NULL) {
-            // User has been logout.
-            close(newClientSocketDescriptor);
-            rk_sema_post(&semaphore);
-        }
-        else {
-            newClient = createClient(username, newClientSocketDescriptor, INDEX_DEFAULT_CHANNEL);
-            // Adding Client to clientList
-            add(clientList, newClient);
-            add(channelList[INDEX_DEFAULT_CHANNEL]->clientList, newClient);
-            // launch client thread
-            if (pthread_create(newClient->thread, NULL, readingLoop, newClient)) {
-                throwError("Error : unable to create thread, %d\n", 0);
-            }
+        // launch client thread
+        if (pthread_create(&pthread, NULL, createNewClient, newClientSocketDescriptor)) {
+            throwError("Error : unable to create thread, %d\n", 0);
         }
     }
 }
