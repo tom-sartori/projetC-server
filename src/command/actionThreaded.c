@@ -4,7 +4,9 @@
  * @param filename
  * @return
  */
-void *receiveFileThreaded (char *filename) {
+void *receiveFileThreaded (void *filename) {
+    filename = (char *)filename;
+
     // Connection with the client to the switch socket. After that, send the new port.
     sendPort(channelList[INDEX_FILE_CHANNEL]->port);
 
@@ -24,6 +26,8 @@ void *receiveFileThreaded (char *filename) {
  * @return
  */
 void *sendFileThreaded (void *filename) {
+    filename = (char *)filename;
+
     // Connection with the client to the switch socket. After that, send the new port.
     sendPort(channelList[INDEX_FILE_CHANNEL]->port);
 
@@ -64,7 +68,9 @@ struct paramFileThreaded {
  * @param param
  * @return
  */
-void *mpFileThreaded (struct paramFileThreaded *param) {
+void *mpFileThreaded (void *voidParam) {
+    struct paramFileThreaded *param = (struct paramFileThreaded *)voidParam;
+
     // Connection with the clientTargeted to the switch socket. After that, send the new port.
     sendPort(channelList[INDEX_FILE_CHANNEL]->port);
 
