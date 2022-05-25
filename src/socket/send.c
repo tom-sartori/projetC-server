@@ -120,3 +120,14 @@ void sendFile(int clientSocketForFile, FILE *file){
     fclose(file); // Close the file
     printf("File sent. \n");
 }
+
+/**
+ * Connection with the clientTargeted to the switch socket. After that, send the new port.
+ *
+ * @param port
+ */
+void sendPort (int port) {
+    int clientSwitchSocket = connectToClient(channelList[INDEX_SWITCH_CHANNEL]->serverSocketDescriptor);
+    sendMessageInt(clientSwitchSocket, port);
+    close(clientSwitchSocket);
+}

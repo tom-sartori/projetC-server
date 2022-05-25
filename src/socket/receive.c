@@ -64,7 +64,7 @@ void receiveFile(int clientFileSocket, char *fileName){
 
     // File creation.
     FILE *file;
-    file = fopen(filePath, "w");
+    file = fopen(filePath, "wb");
 
 
     long blocSize = MAX_SIZE_SENT;

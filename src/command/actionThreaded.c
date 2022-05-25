@@ -5,6 +5,9 @@
  * @return
  */
 void *receiveFileThreaded (char *filename) {
+    // Connection with the client to the switch socket. After that, send the new port.
+    sendPort(channelList[INDEX_FILE_CHANNEL]->port);
+
     // Connection to the file socket.
     int clientFileSocket = connectToClient(channelList[0]->serverSocketDescriptor);
 
@@ -21,6 +24,9 @@ void *receiveFileThreaded (char *filename) {
  * @return
  */
 void *sendFileThreaded (void *filename) {
+    // Connection with the client to the switch socket. After that, send the new port.
+    sendPort(channelList[INDEX_FILE_CHANNEL]->port);
+
     // Connection to the file socket.
     int clientFileSocket = connectToClient(channelList[0]->serverSocketDescriptor);
 
@@ -59,25 +65,33 @@ struct paramFileThreaded {
  * @return
  */
 void *mpFileThreaded (struct paramFileThreaded *param) {
-    // Connection to the file socket.
-    int clientSourceSocket = connectToClient(channelList[0]->serverSocketDescriptor);
+    // Connection with the clientTargeted to the switch socket. After that, send the new port.
+    sendPort(channelList[INDEX_FILE_CHANNEL]->port);
 
-    // Check if client with the username in param exists.
-    Client *client = contains(clientList, param->username);
-    if (client == NULL || ! isSocketConnected(client->acceptedSocketDescriptor)) {
+    // Connection to the file socket.
+    int clientSourceSocket = connectToClient(channelList[INDEX_FILE_CHANNEL]->serverSocketDescriptor);
+
+    // Check if clientTargeted with the username in param exists.
+    Client *clientTargeted = contains(clientList, param->username);
+    if (clientTargeted == NULL || ! isSocketConnected(clientTargeted->acceptedSocketDescriptor)) {
         // Client doesn't exist or isn't connected.
-        printf("Targeted client invalid. \n");
+        printf("Targeted clientTargeted invalid. \n");
         sendMessageInt(clientSourceSocket, 404);
-    } else {
+    }
+    else {
         // Client exists and is connected.
-        printf("Targeted client valid. \n");
+        printf("Targeted clientTargeted valid. \n");
         // Inform the sender that everything is ok.
         sendMessageInt(clientSourceSocket, 204);
-        // Send message to the targeted client. He will try to connect to the socket dedicated to file.
-        sendMessage(client->acceptedSocketDescriptor, param->message);
+        // Send message to the targeted clientTargeted. He will try to connect to the socket dedicated to file.
+        sendMessage(clientTargeted->acceptedSocketDescriptor, param->message);
 
-        // Connection of the targeted client at the socket dedicated to file.
-        int clientTargetedSocket = connectToClient(channelList[2]->serverSocketDescriptor);
+
+        // Connection with the clientTargeted to the switch socket. After that, send the new port.
+        sendPort(channelList[INDEX_FILE_CHANNEL]->port);
+
+        // Connection of the targeted clientTargeted at the socket dedicated to file.
+        int clientTargetedSocket = connectToClient(channelList[INDEX_FILE_CHANNEL]->serverSocketDescriptor);
 
         transferFile(clientSourceSocket, clientTargetedSocket);
     }
@@ -86,5 +100,6 @@ void *mpFileThreaded (struct paramFileThreaded *param) {
     free(param->username);
     free(param);
 
+    printf("File transfered. \n");
     pthread_exit(NULL);
 }

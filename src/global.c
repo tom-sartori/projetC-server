@@ -9,6 +9,7 @@ Command *commandList[NB_COMMAND];
 
 #define NB_CHANNEL 6
 Channel *channelList[NB_CHANNEL];
+#define INDEX_FILE_CHANNEL 0
 #define INDEX_SWITCH_CHANNEL 1
 #define INDEX_DEFAULT_CHANNEL 2
 #define DEFAULT_CHANNEL_SIZE 10
