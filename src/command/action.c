@@ -356,6 +356,13 @@ void joinAction (Client *client, Command *command, char *message) {
     free(regexGroupList[2]);
 }
 
+/**
+ * Send a message to every clients.
+ *
+ * @param client
+ * @param command
+ * @param message
+ */
 void allAction (Client *client, Command *command, char *message) {
     if (isEmpty(clientList)) {
         throwError("Client list empty. \n", 0);

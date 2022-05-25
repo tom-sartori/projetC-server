@@ -151,6 +151,7 @@ int main(int argc, char *argv[]) {
             newClient = createClient(username, newClientSocketDescriptor, INDEX_DEFAULT_CHANNEL);
             // Adding Client to clientList
             add(clientList, newClient);
+            add(channelList[INDEX_DEFAULT_CHANNEL]->clientList, newClient);
             // launch client thread
             if (pthread_create(newClient->thread, NULL, readingLoop, newClient)) {
                 throwError("Error : unable to create thread, %d\n", 0);
