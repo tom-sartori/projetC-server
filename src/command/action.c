@@ -318,7 +318,7 @@ void joinAction (Client *client, Command *command, char *message) {
         // Send error status.
         sendMessageInt(clientSwitchSocket, 400);
     }
-    else if (channelIndex < 0 || channelIndex > NB_CHANNEL || ! channelList[channelIndex]->isPublic) {
+    else if (channelIndex < 0 || channelIndex >= NB_CHANNEL || ! channelList[channelIndex]->isPublic) {
         // Channel invalid.
         // Send error status.
         sendMessageInt(clientSwitchSocket, 404);
@@ -342,7 +342,7 @@ void joinAction (Client *client, Command *command, char *message) {
         client->indexCurrentChannel = channelIndex;
 
 
-        char *resetMessage = "\n";  // Need to send this reset message because the client is blocked in receiveMessage(...).
+        char *resetMessage = "\0";  // Need to send this reset message because the client is blocked in receiveMessage(...).
         sendMessageInt(oldSocket, 1);  // Client blocked in recv int with the old socket.
         sendMessageString(newClientSocket, resetMessage, 1);
         close(oldSocket);
