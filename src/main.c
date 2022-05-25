@@ -99,19 +99,7 @@ int main(int argc, char *argv[]) {
     signal(SIGINT, finishProgram);    // Signal shutdown from ctr+c in terminal.
 
 
-/**
- * Check arguments.
- */
-    if (argc != 2) {
-        printf("Nombre d'arguments invalide. Utilisation :\n");
-        printf("%s PORT\n", argv[0]);
-        exit(EXIT_FAILURE);
-    }
 
-    // Error if port < 1024 (argv 2)
-    if(atoi(argv[1]) < 1024){
-        throwError("Erreur: le port doit être supérieur à 1024. \n", 0);
-    }
 
 
 /**
