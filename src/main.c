@@ -13,11 +13,11 @@
 #include "command/Command.h"
 #include "global.c"
 
-#include "util/semaphore.c"
 #include "util/color.c"
 #include "util/error.c"
 #include "util/regex.c"
 #include "util/util.c"
+#include "util/semaphore.c"
 
 #include "client/Client.c"
 #include "client/List.c"
