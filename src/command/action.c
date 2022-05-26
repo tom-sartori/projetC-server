@@ -21,6 +21,8 @@ void helpAction (int acceptedSocketDescriptor) {
         strcat(text, commandList[i]->description);
     }
 
+    strcat(text, "\n");
+
     sendMessage(acceptedSocketDescriptor, text);
 
     free(text);
@@ -178,6 +180,7 @@ void filesAction (Client *client) {
     while ((file = readdir(directory)) != NULL) {
         if (strcmp(file->d_name, ".") != 0 && strcmp(file->d_name, "..") != 0) {  // Don't take files : "." et "..".
 //            printf("File %d : %s\n", n, file->d_name);
+            strcat(stringNameFile, "\t");
             strcat(stringNameFile, file->d_name); // Add file to the list.
             strcat(stringNameFile, "\n");
             n++;
@@ -274,10 +277,14 @@ void channelsAction (Client *client) {
 
     for (int i = 0; i < NB_CHANNEL; i++) {
         if (channelList[i]->isPublic) {
+            strcat(buffer, "\t");
             getFullChannelName(i, subBuffer, subBufferSize);
             strcat(buffer, subBuffer);
         }
     }
+
+    strcat(buffer, "\n");
+
     sendMessage(client->acceptedSocketDescriptor, buffer);
 }
 
