@@ -12,3 +12,11 @@ void getUploadDirectoryPath (char *filePath) {
         strcat(filePath, "/src/uploads/");
     }
 }
+
+void strcatArray(char *buffer, int bufferSize, char *tab[], int tabSize) {
+    bzero(buffer, bufferSize);
+
+    for (int i = 0; i < tabSize; i++) {
+        strcat(buffer, tab[i]);
+    }
+}
