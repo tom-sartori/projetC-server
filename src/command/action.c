@@ -353,6 +353,8 @@ void joinAction (Client *client, Command *command, char *message) {
         char *resetMessage = "\0";  // Need to send this reset message because the client is blocked in receiveMessage(...).
         sendMessageInt(oldSocket, 1);  // Client blocked in recv int with the old socket.
         sendMessageString(newClientSocket, resetMessage, 1);
+
+        sendMessage(oldSocket, channelList[channelIndex]->name);    // Send the new channel name to the user.
         close(oldSocket);
 
         delete(channelList[oldIndexChannel]->clientList, client);
