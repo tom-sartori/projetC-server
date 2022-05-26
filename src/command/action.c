@@ -69,6 +69,9 @@ void mpAction (Client *clientSender, Command *command, char *message) {
 
     char *regexGroupList[3];
     getRegexGroup(regexGroupList, message, command->regex);
+    // regexGroupList[0] == full message.
+    // regexGroupList[1] == username targeted.
+    // regexGroupList[2] == message to send to the targeted client.
 
     Client *clientTargeted = contains(clientList, regexGroupList[1]);
 
@@ -76,27 +79,32 @@ void mpAction (Client *clientSender, Command *command, char *message) {
         sendMessage(clientSender->acceptedSocketDescriptor, "User not found. \n");
     }
     else {
-        char* messageToSend = (char*)malloc((strlen(regexGroupList[2])+2)+ strlen(clientSender->username+2)+3);
-        bzero(messageToSend, strlen(regexGroupList[2])+2+ strlen(clientSender->username+2)+3);
-        char* messageToSendToSender = (char*)malloc((strlen(regexGroupList[2])+2)+3+2+2+6+strlen(clientTargeted->username));
-        bzero(messageToSendToSender, (strlen(regexGroupList[2])+2)+3+2+2+6+strlen(clientTargeted->username));
-        strcat(messageToSendToSender, "Me: ");
-        strcat(messageToSendToSender, regexGroupList[2]);
-        strcat(messageToSendToSender, "( MP to ");
-        strcat(messageToSendToSender, clientTargeted->username);
-        strcat(messageToSendToSender, " )");
-        strcat(messageToSendToSender, "\n");
+        size_t sizeOfMessage = (strlen(clientTargeted->username) + strlen(regexGroupList[2]) + 8) * sizeof(char);
 
-        strcat(messageToSend, "MP ");
-        strcat(messageToSend, clientSender->username);
-        strcat(messageToSend, ": ");
-        strcat(messageToSend,regexGroupList[2]);
-        strcat(messageToSend,"\n");
+        // Message for sender.
+        char *messageForSender = (char*)malloc(sizeOfMessage);
+        bzero(messageForSender, sizeOfMessage);
 
-        sendMessage(clientTargeted->acceptedSocketDescriptor, messageToSend);
-        sendMessage(clientSender->acceptedSocketDescriptor, messageToSendToSender);
-        free(messageToSend);
-        free(messageToSendToSender);
+        strcat(messageForSender, "Me->");
+        strcat(messageForSender, clientTargeted->username);
+        strcat(messageForSender, " : ");
+        strcat(messageForSender, regexGroupList[2]);    // Message to send.
+        strcat(messageForSender, "\n");
+
+
+        // Message for target.
+        char *messageForTarget = (char*)malloc(sizeOfMessage);
+        bzero(messageForTarget, sizeOfMessage);
+
+        strcat(messageForTarget, clientSender->username);
+        strcat(messageForTarget, "->Me : ");
+        strcat(messageForTarget, regexGroupList[2]);
+        strcat(messageForTarget, "\n");
+
+        sendMessage(clientTargeted->acceptedSocketDescriptor, messageForTarget);
+        sendMessage(clientSender->acceptedSocketDescriptor, messageForSender);
+        free(messageForTarget);
+        free(messageForSender);
     }
     free(regexGroupList[0]);
     free(regexGroupList[1]);
