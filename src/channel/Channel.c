@@ -36,3 +36,38 @@ void initChannelList () {
 int isFull (Channel *channel) {
     return channel->size <= channel->clientList->size;
 }
+
+void getChannelName (int channelIndex, char *buffer, int bufferSize) {
+    char bufferIndex[sizeof(int)];
+    sprintf(bufferIndex, "%d", channelIndex);
+
+    char *tab[] = {
+            bufferIndex,
+            " : ",
+            channelList[channelIndex]->name,
+            "\n" };
+    strcatArray(buffer, bufferSize, tab, 4);
+}
+
+void getFullChannelName (int channelIndex, char *buffer, int bufferSize) {
+    char bufferIndex[sizeof(int)];
+    sprintf(bufferIndex, "%d", channelIndex);
+
+    char bufferNbUser[sizeof(int)];
+    sprintf(bufferNbUser, "%d", channelList[channelIndex]->clientList->size);
+
+    char bufferNbUserMax[sizeof(int)];
+    sprintf(bufferNbUserMax, "%d", channelList[channelIndex]->size);
+
+    // Concatenation of strings.
+    char *tab[] = {
+            bufferIndex,
+            " : (",
+            bufferNbUser,
+            "/",
+            bufferNbUserMax,
+            ") ",
+            channelList[channelIndex]->name,
+            "\n"};
+    strcatArray(buffer, bufferSize, tab, 8);
+}

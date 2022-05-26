@@ -82,33 +82,21 @@ void mpAction (Client *clientSender, Command *command, char *message) {
         size_t sizeOfMessage = (strlen(clientTargeted->username) + strlen(regexGroupList[2]) + 8) * sizeof(char);
 
         // Message for sender.
-        char *messageForSender = (char*)malloc(sizeOfMessage);
-        bzero(messageForSender, sizeOfMessage);
-
-        strcat(messageForSender, "Me->");
-        strcat(messageForSender, clientTargeted->username);
-        strcat(messageForSender, " : ");
-        strcat(messageForSender, regexGroupList[2]);    // Message to send.
-        strcat(messageForSender, "\n");
-
+        char messageForSender[sizeOfMessage];
+        char *tabSender[] = {"Me->", clientTargeted->username, regexGroupList[2], "\n" };
+        strcatArray(messageForSender, (int)sizeOfMessage, tabSender, 4);
 
         // Message for target.
-        char *messageForTarget = (char*)malloc(sizeOfMessage);
-        bzero(messageForTarget, sizeOfMessage);
-
-        strcat(messageForTarget, clientSender->username);
-        strcat(messageForTarget, "->Me : ");
-        strcat(messageForTarget, regexGroupList[2]);
-        strcat(messageForTarget, "\n");
+        char messageForTarget[sizeOfMessage];
+        char *tabTarget[] = { clientSender->username, "->Me : ", regexGroupList[2], "\n" };
+        strcatArray(messageForTarget, (int)sizeOfMessage, tabTarget, 4);
 
         sendMessage(clientTargeted->acceptedSocketDescriptor, messageForTarget);
         sendMessage(clientSender->acceptedSocketDescriptor, messageForSender);
-        free(messageForTarget);
-        free(messageForSender);
     }
-    free(regexGroupList[0]);
-    free(regexGroupList[1]);
-    free(regexGroupList[2]);
+//    free(regexGroupList[0]);
+//    free(regexGroupList[1]);
+//    free(regexGroupList[2]);
 }
 
 /**
@@ -263,14 +251,9 @@ void renameAction (Client *client, Command *command, char *message) {
  * @param client
  */
 void channelAction (Client *client) {
-    int bufferSize = 100;
+    int bufferSize = 200;
     char buffer[bufferSize];
-    bzero(buffer, bufferSize);
-
-    sprintf(buffer, "%d", client->indexCurrentChannel);
-    strcat(buffer, " : ");
-    strcat(buffer, channelList[client->indexCurrentChannel]->name);
-    strcat(buffer, "\n");
+    getFullChannelName(client->indexCurrentChannel, buffer, bufferSize);
 
     printf("channelAction : %s", buffer);
     sendMessage(client->acceptedSocketDescriptor, buffer);
@@ -282,18 +265,17 @@ void channelAction (Client *client) {
  * @param client
  */
 void channelsAction (Client *client) {
-    int bufferSize = 300;
+    int bufferSize = 800;
     char buffer[bufferSize];
-    char bufferInt[2];
     bzero(buffer, bufferSize);
+
+    int subBufferSize = 200;
+    char subBuffer[subBufferSize];
 
     for (int i = 0; i < NB_CHANNEL; i++) {
         if (channelList[i]->isPublic) {
-            sprintf(bufferInt, "%d", i);
-            strcat(buffer, bufferInt);
-            strcat(buffer, " : ");
-            strcat(buffer, channelList[i]->name);
-            strcat(buffer, "\n");
+            getFullChannelName(i, subBuffer, subBufferSize);
+            strcat(buffer, subBuffer);
         }
     }
     sendMessage(client->acceptedSocketDescriptor, buffer);
@@ -354,7 +336,10 @@ void joinAction (Client *client, Command *command, char *message) {
         sendMessageInt(oldSocket, 1);  // Client blocked in recv int with the old socket.
         sendMessageString(newClientSocket, resetMessage, 1);
 
-        sendMessage(oldSocket, channelList[channelIndex]->name);    // Send the new channel name to the user.
+        // Get old channel name.
+        char oldChannelName[100];
+        getChannelName(channelIndex, oldChannelName, 100);
+        sendMessage(oldSocket, oldChannelName);    // Send the new channel name to the user.
         close(oldSocket);
 
         delete(channelList[oldIndexChannel]->clientList, client);

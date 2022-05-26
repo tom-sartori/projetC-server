@@ -9,3 +9,5 @@ struct Channel {
 typedef struct Channel Channel;
 
 int isFull (Channel *channel);
+void getChannelName (int channelIndex, char *buffer, int bufferSize);
+void getFullChannelName (int channelIndex, char *buffer, int bufferSize);
