@@ -1,0 +1,69 @@
+\hypertarget{router_8c_source}{}\doxysection{router.\+c}
+\label{router_8c_source}\index{src/command/router.c@{src/command/router.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00001}00001 \textcolor{preprocessor}{\#include "{}Command.c"{}}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00002}00002 \textcolor{preprocessor}{\#include "{}action.c"{}}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00011}00011 \textcolor{keywordtype}{void} doCommandAction (\mbox{\hyperlink{struct_client}{Client}} *client, \textcolor{keywordtype}{char} *message) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00012}00012     \mbox{\hyperlink{struct_command}{Command}} *command = getCommand(message);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00014}00014     \textcolor{keywordflow}{if} (command == NULL) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00015}00015         \textcolor{comment}{// Unknown action.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00016}00016         unknownAction(client);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00017}00017     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00018}00018     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}help"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00019}00019         \textcolor{comment}{// Help.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00020}00020         helpAction(client-\/>acceptedSocketDescriptor);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00021}00021     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00022}00022     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}disconnect"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00023}00023         \textcolor{comment}{// Disconnection.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00024}00024         disconnectAction(client);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00025}00025     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00026}00026     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}users"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00027}00027         \textcolor{comment}{// List of users.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00028}00028         usersAction(client);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00029}00029     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00030}00030     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}mp"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00031}00031         \textcolor{comment}{// Private message.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00032}00032         mpAction(client, command, message);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00033}00033     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00034}00034     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}file"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00035}00035         \textcolor{comment}{// File sending.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00036}00036         fileAction(command, message);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00037}00037     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00038}00038     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}files"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00039}00039         \textcolor{comment}{// Files listing.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00040}00040         filesAction(client);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00041}00041     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00042}00042     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}kick"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00043}00043         \textcolor{comment}{// Kick someone.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00044}00044         kickAction(client, command, message);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00045}00045     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00046}00046     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}rename"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00047}00047         \textcolor{comment}{// Rename username.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00048}00048         renameAction(client, command, message);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00049}00049     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00050}00050     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}channel"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00051}00051         \textcolor{comment}{// Current user channel.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00052}00052         channelAction(client);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00053}00053     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00054}00054     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}channels"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00055}00055         \textcolor{comment}{// List of channels.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00056}00056         channelsAction(client);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00057}00057     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00058}00058     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}join"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00059}00059         \textcolor{comment}{// Join a channel.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00060}00060         joinAction(client, command, message);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00061}00061     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00062}00062     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}all"{}}, command-\/>name) == 0) \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00063}00063         \textcolor{comment}{// Broadcast message to every clients.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00064}00064         allAction(client, command, message);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00065}00065     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00066}00066     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00067}00067         \textcolor{comment}{// Unknown action.}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00068}00068         unknownAction(client);}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00069}00069     \}}
+\DoxyCodeLine{\Hypertarget{router_8c_source_l00070}00070 \}}
+
+\end{DoxyCode}

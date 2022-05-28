@@ -1,0 +1,111 @@
+\hypertarget{main_8c_source}{}\doxysection{main.\+c}
+\label{main_8c_source}\index{src/main.c@{src/main.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00001}00001 \textcolor{preprocessor}{\#include <sys/socket.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00002}00002 \textcolor{preprocessor}{\#include <arpa/inet.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00003}00003 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00004}00004 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00005}00005 \textcolor{preprocessor}{\#include <signal.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00006}00006 \textcolor{preprocessor}{\#include <pthread.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00007}00007 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00009}00009 \textcolor{preprocessor}{\#include "{}client/Client.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00010}00010 \textcolor{preprocessor}{\#include "{}client/Node.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00011}00011 \textcolor{preprocessor}{\#include "{}client/List.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00012}00012 \textcolor{preprocessor}{\#include "{}channel/Channel.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00013}00013 \textcolor{preprocessor}{\#include "{}command/Command.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00014}00014 \textcolor{preprocessor}{\#include "{}global.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00016}00016 \textcolor{preprocessor}{\#include "{}util/color.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00017}00017 \textcolor{preprocessor}{\#include "{}util/error.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00018}00018 \textcolor{preprocessor}{\#include "{}util/regex.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00019}00019 \textcolor{preprocessor}{\#include "{}util/util.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00020}00020 \textcolor{preprocessor}{\#include "{}util/semaphore.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00022}00022 \textcolor{preprocessor}{\#include "{}client/Client.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00023}00023 \textcolor{preprocessor}{\#include "{}client/List.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00025}00025 \textcolor{preprocessor}{\#include "{}socket/serverSocket.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00026}00026 \textcolor{preprocessor}{\#include "{}socket/clientSocket.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00027}00027 \textcolor{preprocessor}{\#include "{}socket/receive.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00028}00028 \textcolor{preprocessor}{\#include "{}socket/send.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00029}00029 \textcolor{preprocessor}{\#include "{}socket/transfer.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00031}00031 \textcolor{preprocessor}{\#include "{}util/ask.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00033}00033 \textcolor{preprocessor}{\#include "{}command/router.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00035}00035 \textcolor{preprocessor}{\#include "{}channel/Channel.c"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00045}00045 \textcolor{keywordtype}{void} readingLoop(\mbox{\hyperlink{struct_client}{Client}} *client)\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00046}00046     \textcolor{keywordflow}{while}(1)\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00050}00050         \textcolor{keywordtype}{char} *message = receiveMessage(client-\/>acceptedSocketDescriptor);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00051}00051         printf(\textcolor{stringliteral}{"{}\%s: \%s"{}}, client-\/>username, message);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00052}00052         \textcolor{comment}{// If the message is a command, do the command, else send broadcast to all connected clients}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00053}00053         \textcolor{keywordflow}{if} (isCommand(message)) \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00054}00054             doCommandAction(client, message);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00055}00055         \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00056}00056         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00057}00057             sendToChannel(client, message);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00058}00058         \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00059}00059     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00060}00060 \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00062}00062 \textcolor{keywordtype}{void} *createNewClient (\textcolor{keywordtype}{int} newClientSocketDescriptor) \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00063}00063     \textcolor{keywordtype}{char} *username = askForUsername(newClientSocketDescriptor);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00064}00064     \textcolor{keywordflow}{if} (username == NULL) \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00065}00065         \textcolor{comment}{// User has been logout.}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00066}00066         close(newClientSocketDescriptor);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00067}00067         rk\_sema\_post(\&semaphore);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00068}00068         pthread\_exit(NULL);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00069}00069     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00070}00070     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00071}00071         \mbox{\hyperlink{struct_client}{Client}} *newClient = createClient(username, newClientSocketDescriptor, INDEX\_DEFAULT\_CHANNEL);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00072}00072         newClient-\/>thread = pthread\_self();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00074}00074         \textcolor{comment}{// Adding Client to clientList}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00075}00075         add(clientList, newClient);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00076}00076         add(channelList[INDEX\_DEFAULT\_CHANNEL]-\/>clientList, newClient);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00077}00077         \textcolor{comment}{// launch client thread}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00079}00079         readingLoop(newClient);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00080}00080     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00081}00081 \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00086}00086 \textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]) \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00090}00090     printf(\textcolor{stringliteral}{"{}Début programme. \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00092}00092     \textcolor{comment}{// Assigning function closeSocket() to SIGTERM signal}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00093}00093     signal(SIGTERM, finishProgram);   \textcolor{comment}{// Signal shutdown from ide.}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00094}00094     signal(SIGINT, finishProgram);    \textcolor{comment}{// Signal shutdown from ctr+c in terminal.}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00100}00100     \textcolor{comment}{// Initialize the list of channels and launch them.}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00101}00101     initChannelList();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00102}00102     \textcolor{comment}{// Servers are launched}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00105}00105     rk\_sema\_init(\&semaphore, NB\_MAX\_CLIENT);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00106}00106     initCommandList();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00108}00108     clientList = createList();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00109}00109     \textcolor{keywordtype}{int} newClientSocketDescriptor;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00110}00110     pthread\_t pthread;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00119}00119     \textcolor{keywordflow}{while}(1)\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00120}00120         \textcolor{comment}{// Wait for a place.}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00121}00121         rk\_sema\_wait(\&semaphore);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00122}00122         \textcolor{comment}{// Waiting for a client connection.}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00123}00123         newClientSocketDescriptor = connectToClient(channelList[INDEX\_DEFAULT\_CHANNEL]-\/>serverSocketDescriptor);    \textcolor{comment}{// Connect to default socket.}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00124}00124         \textcolor{comment}{// launch client thread}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00125}00125         \textcolor{keywordflow}{if} (pthread\_create(\&pthread, NULL, createNewClient, newClientSocketDescriptor)) \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00126}00126             throwError(\textcolor{stringliteral}{"{}Error : unable to create thread, \%d\(\backslash\)n"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00127}00127         \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00128}00128     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00129}00129 \}}
+
+\end{DoxyCode}

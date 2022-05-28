@@ -1,0 +1,65 @@
+\hypertarget{regex_8c_source}{}\doxysection{regex.\+c}
+\label{regex_8c_source}\index{src/util/regex.c@{src/util/regex.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00001}00001 \textcolor{preprocessor}{\#include <regex.h>}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00010}00010 \textcolor{keywordtype}{int} isMatch (\textcolor{keywordtype}{char} *message, \textcolor{keywordtype}{char} *reg) \{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00011}00011     regex\_t regex;}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00012}00012     \textcolor{keywordtype}{int} regexValue;}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00013}00013     \textcolor{keywordtype}{int} isMatch = 0;}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00015}00015     regexValue = regcomp(\&regex, reg, REG\_EXTENDED);}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00016}00016     \textcolor{keywordflow}{if} (regexValue) \{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00017}00017         throwError(\textcolor{stringliteral}{"{}Could not compile regex. \(\backslash\)n"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00018}00018     \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00020}00020     \textcolor{comment}{//Execute regular expression.}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00021}00021     regexValue = regexec(\&regex, message, 0, NULL, 0);}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00023}00023     \textcolor{keywordflow}{if} (!regexValue) \{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00024}00024 \textcolor{comment}{//        printf("{}Regex match. \(\backslash\)n"{});}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00025}00025         isMatch = 1;}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00026}00026     \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00027}00027     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (regexValue == REG\_NOMATCH) \{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00028}00028 \textcolor{comment}{//        printf("{}Regex no match. \(\backslash\)n"{});}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00029}00029         isMatch = 0;}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00030}00030     \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00031}00031     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00032}00032         throwError(\textcolor{stringliteral}{"{}Regex error. \(\backslash\)n"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00033}00033     \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00035}00035     \textcolor{comment}{// Free memory allocated to the pattern buffer by regcomp().}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00036}00036     regfree(\&regex);}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00037}00037     \textcolor{keywordflow}{return} isMatch;}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00038}00038 \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00047}00047 \textcolor{keywordtype}{void} getRegexGroup (\textcolor{keywordtype}{char} *list[], \textcolor{keywordtype}{char} *message, \textcolor{keywordtype}{char} *regexString) \{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00048}00048     regex\_t regexCompiled;}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00050}00050     \textcolor{keywordtype}{size\_t} maxGroups = 3;}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00051}00051     regmatch\_t groupArray[maxGroups];}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00053}00053     \textcolor{keywordflow}{if} (regcomp(\&regexCompiled, regexString, REG\_EXTENDED))\{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00054}00054         throwError(\textcolor{stringliteral}{"{}Could not compile regex. \(\backslash\)n"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00055}00055     \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00057}00057     \textcolor{keywordflow}{if} (regexec(\&regexCompiled, message, maxGroups, groupArray, 0) == 0) \{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00058}00058         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < maxGroups; i++) \{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00059}00059             \textcolor{keywordflow}{if} (groupArray[i].rm\_so == (\textcolor{keywordtype}{size\_t})-\/1) \{}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00060}00060                 \textcolor{keywordflow}{break};  \textcolor{comment}{// No more groups}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00061}00061             \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00063}00063             \textcolor{keywordtype}{char} sourceCopy[strlen(message) + 1];}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00064}00064             strcpy(sourceCopy, message);}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00065}00065             sourceCopy[groupArray[i].rm\_eo] = 0;}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00067}00067             list[i] = (\textcolor{keywordtype}{char} *)malloc(strlen(sourceCopy + groupArray[i].rm\_so));}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00068}00068             strcpy(list[i], sourceCopy + groupArray[i].rm\_so);}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00069}00069         \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00071}00071     regfree(\&regexCompiled);}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00072}00072 \}}
+\DoxyCodeLine{\Hypertarget{regex_8c_source_l00073}00073 }
+
+\end{DoxyCode}
