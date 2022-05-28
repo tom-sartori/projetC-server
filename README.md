@@ -1,7 +1,20 @@
 # projetC-server
+## Made by Italiano Lorenzo and Sartori Tom. 
 
+[GitHub of the server. ](https://github.com/tom-sartori/projetC-server)  
+[GitHub of the client. ](https://github.com/tom-sartori/projetC-client)
 
-## Commandes
+## To run
+```shell
+./serveur.sh
+```
+
+## To see the documentation
+```shell
+open docs/index.html
+```
+
+## Lis of available commands
 | Fonction          | Descriptif                                                           | Commande    |  Attribut 1  | Attribut 2 |
 |:------------------|:---------------------------------------------------------------------|:------------|:------------:|:----------:|
 | Aide              | Indique la liste des commandes disponibles.                          | /help       |              |            |
@@ -19,10 +32,3 @@
 | Liste channel     | Liste les différents channels accessibles.                           | /channels   |              |            |
 | Rejoindre channel | Rejoint le channel spécifié.                                         | /join       | channelIndex |            |
 | Message public    | Envoi du message à tous les clients de tous les channels.            | /all        |   message    |            |
-
-
-Idées commandes
-- /r pour réponse au dernier message. 
-- Admins ? 
-- /rules
-- /important : message important en rouge
