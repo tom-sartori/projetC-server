@@ -1,0 +1,158 @@
+\hypertarget{global_8c}{}\doxysection{src/global.c File Reference}
+\label{global_8c}\index{src/global.c@{src/global.c}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{global_8c_a4da35cd01e3a4eb2711d8531f9fefdd7}{MAX\+\_\+\+SIZE\+\_\+\+SENT}}~512
+\item 
+\#define \mbox{\hyperlink{global_8c_a013246eb689a04f7ab63f0d37a30615b}{NB\+\_\+\+MAX\+\_\+\+CLIENT}}~100
+\item 
+\#define \mbox{\hyperlink{global_8c_afbba329c1ebf150d9c697177de5c2d26}{NB\+\_\+\+COMMAND}}~12
+\item 
+\#define \mbox{\hyperlink{global_8c_a3a5d7a6cec8e2e13fd52da8cf4fb8125}{NB\+\_\+\+CHANNEL}}~6
+\item 
+\#define \mbox{\hyperlink{global_8c_ab8f8b466f96eed5f1830cd843c02a71a}{INDEX\+\_\+\+FILE\+\_\+\+CHANNEL}}~0
+\item 
+\#define \mbox{\hyperlink{global_8c_a084563befd809c1db2ff54100af846d2}{INDEX\+\_\+\+SWITCH\+\_\+\+CHANNEL}}~1
+\item 
+\#define \mbox{\hyperlink{global_8c_ad2c12562002af7a58df1592b0655c9cf}{INDEX\+\_\+\+DEFAULT\+\_\+\+CHANNEL}}~2
+\item 
+\#define \mbox{\hyperlink{global_8c_a5a19b2fb8b6ddb997ed49b89d2bfeef3}{DEFAULT\+\_\+\+CHANNEL\+\_\+\+SIZE}}~10
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+pthread\+\_\+mutex\+\_\+t \mbox{\hyperlink{global_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}{mutex}} = PTHREAD\+\_\+\+MUTEX\+\_\+\+INITIALIZER
+\item 
+\mbox{\hyperlink{struct_list}{List}} $\ast$ \mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{client\+List}}
+\item 
+\mbox{\hyperlink{struct_command}{Command}} $\ast$ \mbox{\hyperlink{global_8c_aad80e827e00aa17683b9961cbc4ec63b}{command\+List}} \mbox{[}\mbox{\hyperlink{global_8c_afbba329c1ebf150d9c697177de5c2d26}{NB\+\_\+\+COMMAND}}\mbox{]}
+\item 
+\mbox{\hyperlink{struct_channel}{Channel}} $\ast$ \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channel\+List}} \mbox{[}\mbox{\hyperlink{global_8c_a3a5d7a6cec8e2e13fd52da8cf4fb8125}{NB\+\_\+\+CHANNEL}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{global_8c_a5a19b2fb8b6ddb997ed49b89d2bfeef3}\label{global_8c_a5a19b2fb8b6ddb997ed49b89d2bfeef3}} 
+\index{global.c@{global.c}!DEFAULT\_CHANNEL\_SIZE@{DEFAULT\_CHANNEL\_SIZE}}
+\index{DEFAULT\_CHANNEL\_SIZE@{DEFAULT\_CHANNEL\_SIZE}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_CHANNEL\_SIZE}{DEFAULT\_CHANNEL\_SIZE}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+CHANNEL\+\_\+\+SIZE~10}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00015}{15}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_ad2c12562002af7a58df1592b0655c9cf}\label{global_8c_ad2c12562002af7a58df1592b0655c9cf}} 
+\index{global.c@{global.c}!INDEX\_DEFAULT\_CHANNEL@{INDEX\_DEFAULT\_CHANNEL}}
+\index{INDEX\_DEFAULT\_CHANNEL@{INDEX\_DEFAULT\_CHANNEL}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{INDEX\_DEFAULT\_CHANNEL}{INDEX\_DEFAULT\_CHANNEL}}
+{\footnotesize\ttfamily \#define INDEX\+\_\+\+DEFAULT\+\_\+\+CHANNEL~2}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00014}{14}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_ab8f8b466f96eed5f1830cd843c02a71a}\label{global_8c_ab8f8b466f96eed5f1830cd843c02a71a}} 
+\index{global.c@{global.c}!INDEX\_FILE\_CHANNEL@{INDEX\_FILE\_CHANNEL}}
+\index{INDEX\_FILE\_CHANNEL@{INDEX\_FILE\_CHANNEL}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{INDEX\_FILE\_CHANNEL}{INDEX\_FILE\_CHANNEL}}
+{\footnotesize\ttfamily \#define INDEX\+\_\+\+FILE\+\_\+\+CHANNEL~0}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00012}{12}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_a084563befd809c1db2ff54100af846d2}\label{global_8c_a084563befd809c1db2ff54100af846d2}} 
+\index{global.c@{global.c}!INDEX\_SWITCH\_CHANNEL@{INDEX\_SWITCH\_CHANNEL}}
+\index{INDEX\_SWITCH\_CHANNEL@{INDEX\_SWITCH\_CHANNEL}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{INDEX\_SWITCH\_CHANNEL}{INDEX\_SWITCH\_CHANNEL}}
+{\footnotesize\ttfamily \#define INDEX\+\_\+\+SWITCH\+\_\+\+CHANNEL~1}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00013}{13}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_a4da35cd01e3a4eb2711d8531f9fefdd7}\label{global_8c_a4da35cd01e3a4eb2711d8531f9fefdd7}} 
+\index{global.c@{global.c}!MAX\_SIZE\_SENT@{MAX\_SIZE\_SENT}}
+\index{MAX\_SIZE\_SENT@{MAX\_SIZE\_SENT}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_SIZE\_SENT}{MAX\_SIZE\_SENT}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+SIZE\+\_\+\+SENT~512}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00001}{1}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_a3a5d7a6cec8e2e13fd52da8cf4fb8125}\label{global_8c_a3a5d7a6cec8e2e13fd52da8cf4fb8125}} 
+\index{global.c@{global.c}!NB\_CHANNEL@{NB\_CHANNEL}}
+\index{NB\_CHANNEL@{NB\_CHANNEL}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{NB\_CHANNEL}{NB\_CHANNEL}}
+{\footnotesize\ttfamily \#define NB\+\_\+\+CHANNEL~6}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00010}{10}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_afbba329c1ebf150d9c697177de5c2d26}\label{global_8c_afbba329c1ebf150d9c697177de5c2d26}} 
+\index{global.c@{global.c}!NB\_COMMAND@{NB\_COMMAND}}
+\index{NB\_COMMAND@{NB\_COMMAND}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{NB\_COMMAND}{NB\_COMMAND}}
+{\footnotesize\ttfamily \#define NB\+\_\+\+COMMAND~12}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00007}{7}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_a013246eb689a04f7ab63f0d37a30615b}\label{global_8c_a013246eb689a04f7ab63f0d37a30615b}} 
+\index{global.c@{global.c}!NB\_MAX\_CLIENT@{NB\_MAX\_CLIENT}}
+\index{NB\_MAX\_CLIENT@{NB\_MAX\_CLIENT}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{NB\_MAX\_CLIENT}{NB\_MAX\_CLIENT}}
+{\footnotesize\ttfamily \#define NB\+\_\+\+MAX\+\_\+\+CLIENT~100}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00004}{4}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{global_8c_a86cd9048b82fd91e3260fd17b880d223}\label{global_8c_a86cd9048b82fd91e3260fd17b880d223}} 
+\index{global.c@{global.c}!channelList@{channelList}}
+\index{channelList@{channelList}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{channelList}{channelList}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_channel}{Channel}}$\ast$ channel\+List\mbox{[}\mbox{\hyperlink{global_8c_a3a5d7a6cec8e2e13fd52da8cf4fb8125}{NB\+\_\+\+CHANNEL}}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00011}{11}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}\label{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}} 
+\index{global.c@{global.c}!clientList@{clientList}}
+\index{clientList@{clientList}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{clientList}{clientList}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_list}{List}}$\ast$ client\+List}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00005}{5}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_aad80e827e00aa17683b9961cbc4ec63b}\label{global_8c_aad80e827e00aa17683b9961cbc4ec63b}} 
+\index{global.c@{global.c}!commandList@{commandList}}
+\index{commandList@{commandList}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{commandList}{commandList}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_command}{Command}}$\ast$ command\+List\mbox{[}\mbox{\hyperlink{global_8c_afbba329c1ebf150d9c697177de5c2d26}{NB\+\_\+\+COMMAND}}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00008}{8}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+
+\mbox{\Hypertarget{global_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}\label{global_8c_a4acff8232e4aec9cd5c6dc200ac55ef3}} 
+\index{global.c@{global.c}!mutex@{mutex}}
+\index{mutex@{mutex}!global.c@{global.c}}
+\doxysubsubsection{\texorpdfstring{mutex}{mutex}}
+{\footnotesize\ttfamily pthread\+\_\+mutex\+\_\+t mutex = PTHREAD\+\_\+\+MUTEX\+\_\+\+INITIALIZER}
+
+
+
+Definition at line \mbox{\hyperlink{global_8c_source_l00002}{2}} of file \mbox{\hyperlink{global_8c_source}{global.\+c}}.
+

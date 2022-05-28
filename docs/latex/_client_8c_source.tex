@@ -1,14 +1,14 @@
 \hypertarget{_client_8c_source}{}\doxysection{Client.\+c}
 \label{_client_8c_source}\index{src/client/Client.c@{src/client/Client.c}}
-
+\mbox{\hyperlink{_client_8c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_client_8c_source_l00001}00001 }
-\DoxyCodeLine{\Hypertarget{_client_8c_source_l00002}00002 \mbox{\hyperlink{struct_client}{Client}} *createClient (\textcolor{keywordtype}{char} *username, \textcolor{keywordtype}{int} acceptedSocketDescriptor, \textcolor{keywordtype}{int} indexCurrentChannel) \{}
+\DoxyCodeLine{\Hypertarget{_client_8c_source_l00002}\mbox{\hyperlink{_client_8c_aac95c9864d1606a5da49921f5013d51f}{00002}} \mbox{\hyperlink{struct_client}{Client}} *\mbox{\hyperlink{_client_8c_aac95c9864d1606a5da49921f5013d51f}{createClient}} (\textcolor{keywordtype}{char} *username, \textcolor{keywordtype}{int} acceptedSocketDescriptor, \textcolor{keywordtype}{int} indexCurrentChannel) \{}
 \DoxyCodeLine{\Hypertarget{_client_8c_source_l00003}00003     \mbox{\hyperlink{struct_client}{Client}} *client = (\mbox{\hyperlink{struct_client}{Client}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_client}{Client}}));}
-\DoxyCodeLine{\Hypertarget{_client_8c_source_l00004}00004     client-\/>username = username;}
-\DoxyCodeLine{\Hypertarget{_client_8c_source_l00005}00005     client-\/>acceptedSocketDescriptor = acceptedSocketDescriptor;}
-\DoxyCodeLine{\Hypertarget{_client_8c_source_l00006}00006     client-\/>indexCurrentChannel = indexCurrentChannel;}
-\DoxyCodeLine{\Hypertarget{_client_8c_source_l00007}00007     client-\/>thread = (pthread\_t)malloc(\textcolor{keyword}{sizeof}(pthread\_t));}
+\DoxyCodeLine{\Hypertarget{_client_8c_source_l00004}00004     client-\/>\mbox{\hyperlink{struct_client_a9b20c006bd90a09e1465fb668700e81d}{username}} = username;}
+\DoxyCodeLine{\Hypertarget{_client_8c_source_l00005}00005     client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}} = acceptedSocketDescriptor;}
+\DoxyCodeLine{\Hypertarget{_client_8c_source_l00006}00006     client-\/>\mbox{\hyperlink{struct_client_ac68008534f800db5b81ce5d08d0dc768}{indexCurrentChannel}} = indexCurrentChannel;}
+\DoxyCodeLine{\Hypertarget{_client_8c_source_l00007}00007     client-\/>\mbox{\hyperlink{struct_client_a01f75a9ad916f63a94e06a27635ba278}{thread}} = (pthread\_t)malloc(\textcolor{keyword}{sizeof}(pthread\_t));}
 \DoxyCodeLine{\Hypertarget{_client_8c_source_l00008}00008 }
 \DoxyCodeLine{\Hypertarget{_client_8c_source_l00009}00009     \textcolor{keywordflow}{return} client;}
 \DoxyCodeLine{\Hypertarget{_client_8c_source_l00010}00010 \}}

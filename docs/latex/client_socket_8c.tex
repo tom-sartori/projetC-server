@@ -1,0 +1,69 @@
+\hypertarget{client_socket_8c}{}\doxysection{src/socket/client\+Socket.c File Reference}
+\label{client_socket_8c}\index{src/socket/clientSocket.c@{src/socket/clientSocket.c}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{client_socket_8c_a4cfd20ed36939fbc7c7ab4a583296212}{connect\+To\+Client}} (int server\+Socket)
+\item 
+int \mbox{\hyperlink{client_socket_8c_a2d7d327343fcb081adaced431ae05bd2}{is\+Socket\+Connected}} (int accepted\+Socket\+Descriptor)
+\item 
+void \mbox{\hyperlink{client_socket_8c_ad4aa03313e40843342c7ad4c42152baf}{close\+Client}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{client_socket_8c_ad4aa03313e40843342c7ad4c42152baf}\label{client_socket_8c_ad4aa03313e40843342c7ad4c42152baf}} 
+\index{clientSocket.c@{clientSocket.c}!closeClient@{closeClient}}
+\index{closeClient@{closeClient}!clientSocket.c@{clientSocket.c}}
+\doxysubsubsection{\texorpdfstring{closeClient()}{closeClient()}}
+{\footnotesize\ttfamily void close\+Client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client }\end{DoxyParamCaption})}
+
+Shutdown client and kille the thread eassociated. 
+\begin{DoxyParams}{Parameters}
+{\em accepted\+Socket\+Descriptor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{client_socket_8c_source_l00047}{47}} of file \mbox{\hyperlink{client_socket_8c_source}{client\+Socket.\+c}}.
+
+\mbox{\Hypertarget{client_socket_8c_a4cfd20ed36939fbc7c7ab4a583296212}\label{client_socket_8c_a4cfd20ed36939fbc7c7ab4a583296212}} 
+\index{clientSocket.c@{clientSocket.c}!connectToClient@{connectToClient}}
+\index{connectToClient@{connectToClient}!clientSocket.c@{clientSocket.c}}
+\doxysubsubsection{\texorpdfstring{connectToClient()}{connectToClient()}}
+{\footnotesize\ttfamily int connect\+To\+Client (\begin{DoxyParamCaption}\item[{int}]{server\+Socket }\end{DoxyParamCaption})}
+
+For a socket descriptor in params, connect it to the client. Use accept function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em server\+Socket} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an accepted socket descriptor. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_socket_8c_source_l00008}{8}} of file \mbox{\hyperlink{client_socket_8c_source}{client\+Socket.\+c}}.
+
+\mbox{\Hypertarget{client_socket_8c_a2d7d327343fcb081adaced431ae05bd2}\label{client_socket_8c_a2d7d327343fcb081adaced431ae05bd2}} 
+\index{clientSocket.c@{clientSocket.c}!isSocketConnected@{isSocketConnected}}
+\index{isSocketConnected@{isSocketConnected}!clientSocket.c@{clientSocket.c}}
+\doxysubsubsection{\texorpdfstring{isSocketConnected()}{isSocketConnected()}}
+{\footnotesize\ttfamily int is\+Socket\+Connected (\begin{DoxyParamCaption}\item[{int}]{accepted\+Socket\+Descriptor }\end{DoxyParamCaption})}
+
+Return 1 if the socket in params is still connected to the server socket.
+
+
+\begin{DoxyParams}{Parameters}
+{\em accepted\+Socket\+Descriptor} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{client_socket_8c_source_l00034}{34}} of file \mbox{\hyperlink{client_socket_8c_source}{client\+Socket.\+c}}.
+

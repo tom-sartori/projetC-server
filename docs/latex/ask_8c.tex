@@ -1,0 +1,30 @@
+\hypertarget{ask_8c}{}\doxysection{src/util/ask.c File Reference}
+\label{ask_8c}\index{src/util/ask.c@{src/util/ask.c}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{ask_8c_a7150b23295b7b6e1fd852dcb2c97be1d}{ask\+For\+Username}} (int new\+Client\+Socket\+Descriptor)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ask_8c_a7150b23295b7b6e1fd852dcb2c97be1d}\label{ask_8c_a7150b23295b7b6e1fd852dcb2c97be1d}} 
+\index{ask.c@{ask.c}!askForUsername@{askForUsername}}
+\index{askForUsername@{askForUsername}!ask.c@{ask.c}}
+\doxysubsubsection{\texorpdfstring{askForUsername()}{askForUsername()}}
+{\footnotesize\ttfamily char $\ast$ ask\+For\+Username (\begin{DoxyParamCaption}\item[{int}]{new\+Client\+Socket\+Descriptor }\end{DoxyParamCaption})}
+
+Wait for the client to send a valid username. If the username already exists, ask again. If the client logout, it returns NULL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Client\+Socket\+Descriptor} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the username or NULL if the client logout. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{ask_8c_source_l00010}{10}} of file \mbox{\hyperlink{ask_8c_source}{ask.\+c}}.
+

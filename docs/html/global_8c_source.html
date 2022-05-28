@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,21 +69,27 @@ $(function() {
   <div class="headertitle"><div class="title">global.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#define MAX_SIZE_SENT 512</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span>pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;</div>
+<a href="global_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="global_8c.html#a4da35cd01e3a4eb2711d8531f9fefdd7">    1</a></span><span class="preprocessor">#define MAX_SIZE_SENT 512</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno"><a class="line" href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">    2</a></span>pthread_mutex_t <a class="code hl_variable" href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a> = PTHREAD_MUTEX_INITIALIZER;</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define NB_MAX_CLIENT 100</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><a class="code hl_struct" href="struct_list.html">List</a> *clientList;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="global_8c.html#a013246eb689a04f7ab63f0d37a30615b">    4</a></span><span class="preprocessor">#define NB_MAX_CLIENT 100</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">    5</a></span><a class="code hl_struct" href="struct_list.html">List</a> *<a class="code hl_variable" href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a>;</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define NB_COMMAND 12</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><a class="code hl_struct" href="struct_command.html">Command</a> *commandList[NB_COMMAND];</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="global_8c.html#afbba329c1ebf150d9c697177de5c2d26">    7</a></span><span class="preprocessor">#define NB_COMMAND 12</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="global_8c.html#aad80e827e00aa17683b9961cbc4ec63b">    8</a></span><a class="code hl_struct" href="struct_command.html">Command</a> *<a class="code hl_variable" href="global_8c.html#aad80e827e00aa17683b9961cbc4ec63b">commandList</a>[<a class="code hl_define" href="global_8c.html#afbba329c1ebf150d9c697177de5c2d26">NB_COMMAND</a>];</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define NB_CHANNEL 6</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><a class="code hl_struct" href="struct_channel.html">Channel</a> *channelList[NB_CHANNEL];</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define INDEX_FILE_CHANNEL 0</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define INDEX_SWITCH_CHANNEL 1</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define INDEX_DEFAULT_CHANNEL 2</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define DEFAULT_CHANNEL_SIZE 10</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="global_8c.html#a3a5d7a6cec8e2e13fd52da8cf4fb8125">   10</a></span><span class="preprocessor">#define NB_CHANNEL 6</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">   11</a></span><a class="code hl_struct" href="struct_channel.html">Channel</a> *<a class="code hl_variable" href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">channelList</a>[<a class="code hl_define" href="global_8c.html#a3a5d7a6cec8e2e13fd52da8cf4fb8125">NB_CHANNEL</a>];</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="global_8c.html#ab8f8b466f96eed5f1830cd843c02a71a">   12</a></span><span class="preprocessor">#define INDEX_FILE_CHANNEL 0</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="global_8c.html#a084563befd809c1db2ff54100af846d2">   13</a></span><span class="preprocessor">#define INDEX_SWITCH_CHANNEL 1</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="global_8c.html#ad2c12562002af7a58df1592b0655c9cf">   14</a></span><span class="preprocessor">#define INDEX_DEFAULT_CHANNEL 2</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="global_8c.html#a5a19b2fb8b6ddb997ed49b89d2bfeef3">   15</a></span><span class="preprocessor">#define DEFAULT_CHANNEL_SIZE 10</span></div>
+<div class="ttc" id="aglobal_8c_html_a3a5d7a6cec8e2e13fd52da8cf4fb8125"><div class="ttname"><a href="global_8c.html#a3a5d7a6cec8e2e13fd52da8cf4fb8125">NB_CHANNEL</a></div><div class="ttdeci">#define NB_CHANNEL</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00010">global.c:10</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a4acff8232e4aec9cd5c6dc200ac55ef3"><div class="ttname"><a href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00002">global.c:2</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a86cd9048b82fd91e3260fd17b880d223"><div class="ttname"><a href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">channelList</a></div><div class="ttdeci">Channel * channelList[NB_CHANNEL]</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00011">global.c:11</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a8bbe5cfb41fbe6b27337c128ed94cf2c"><div class="ttname"><a href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a></div><div class="ttdeci">List * clientList</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00005">global.c:5</a></div></div>
+<div class="ttc" id="aglobal_8c_html_aad80e827e00aa17683b9961cbc4ec63b"><div class="ttname"><a href="global_8c.html#aad80e827e00aa17683b9961cbc4ec63b">commandList</a></div><div class="ttdeci">Command * commandList[NB_COMMAND]</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00008">global.c:8</a></div></div>
+<div class="ttc" id="aglobal_8c_html_afbba329c1ebf150d9c697177de5c2d26"><div class="ttname"><a href="global_8c.html#afbba329c1ebf150d9c697177de5c2d26">NB_COMMAND</a></div><div class="ttdeci">#define NB_COMMAND</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00007">global.c:7</a></div></div>
 <div class="ttc" id="astruct_channel_html"><div class="ttname"><a href="struct_channel.html">Channel</a></div><div class="ttdef"><b>Definition:</b> <a href="_channel_8h_source.html#l00001">Channel.h:1</a></div></div>
 <div class="ttc" id="astruct_command_html"><div class="ttname"><a href="struct_command.html">Command</a></div><div class="ttdef"><b>Definition:</b> <a href="_command_8h_source.html#l00001">Command.h:1</a></div></div>
 <div class="ttc" id="astruct_list_html"><div class="ttname"><a href="struct_list.html">List</a></div><div class="ttdef"><b>Definition:</b> <a href="_list_8h_source.html#l00001">List.h:1</a></div></div>

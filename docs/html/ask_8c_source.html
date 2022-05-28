@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,27 +69,34 @@ $(function() {
   <div class="headertitle"><div class="title">ask.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">char</span> *askForUsername (<span class="keywordtype">int</span> newClientSocketDescriptor) {</div>
+<a href="ask_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="ask_8c.html#a7150b23295b7b6e1fd852dcb2c97be1d">   10</a></span><span class="keywordtype">char</span> *<a class="code hl_function" href="ask_8c.html#a7150b23295b7b6e1fd852dcb2c97be1d">askForUsername</a> (<span class="keywordtype">int</span> newClientSocketDescriptor) {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">char</span> *username;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">int</span> hasUniqueUsername = 0;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">do</span> {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        username = receiveMessage(newClientSocketDescriptor);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">if</span> (isMatch(username, commandList[1]-&gt;regex)) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        username = <a class="code hl_function" href="receive_8c.html#a580528be3e8d4c7ea7babc61d35721ee">receiveMessage</a>(newClientSocketDescriptor);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a>(username, <a class="code hl_variable" href="global_8c.html#aad80e827e00aa17683b9961cbc4ec63b">commandList</a>[1]-&gt;regex)) {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        }</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(isMatch(username, <span class="stringliteral">&quot;^([^/ ])*$&quot;</span>) != 0 &amp;&amp; contains(clientList, username) == NULL){</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            sendMessageInt(newClientSocketDescriptor,201);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code hl_function" href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a>(username, <span class="stringliteral">&quot;^([^/ ])*$&quot;</span>) != 0 &amp;&amp; <a class="code hl_function" href="_list_8c.html#a1007aa3bf350bf7783048f059d8becd9">contains</a>(<a class="code hl_variable" href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a>, username) == NULL){</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <a class="code hl_function" href="send_8c.html#a592e2bf7700b3e975ea53992cf1a7a99">sendMessageInt</a>(newClientSocketDescriptor,201);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            hasUniqueUsername = 1;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        }</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordflow">else</span>{</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            sendMessageInt(newClientSocketDescriptor,409);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <a class="code hl_function" href="send_8c.html#a592e2bf7700b3e975ea53992cf1a7a99">sendMessageInt</a>(newClientSocketDescriptor,409);</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        }</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">while</span>(!hasUniqueUsername);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">return</span> username;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
+<div class="ttc" id="a_list_8c_html_a1007aa3bf350bf7783048f059d8becd9"><div class="ttname"><a href="_list_8c.html#a1007aa3bf350bf7783048f059d8becd9">contains</a></div><div class="ttdeci">Client * contains(List *list, char *username)</div><div class="ttdef"><b>Definition:</b> <a href="_list_8c_source.html#l00086">List.c:86</a></div></div>
+<div class="ttc" id="aask_8c_html_a7150b23295b7b6e1fd852dcb2c97be1d"><div class="ttname"><a href="ask_8c.html#a7150b23295b7b6e1fd852dcb2c97be1d">askForUsername</a></div><div class="ttdeci">char * askForUsername(int newClientSocketDescriptor)</div><div class="ttdef"><b>Definition:</b> <a href="ask_8c_source.html#l00010">ask.c:10</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a8bbe5cfb41fbe6b27337c128ed94cf2c"><div class="ttname"><a href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a></div><div class="ttdeci">List * clientList</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00005">global.c:5</a></div></div>
+<div class="ttc" id="aglobal_8c_html_aad80e827e00aa17683b9961cbc4ec63b"><div class="ttname"><a href="global_8c.html#aad80e827e00aa17683b9961cbc4ec63b">commandList</a></div><div class="ttdeci">Command * commandList[NB_COMMAND]</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00008">global.c:8</a></div></div>
+<div class="ttc" id="areceive_8c_html_a580528be3e8d4c7ea7babc61d35721ee"><div class="ttname"><a href="receive_8c.html#a580528be3e8d4c7ea7babc61d35721ee">receiveMessage</a></div><div class="ttdeci">char * receiveMessage(int acceptedSocketDescriptor)</div><div class="ttdef"><b>Definition:</b> <a href="receive_8c_source.html#l00042">receive.c:42</a></div></div>
+<div class="ttc" id="aregex_8c_html_a7e3aa9478821ab94f37a66a529cac597"><div class="ttname"><a href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a></div><div class="ttdeci">int isMatch(char *message, char *reg)</div><div class="ttdef"><b>Definition:</b> <a href="regex_8c_source.html#l00010">regex.c:10</a></div></div>
+<div class="ttc" id="asend_8c_html_a592e2bf7700b3e975ea53992cf1a7a99"><div class="ttname"><a href="send_8c.html#a592e2bf7700b3e975ea53992cf1a7a99">sendMessageInt</a></div><div class="ttdeci">void sendMessageInt(int acceptedSocketDescriptor, int messageInt)</div><div class="ttdef"><b>Definition:</b> <a href="send_8c_source.html#l00008">send.c:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,50 +1,50 @@
 \hypertarget{action_8c_source}{}\doxysection{action.\+c}
 \label{action_8c_source}\index{src/command/action.c@{src/command/action.c}}
-
+\mbox{\hyperlink{action_8c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00001}00001 \textcolor{preprocessor}{\#include <dirent.h>}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00002}00002 \textcolor{preprocessor}{\#include "{}actionThreaded.c"{}}}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{action_threaded_8c}{actionThreaded.c}}"{}}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00003}00003 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00014}00014 \textcolor{keywordtype}{void} helpAction (\textcolor{keywordtype}{int} acceptedSocketDescriptor) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00014}\mbox{\hyperlink{action_8c_a0b2e6edc1666bb6244d6026f27389719}{00014}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_a0b2e6edc1666bb6244d6026f27389719}{helpAction}} (\textcolor{keywordtype}{int} acceptedSocketDescriptor) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00015}00015     \textcolor{keywordtype}{char} *text = (\textcolor{keywordtype}{char} *) malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}) * 1000);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00016}00016     strcat(text, \textcolor{stringliteral}{"{}Help : \(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00017}00017 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00018}00018     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NB\_COMMAND; i++) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00019}00019         strcat(text, commandList[i]-\/>name);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00018}00018     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{global_8c_afbba329c1ebf150d9c697177de5c2d26}{NB\_COMMAND}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00019}00019         strcat(text, \mbox{\hyperlink{global_8c_aad80e827e00aa17683b9961cbc4ec63b}{commandList}}[i]-\/>name);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00020}00020         strcat(text, \textcolor{stringliteral}{"{} : "{}});}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00021}00021         strcat(text, commandList[i]-\/>description);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00021}00021         strcat(text, \mbox{\hyperlink{global_8c_aad80e827e00aa17683b9961cbc4ec63b}{commandList}}[i]-\/>description);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00022}00022     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00023}00023 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00024}00024     strcat(text, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00025}00025 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00026}00026     sendMessage(acceptedSocketDescriptor, text);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00026}00026     \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(acceptedSocketDescriptor, text);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00027}00027 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00028}00028     free(text);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00029}00029 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00030}00030 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00036}00036 \textcolor{keywordtype}{void} disconnectAction (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00037}00037     closeClient(client);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00036}\mbox{\hyperlink{action_8c_a580906a3bf469d010207a1dc68a20160}{00036}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_a580906a3bf469d010207a1dc68a20160}{disconnectAction}} (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00037}00037     \mbox{\hyperlink{client_socket_8c_ad4aa03313e40843342c7ad4c42152baf}{closeClient}}(client);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00038}00038 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00040}00040 \textcolor{keywordtype}{void} usersAction (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00040}\mbox{\hyperlink{action_8c_a2e5b2c185f3a59e1edd93156a1ff9e27}{00040}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_a2e5b2c185f3a59e1edd93156a1ff9e27}{usersAction}} (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00041}00041     \textcolor{keywordtype}{char} *text = (\textcolor{keywordtype}{char} *) malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}) * 1000);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00042}00042     strcpy(text, \textcolor{stringliteral}{"{}Liste des utilisateurs : \(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00043}00043 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00044}00044     \mbox{\hyperlink{struct_node}{Node}} *current = next(clientList-\/>head);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00044}00044     \mbox{\hyperlink{struct_node}{Node}} *current = \mbox{\hyperlink{_list_8c_a747eb18625a1312ab4b20c9bd2fc6508}{next}}(\mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}-\/>\mbox{\hyperlink{struct_list_aa3e81b47ac0637ebb1ea7cc12812405a}{head}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00045}00045     \textcolor{keywordflow}{while} (current != NULL) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00046}00046         \textcolor{keywordflow}{if} (isSocketConnected(current-\/>client-\/>acceptedSocketDescriptor)) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00047}00047             strcat(text, current-\/>client-\/>username);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00046}00046         \textcolor{keywordflow}{if} (\mbox{\hyperlink{client_socket_8c_a2d7d327343fcb081adaced431ae05bd2}{isSocketConnected}}(current-\/>\mbox{\hyperlink{struct_node_af10e4a54385eb944ebb7b2d136388256}{client}}-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}})) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00047}00047             strcat(text, current-\/>\mbox{\hyperlink{struct_node_af10e4a54385eb944ebb7b2d136388256}{client}}-\/>\mbox{\hyperlink{struct_client_a9b20c006bd90a09e1465fb668700e81d}{username}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00048}00048             strcat(text, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00049}00049         \}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00050}00050         current = next(current);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00050}00050         current = \mbox{\hyperlink{_list_8c_a747eb18625a1312ab4b20c9bd2fc6508}{next}}(current);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00051}00051     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00052}00052 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00053}00053     strcat(text, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00054}00054     sendMessage(client-\/>acceptedSocketDescriptor, text);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00054}00054     \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, text);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00055}00055     free(text);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00056}00056 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00065}00065 \textcolor{keywordtype}{void} mpAction (\mbox{\hyperlink{struct_client}{Client}} *clientSender, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00065}\mbox{\hyperlink{action_8c_acb873e3def8aed76f2cdfdb730634054}{00065}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_acb873e3def8aed76f2cdfdb730634054}{mpAction}} (\mbox{\hyperlink{struct_client}{Client}} *clientSender, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00066}00066     \textcolor{comment}{// Get other username and message.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00067}00067     \textcolor{comment}{// If username exists.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00068}00068     \textcolor{comment}{// Send message to him.}}
@@ -52,45 +52,45 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00070}00070     \textcolor{comment}{// Inform clientSender that username doesn't exist.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00071}00071 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00072}00072     \textcolor{keywordtype}{char} *regexGroupList[3];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00073}00073     getRegexGroup(regexGroupList, message, command-\/>regex);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00073}00073     \mbox{\hyperlink{regex_8c_aa65837f664d674ef7d9dbc95bf926990}{getRegexGroup}}(regexGroupList, message, command-\/>\mbox{\hyperlink{struct_command_a9f3c1102da0931dd8a0fa03a94b3a335}{regex}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00074}00074     \textcolor{comment}{// regexGroupList[0] == full message.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00075}00075     \textcolor{comment}{// regexGroupList[1] == username targeted.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00076}00076     \textcolor{comment}{// regexGroupList[2] == message to send to the targeted client.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00077}00077 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00078}00078     \mbox{\hyperlink{struct_client}{Client}} *clientTargeted = contains(clientList, regexGroupList[1]);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00078}00078     \mbox{\hyperlink{struct_client}{Client}} *clientTargeted = \mbox{\hyperlink{_list_8c_a1007aa3bf350bf7783048f059d8becd9}{contains}}(\mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}, regexGroupList[1]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00079}00079 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00080}00080     \textcolor{keywordflow}{if} (clientTargeted == NULL) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00081}00081         sendMessage(clientSender-\/>acceptedSocketDescriptor, \textcolor{stringliteral}{"{}User not found. \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00081}00081         \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(clientSender-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, \textcolor{stringliteral}{"{}User not found. \(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00082}00082     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00083}00083     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00084}00084         \textcolor{keywordtype}{size\_t} sizeOfMessage = (strlen(clientTargeted-\/>username) + strlen(regexGroupList[2]) + 8) * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char});}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00084}00084         \textcolor{keywordtype}{size\_t} sizeOfMessage = (strlen(clientTargeted-\/>\mbox{\hyperlink{struct_client_a9b20c006bd90a09e1465fb668700e81d}{username}}) + strlen(regexGroupList[2]) + 8) * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00085}00085 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00086}00086         \textcolor{comment}{// Message for sender.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00087}00087         \textcolor{keywordtype}{char} messageForSender[sizeOfMessage];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00088}00088         \textcolor{keywordtype}{char} *tabSender[] = \{\textcolor{stringliteral}{"{}Me-\/>"{}}, clientTargeted-\/>username, regexGroupList[2], \textcolor{stringliteral}{"{}\(\backslash\)n"{}} \};}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00089}00089         strcatArray(messageForSender, (\textcolor{keywordtype}{int})sizeOfMessage, tabSender, 4);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00088}00088         \textcolor{keywordtype}{char} *tabSender[] = \{\textcolor{stringliteral}{"{}Me-\/>"{}}, clientTargeted-\/>\mbox{\hyperlink{struct_client_a9b20c006bd90a09e1465fb668700e81d}{username}}, regexGroupList[2], \textcolor{stringliteral}{"{}\(\backslash\)n"{}} \};}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00089}00089         \mbox{\hyperlink{util_8c_a1e8548bc90b2ba5fb3773896ee778721}{strcatArray}}(messageForSender, (\textcolor{keywordtype}{int})sizeOfMessage, tabSender, 4);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00090}00090 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00091}00091         \textcolor{comment}{// Message for target.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00092}00092         \textcolor{keywordtype}{char} messageForTarget[sizeOfMessage];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00093}00093         \textcolor{keywordtype}{char} *tabTarget[] = \{ clientSender-\/>username, \textcolor{stringliteral}{"{}-\/>Me : "{}}, regexGroupList[2], \textcolor{stringliteral}{"{}\(\backslash\)n"{}} \};}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00094}00094         strcatArray(messageForTarget, (\textcolor{keywordtype}{int})sizeOfMessage, tabTarget, 4);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00093}00093         \textcolor{keywordtype}{char} *tabTarget[] = \{ clientSender-\/>\mbox{\hyperlink{struct_client_a9b20c006bd90a09e1465fb668700e81d}{username}}, \textcolor{stringliteral}{"{}-\/>Me : "{}}, regexGroupList[2], \textcolor{stringliteral}{"{}\(\backslash\)n"{}} \};}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00094}00094         \mbox{\hyperlink{util_8c_a1e8548bc90b2ba5fb3773896ee778721}{strcatArray}}(messageForTarget, (\textcolor{keywordtype}{int})sizeOfMessage, tabTarget, 4);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00095}00095 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00096}00096         sendMessage(clientTargeted-\/>acceptedSocketDescriptor, messageForTarget);}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00097}00097         sendMessage(clientSender-\/>acceptedSocketDescriptor, messageForSender);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00096}00096         \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(clientTargeted-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, messageForTarget);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00097}00097         \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(clientSender-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, messageForSender);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00098}00098     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00099}00099 \textcolor{comment}{//    free(regexGroupList[0]);}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00100}00100 \textcolor{comment}{//    free(regexGroupList[1]);}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00101}00101 \textcolor{comment}{//    free(regexGroupList[2]);}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00102}00102 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00103}00103 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00111}00111 \textcolor{keywordtype}{void} fileAction (\mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00111}\mbox{\hyperlink{action_8c_aaa9a1375e669fd7686c7628599f0fcc4}{00111}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_aaa9a1375e669fd7686c7628599f0fcc4}{fileAction}} (\mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00112}00112     \textcolor{comment}{// /file -\/send filename             Envoie un fichier au serveur.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00113}00113     \textcolor{comment}{// /file -\/get filename              Récupère un fichier du serveur.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00114}00114     \textcolor{comment}{// /file username filename          Envoie un fichier à un autre utilisateur connecté.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00115}00115 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00116}00116     \textcolor{comment}{// Get regex groups.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00117}00117     \textcolor{keywordtype}{char} *regexGroupList[3];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00118}00118     getRegexGroup(regexGroupList, message, command-\/>regex);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00118}00118     \mbox{\hyperlink{regex_8c_aa65837f664d674ef7d9dbc95bf926990}{getRegexGroup}}(regexGroupList, message, command-\/>\mbox{\hyperlink{struct_command_a9f3c1102da0931dd8a0fa03a94b3a335}{regex}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00119}00119     \textcolor{comment}{// regexGroupList[0] = message}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00120}00120     \textcolor{comment}{// regexGroupList[1] = -\/send || -\/get || username}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00121}00121     \textcolor{comment}{// regexGroupList[2] = filename}}
@@ -100,21 +100,21 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00125}00125     \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}-\/send"{}}, regexGroupList[1]) == 0) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00126}00126         \textcolor{comment}{// User send file to the server.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00127}00127         printf(\textcolor{stringliteral}{"{}file -\/send filename\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00128}00128         pthread\_create(\&fileThread, NULL, receiveFileThreaded, regexGroupList[2]);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00128}00128         pthread\_create(\&fileThread, NULL, \mbox{\hyperlink{action_threaded_8c_a1791571829c482a3ddb06d47448443c5}{receiveFileThreaded}}, regexGroupList[2]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00129}00129     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(\textcolor{stringliteral}{"{}-\/get"{}}, regexGroupList[1]) == 0) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00130}00130         \textcolor{comment}{// User get file from the server.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00131}00131         printf(\textcolor{stringliteral}{"{}file -\/get filename\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00132}00132         pthread\_create(\&fileThread, NULL, sendFileThreaded, regexGroupList[2]);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00132}00132         pthread\_create(\&fileThread, NULL, \mbox{\hyperlink{action_threaded_8c_af9c7575358b533e2892ce17c66c19237}{sendFileThreaded}}, regexGroupList[2]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00133}00133     \} \textcolor{keywordflow}{else} \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00134}00134         \textcolor{comment}{// User send file to other user.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00135}00135         printf(\textcolor{stringliteral}{"{}file username filename\(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00136}00136 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00137}00137         \textcolor{keyword}{struct }\mbox{\hyperlink{structparam_file_threaded}{paramFileThreaded}} *param;}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00138}00138         param = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structparam_file_threaded}{paramFileThreaded}}));}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00139}00139         param-\/>message = message;}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00140}00140         param-\/>username = regexGroupList[1];    \textcolor{comment}{// -\/send || -\/get || username}}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00139}00139         param-\/>\mbox{\hyperlink{structparam_file_threaded_a0b2e8c7f76df48129f994ecc46d5c66c}{message}} = \mbox{\hyperlink{structparam_file_threaded_a0b2e8c7f76df48129f994ecc46d5c66c}{message}};}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00140}00140         param-\/>\mbox{\hyperlink{structparam_file_threaded_a9b20c006bd90a09e1465fb668700e81d}{username}} = regexGroupList[1];    \textcolor{comment}{// -\/send || -\/get || username}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00141}00141 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00142}00142         pthread\_create(\&fileThread, NULL, mpFileThreaded, param);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00142}00142         pthread\_create(\&fileThread, NULL, \mbox{\hyperlink{action_threaded_8c_a99bde1465ed83caaf2e8613d7df8f642}{mpFileThreaded}}, param);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00143}00143 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00144}00144         free(regexGroupList[0]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00145}00145 \textcolor{comment}{//    free(regexGroupList[1]);}}
@@ -122,21 +122,21 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00147}00147     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00148}00148 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00149}00149 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00155}00155 \textcolor{keywordtype}{void} unknownAction (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00156}00156     sendMessage(client-\/>acceptedSocketDescriptor, \textcolor{stringliteral}{"{}Commande inconnue. /help pour avoir la liste des commandes. \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00155}\mbox{\hyperlink{action_8c_a7f9a96f67c1213c54a7c1ad6bcb89905}{00155}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_a7f9a96f67c1213c54a7c1ad6bcb89905}{unknownAction}} (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00156}00156     \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, \textcolor{stringliteral}{"{}Commande inconnue. /help pour avoir la liste des commandes. \(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00157}00157 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00158}00158 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00164}00164 \textcolor{keywordtype}{void} filesAction (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00164}\mbox{\hyperlink{action_8c_add4076230c6f628c411c6224b03081fe}{00164}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_add4076230c6f628c411c6224b03081fe}{filesAction}} (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00165}00165     \textcolor{comment}{// Get uploads path.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00166}00166     \textcolor{keywordtype}{char} uploadDirectoryPath[200];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00167}00167     getUploadDirectoryPath(uploadDirectoryPath);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00167}00167     \mbox{\hyperlink{util_8c_aba1623ca3e44b15e0920f664207587c0}{getUploadDirectoryPath}}(uploadDirectoryPath);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00168}00168 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00169}00169     \textcolor{comment}{// Get directory.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00170}00170     DIR *directory;}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00171}00171     \textcolor{keyword}{struct }dirent *file;}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00172}00172     directory = opendir(uploadDirectoryPath);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00173}00173     \textcolor{keywordflow}{if} (directory == NULL) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00174}00174         throwError(\textcolor{stringliteral}{"{}Unable to open the directory. \(\backslash\)n"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00174}00174         \mbox{\hyperlink{error_8c_ad5fd1194b361cfb4bc723c13d4b2182b}{throwError}}(\textcolor{stringliteral}{"{}Unable to open the directory. \(\backslash\)n"{}}, 0);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00175}00175     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00176}00176 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00177}00177     \textcolor{keywordtype}{char} stringNameFile[300];   \textcolor{comment}{// String containing name of files within /uploads.}}
@@ -153,24 +153,24 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00188}00188     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00189}00189     closedir(directory);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00190}00190     strcat(stringNameFile, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00191}00191     sendMessage(client-\/>acceptedSocketDescriptor, stringNameFile);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00191}00191     \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, stringNameFile);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00192}00192 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00193}00193 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00201}00201 \textcolor{keywordtype}{void} kickAction (\mbox{\hyperlink{struct_client}{Client}} *clientKicker, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00201}\mbox{\hyperlink{action_8c_ae26ad26fea3b105269a46a6abb845391}{00201}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_ae26ad26fea3b105269a46a6abb845391}{kickAction}} (\mbox{\hyperlink{struct_client}{Client}} *clientKicker, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00202}00202     \textcolor{comment}{// Get regex groups.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00203}00203     \textcolor{keywordtype}{char} *regexGroupList[3];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00204}00204     getRegexGroup(regexGroupList, message, command-\/>regex);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00204}00204     \mbox{\hyperlink{regex_8c_aa65837f664d674ef7d9dbc95bf926990}{getRegexGroup}}(regexGroupList, message, command-\/>\mbox{\hyperlink{struct_command_a9f3c1102da0931dd8a0fa03a94b3a335}{regex}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00205}00205     \textcolor{comment}{// regexGroupList[1] = username to kick.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00206}00206 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00207}00207     \mbox{\hyperlink{struct_client}{Client}} *clientToKick = contains(clientList, regexGroupList[1]);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00207}00207     \mbox{\hyperlink{struct_client}{Client}} *clientToKick = \mbox{\hyperlink{_list_8c_a1007aa3bf350bf7783048f059d8becd9}{contains}}(\mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}, regexGroupList[1]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00208}00208     \textcolor{keywordflow}{if} (clientToKick == NULL) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00209}00209         \textcolor{comment}{// User not found.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00210}00210         sendMessage(clientKicker-\/>acceptedSocketDescriptor, \textcolor{stringliteral}{"{}Client not found. \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00210}00210         \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(clientKicker-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, \textcolor{stringliteral}{"{}Client not found. \(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00211}00211     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00212}00212     \textcolor{keywordflow}{else} \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00213}00213         \textcolor{comment}{// User to kick found.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00214}00214         sendMessage(clientToKick-\/>acceptedSocketDescriptor, \textcolor{stringliteral}{"{}/disconnect\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00215}00215         sendMessage(clientKicker-\/>acceptedSocketDescriptor, \textcolor{stringliteral}{"{}Client kicked. \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00214}00214         \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(clientToKick-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, \textcolor{stringliteral}{"{}/disconnect\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00215}00215         \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(clientKicker-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, \textcolor{stringliteral}{"{}Client kicked. \(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00216}00216     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00217}00217 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00218}00218     free(regexGroupList[0]);}
@@ -178,20 +178,20 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00220}00220     free(regexGroupList[2]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00221}00221 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00222}00222 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00230}00230 \textcolor{keywordtype}{void} renameAction (\mbox{\hyperlink{struct_client}{Client}} *client, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00230}\mbox{\hyperlink{action_8c_a80cf338e739a31297792a9b4a0e1f971}{00230}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_a80cf338e739a31297792a9b4a0e1f971}{renameAction}} (\mbox{\hyperlink{struct_client}{Client}} *client, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00231}00231     \textcolor{comment}{// Get regex groups.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00232}00232     \textcolor{keywordtype}{char} *regexGroupList[3];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00233}00233     getRegexGroup(regexGroupList, message, command-\/>regex);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00233}00233     \mbox{\hyperlink{regex_8c_aa65837f664d674ef7d9dbc95bf926990}{getRegexGroup}}(regexGroupList, message, command-\/>\mbox{\hyperlink{struct_command_a9f3c1102da0931dd8a0fa03a94b3a335}{regex}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00234}00234     \textcolor{comment}{// regexGroupList[1] = new username.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00235}00235 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00236}00236     \textcolor{keywordflow}{if} (contains(clientList, regexGroupList[1])) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00236}00236     \textcolor{keywordflow}{if} (\mbox{\hyperlink{_list_8c_a1007aa3bf350bf7783048f059d8becd9}{contains}}(\mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}, regexGroupList[1])) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00237}00237         \textcolor{comment}{// Username already exists.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00238}00238         sendMessage(client-\/>acceptedSocketDescriptor, \textcolor{stringliteral}{"{}This username is already used. \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00238}00238         \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, \textcolor{stringliteral}{"{}This username is already used. \(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00239}00239     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00240}00240     \textcolor{keywordflow}{else} \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00241}00241         \textcolor{comment}{// Username valid.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00242}00242         strcpy(client-\/>username, regexGroupList[1]);}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00243}00243         sendMessage(client-\/>acceptedSocketDescriptor, \textcolor{stringliteral}{"{}Username updated. \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00242}00242         strcpy(client-\/>\mbox{\hyperlink{struct_client_a9b20c006bd90a09e1465fb668700e81d}{username}}, regexGroupList[1]);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00243}00243         \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, \textcolor{stringliteral}{"{}Username updated. \(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00244}00244     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00245}00245 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00246}00246     free(regexGroupList[0]);}
@@ -199,16 +199,16 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00248}00248     free(regexGroupList[2]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00249}00249 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00250}00250 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00256}00256 \textcolor{keywordtype}{void} channelAction (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00256}\mbox{\hyperlink{action_8c_a97c0c442c45d34d7562b4f50c5289e32}{00256}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_a97c0c442c45d34d7562b4f50c5289e32}{channelAction}} (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00257}00257     \textcolor{keywordtype}{int} bufferSize = 200;}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00258}00258     \textcolor{keywordtype}{char} buffer[bufferSize];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00259}00259     getFullChannelName(client-\/>indexCurrentChannel, buffer, bufferSize);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00259}00259     \mbox{\hyperlink{_channel_8c_a4c6d599cdbb89a864d628b8a6a3e3e45}{getFullChannelName}}(client-\/>\mbox{\hyperlink{struct_client_ac68008534f800db5b81ce5d08d0dc768}{indexCurrentChannel}}, buffer, bufferSize);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00260}00260 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00261}00261     printf(\textcolor{stringliteral}{"{}channelAction : \%s"{}}, buffer);}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00262}00262     sendMessage(client-\/>acceptedSocketDescriptor, buffer);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00262}00262     \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, buffer);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00263}00263 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00264}00264 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00270}00270 \textcolor{keywordtype}{void} channelsAction (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00270}\mbox{\hyperlink{action_8c_aaa010505a4945d6981c93bf0f1084a1e}{00270}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_aaa010505a4945d6981c93bf0f1084a1e}{channelsAction}} (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00271}00271     \textcolor{keywordtype}{int} bufferSize = 800;}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00272}00272     \textcolor{keywordtype}{char} buffer[bufferSize];}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00273}00273     bzero(buffer, bufferSize);}
@@ -216,20 +216,20 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00275}00275     \textcolor{keywordtype}{int} subBufferSize = 200;}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00276}00276     \textcolor{keywordtype}{char} subBuffer[subBufferSize];}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00277}00277 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00278}00278     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NB\_CHANNEL; i++) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00279}00279         \textcolor{keywordflow}{if} (channelList[i]-\/>isPublic) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00278}00278     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{global_8c_a3a5d7a6cec8e2e13fd52da8cf4fb8125}{NB\_CHANNEL}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00279}00279         \textcolor{keywordflow}{if} (\mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[i]-\/>isPublic) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00280}00280             strcat(buffer, \textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00281}00281             getFullChannelName(i, subBuffer, subBufferSize);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00281}00281             \mbox{\hyperlink{_channel_8c_a4c6d599cdbb89a864d628b8a6a3e3e45}{getFullChannelName}}(i, subBuffer, subBufferSize);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00282}00282             strcat(buffer, subBuffer);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00283}00283         \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00284}00284     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00285}00285 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00286}00286     strcat(buffer, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00287}00287 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00288}00288     sendMessage(client-\/>acceptedSocketDescriptor, buffer);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00288}00288     \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, buffer);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00289}00289 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00290}00290 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00298}00298 \textcolor{keywordtype}{void} joinAction (\mbox{\hyperlink{struct_client}{Client}} *client, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00298}\mbox{\hyperlink{action_8c_ac2fb235f9f56b1af349ece85a2ed77c0}{00298}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_ac2fb235f9f56b1af349ece85a2ed77c0}{joinAction}} (\mbox{\hyperlink{struct_client}{Client}} *client, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00299}00299     \textcolor{comment}{// Check that wanted channel exists.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00300}00300     \textcolor{comment}{// Send the port of this socket.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00301}00301     \textcolor{comment}{// Wait for client's connection to the new socket.}}
@@ -238,53 +238,53 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00304}00304 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00305}00305     \textcolor{comment}{// Get regex groups.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00306}00306     \textcolor{keywordtype}{char} *regexGroupList[3];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00307}00307     getRegexGroup(regexGroupList, message, command-\/>regex);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00307}00307     \mbox{\hyperlink{regex_8c_aa65837f664d674ef7d9dbc95bf926990}{getRegexGroup}}(regexGroupList, message, command-\/>\mbox{\hyperlink{struct_command_a9f3c1102da0931dd8a0fa03a94b3a335}{regex}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00308}00308     \textcolor{keywordtype}{int} channelIndex = atoi(regexGroupList[1]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00309}00309 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00310}00310     \textcolor{comment}{// Connect to the switch socket.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00311}00311     \textcolor{keywordtype}{int} clientSwitchSocket = connectToClient(channelList[INDEX\_SWITCH\_CHANNEL]-\/>serverSocketDescriptor);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00311}00311     \textcolor{keywordtype}{int} clientSwitchSocket = \mbox{\hyperlink{client_socket_8c_a4cfd20ed36939fbc7c7ab4a583296212}{connectToClient}}(\mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[\mbox{\hyperlink{global_8c_a084563befd809c1db2ff54100af846d2}{INDEX\_SWITCH\_CHANNEL}}]-\/>serverSocketDescriptor);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00312}00312 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00313}00313     \textcolor{keywordflow}{if} (channelIndex == client-\/>indexCurrentChannel) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00313}00313     \textcolor{keywordflow}{if} (channelIndex == client-\/>\mbox{\hyperlink{struct_client_ac68008534f800db5b81ce5d08d0dc768}{indexCurrentChannel}}) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00314}00314         \textcolor{comment}{// User already in this channel.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00315}00315         \textcolor{comment}{// Send error status.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00316}00316         sendMessageInt(clientSwitchSocket, 400);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00316}00316         \mbox{\hyperlink{send_8c_a592e2bf7700b3e975ea53992cf1a7a99}{sendMessageInt}}(clientSwitchSocket, 400);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00317}00317     \}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00318}00318     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (channelIndex < 0 || channelIndex >= NB\_CHANNEL || ! channelList[channelIndex]-\/>isPublic) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00318}00318     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (channelIndex < 0 || channelIndex >= \mbox{\hyperlink{global_8c_a3a5d7a6cec8e2e13fd52da8cf4fb8125}{NB\_CHANNEL}} || ! \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[channelIndex]-\/>isPublic) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00319}00319         \textcolor{comment}{// Channel invalid.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00320}00320         \textcolor{comment}{// Send error status.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00321}00321         sendMessageInt(clientSwitchSocket, 404);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00321}00321         \mbox{\hyperlink{send_8c_a592e2bf7700b3e975ea53992cf1a7a99}{sendMessageInt}}(clientSwitchSocket, 404);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00322}00322     \}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00323}00323     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (isFull(channelList[channelIndex])) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00323}00323     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{_channel_8c_a6c94b305d8738925f917a9254116df1a}{isFull}}(\mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[channelIndex])) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00324}00324         \textcolor{comment}{// Channel already full.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00325}00325         \textcolor{comment}{// Send error status.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00326}00326         sendMessageInt(clientSwitchSocket, 409);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00326}00326         \mbox{\hyperlink{send_8c_a592e2bf7700b3e975ea53992cf1a7a99}{sendMessageInt}}(clientSwitchSocket, 409);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00327}00327     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00328}00328     \textcolor{keywordflow}{else} \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00329}00329         \textcolor{comment}{// Valid channel.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00330}00330         \textcolor{comment}{// Connect to switch channel and send port in it.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00331}00331         sendMessageInt(clientSwitchSocket, channelList[channelIndex]-\/>port);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00331}00331         \mbox{\hyperlink{send_8c_a592e2bf7700b3e975ea53992cf1a7a99}{sendMessageInt}}(clientSwitchSocket, \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[channelIndex]-\/>port);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00332}00332         close(clientSwitchSocket);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00333}00333 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00334}00334         \textcolor{keywordtype}{int} newClientSocket = connectToClient(channelList[channelIndex]-\/>serverSocketDescriptor);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00334}00334         \textcolor{keywordtype}{int} newClientSocket = \mbox{\hyperlink{client_socket_8c_a4cfd20ed36939fbc7c7ab4a583296212}{connectToClient}}(\mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[channelIndex]-\/>serverSocketDescriptor);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00335}00335 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00336}00336         \textcolor{keywordtype}{int} oldSocket = client-\/>acceptedSocketDescriptor;}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00337}00337         \textcolor{keywordtype}{int} oldIndexChannel = client-\/>indexCurrentChannel;}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00338}00338         client-\/>acceptedSocketDescriptor = newClientSocket;}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00339}00339         client-\/>indexCurrentChannel = channelIndex;}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00336}00336         \textcolor{keywordtype}{int} oldSocket = client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}};}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00337}00337         \textcolor{keywordtype}{int} oldIndexChannel = client-\/>\mbox{\hyperlink{struct_client_ac68008534f800db5b81ce5d08d0dc768}{indexCurrentChannel}};}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00338}00338         client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}} = newClientSocket;}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00339}00339         client-\/>\mbox{\hyperlink{struct_client_ac68008534f800db5b81ce5d08d0dc768}{indexCurrentChannel}} = channelIndex;}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00340}00340 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00341}00341 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00342}00342         \textcolor{keywordtype}{char} *resetMessage = \textcolor{stringliteral}{"{}\(\backslash\)0"{}};  \textcolor{comment}{// Need to send this reset message because the client is blocked in receiveMessage(...).}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00343}00343         sendMessageInt(oldSocket, 1);  \textcolor{comment}{// Client blocked in recv int with the old socket.}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00344}00344         sendMessageString(newClientSocket, resetMessage, 1);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00343}00343         \mbox{\hyperlink{send_8c_a592e2bf7700b3e975ea53992cf1a7a99}{sendMessageInt}}(oldSocket, 1);  \textcolor{comment}{// Client blocked in recv int with the old socket.}}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00344}00344         \mbox{\hyperlink{send_8c_adfc2559fd434eeb9067159920b6d7d19}{sendMessageString}}(newClientSocket, resetMessage, 1);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00345}00345 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00346}00346         \textcolor{comment}{// Get old channel name.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00347}00347         \textcolor{keywordtype}{char} oldChannelName[100];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00348}00348         getChannelName(channelIndex, oldChannelName, 100);}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00349}00349         sendMessage(oldSocket, oldChannelName);    \textcolor{comment}{// Send the new channel name to the user.}}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00348}00348         \mbox{\hyperlink{_channel_8c_ae97a443c46c5ae230dddb773becca255}{getChannelName}}(channelIndex, oldChannelName, 100);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00349}00349         \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(oldSocket, oldChannelName);    \textcolor{comment}{// Send the new channel name to the user.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00350}00350         close(oldSocket);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00351}00351 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00352}00352         \textcolor{keyword}{delete}(channelList[oldIndexChannel]-\/>clientList, client);}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00353}00353         add(channelList[channelIndex]-\/>clientList, client);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00352}00352         \textcolor{keyword}{delete}(\mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[oldIndexChannel]-\/>\mbox{\hyperlink{struct_channel_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}, client);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00353}00353         \mbox{\hyperlink{_list_8c_a971206958c5754d7adc0042058ba4130}{add}}(\mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[channelIndex]-\/>\mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}, client);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00354}00354     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00355}00355 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00356}00356     free(regexGroupList[0]);}
@@ -292,26 +292,26 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00358}00358     free(regexGroupList[2]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00359}00359 \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00360}00360 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00368}00368 \textcolor{keywordtype}{void} allAction (\mbox{\hyperlink{struct_client}{Client}} *client, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00369}00369     \textcolor{keywordflow}{if} (isEmpty(clientList)) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00370}00370         throwError(\textcolor{stringliteral}{"{}Client list empty. \(\backslash\)n"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00368}\mbox{\hyperlink{action_8c_af07f65fd4959f197bf7f2d14b1187485}{00368}} \textcolor{keywordtype}{void} \mbox{\hyperlink{action_8c_af07f65fd4959f197bf7f2d14b1187485}{allAction}} (\mbox{\hyperlink{struct_client}{Client}} *client, \mbox{\hyperlink{struct_command}{Command}} *command, \textcolor{keywordtype}{char} *message) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00369}00369     \textcolor{keywordflow}{if} (\mbox{\hyperlink{_list_8c_ac5b3cc3f57d146c45ed97a020807074c}{isEmpty}}(\mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}})) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00370}00370         \mbox{\hyperlink{error_8c_ad5fd1194b361cfb4bc723c13d4b2182b}{throwError}}(\textcolor{stringliteral}{"{}Client list empty. \(\backslash\)n"{}}, 0);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00371}00371     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00372}00372 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00373}00373     \textcolor{comment}{// Get regex groups.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00374}00374     \textcolor{keywordtype}{char} *regexGroupList[3];}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00375}00375     getRegexGroup(regexGroupList, message, command-\/>regex);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00375}00375     \mbox{\hyperlink{regex_8c_aa65837f664d674ef7d9dbc95bf926990}{getRegexGroup}}(regexGroupList, message, command-\/>\mbox{\hyperlink{struct_command_a9f3c1102da0931dd8a0fa03a94b3a335}{regex}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00376}00376     \textcolor{comment}{// regexGroupList[1] == message to send.}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00377}00377 }
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00378}00378     \mbox{\hyperlink{struct_node}{Node}} *current = next(clientList-\/>head);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00378}00378     \mbox{\hyperlink{struct_node}{Node}} *current = \mbox{\hyperlink{_list_8c_a747eb18625a1312ab4b20c9bd2fc6508}{next}}(\mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}-\/>\mbox{\hyperlink{struct_list_aa3e81b47ac0637ebb1ea7cc12812405a}{head}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00379}00379     \textcolor{keywordflow}{while} (current != NULL) \{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00380}00380         \textcolor{keywordflow}{if} (isSocketConnected(current-\/>client-\/>acceptedSocketDescriptor)) \{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00380}00380         \textcolor{keywordflow}{if} (\mbox{\hyperlink{client_socket_8c_a2d7d327343fcb081adaced431ae05bd2}{isSocketConnected}}(current-\/>\mbox{\hyperlink{struct_node_af10e4a54385eb944ebb7b2d136388256}{client}}-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}})) \{}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00381}00381             \textcolor{keywordtype}{char} *msgWithClientName;}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00382}00382             \textcolor{keywordtype}{size\_t} msgSize;}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00383}00383             \textcolor{keywordflow}{if}(current-\/>client-\/>acceptedSocketDescriptor != client-\/>acceptedSocketDescriptor)\{}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00384}00384                 msgSize = strlen(client-\/>username) + strlen(regexGroupList[1]) + 10;}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00383}00383             \textcolor{keywordflow}{if}(current-\/>\mbox{\hyperlink{struct_node_af10e4a54385eb944ebb7b2d136388256}{client}}-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}} != client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}})\{}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00384}00384                 msgSize = strlen(client-\/>\mbox{\hyperlink{struct_client_a9b20c006bd90a09e1465fb668700e81d}{username}}) + strlen(regexGroupList[1]) + 10;}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00385}00385                 msgWithClientName = (\textcolor{keywordtype}{char}*)malloc(msgSize);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00386}00386                 bzero(msgWithClientName, msgSize);}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00387}00387                 strcat(msgWithClientName, client-\/>username);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00387}00387                 strcat(msgWithClientName, client-\/>\mbox{\hyperlink{struct_client_a9b20c006bd90a09e1465fb668700e81d}{username}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00388}00388                 strcat(msgWithClientName, \textcolor{stringliteral}{"{}-\/>ALL"{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00389}00389             \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00390}00390             \textcolor{keywordflow}{else} \{}
@@ -324,10 +324,10 @@
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00397}00397             strcat(msgWithClientName,\textcolor{stringliteral}{"{} : "{}});}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00398}00398             strcat(msgWithClientName, regexGroupList[1]);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00399}00399             strcat(msgWithClientName, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00400}00400             sendMessage(current-\/>client-\/>acceptedSocketDescriptor, msgWithClientName);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00400}00400             \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{sendMessage}}(current-\/>\mbox{\hyperlink{struct_node_af10e4a54385eb944ebb7b2d136388256}{client}}-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}}, msgWithClientName);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00401}00401             free(msgWithClientName);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00402}00402         \}}
-\DoxyCodeLine{\Hypertarget{action_8c_source_l00403}00403         current = next(current);}
+\DoxyCodeLine{\Hypertarget{action_8c_source_l00403}00403         current = \mbox{\hyperlink{_list_8c_a747eb18625a1312ab4b20c9bd2fc6508}{next}}(current);}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00404}00404     \}}
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00405}00405 }
 \DoxyCodeLine{\Hypertarget{action_8c_source_l00406}00406     free(regexGroupList[0]);}

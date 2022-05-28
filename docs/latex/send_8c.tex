@@ -1,0 +1,136 @@
+\hypertarget{send_8c}{}\doxysection{src/socket/send.c File Reference}
+\label{send_8c}\index{src/socket/send.c@{src/socket/send.c}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{send_8c_a592e2bf7700b3e975ea53992cf1a7a99}{send\+Message\+Int}} (int accepted\+Socket\+Descriptor, int message\+Int)
+\item 
+void \mbox{\hyperlink{send_8c_adfc2559fd434eeb9067159920b6d7d19}{send\+Message\+String}} (int accepted\+Socket\+Descriptor, char $\ast$message, int size)
+\item 
+void \mbox{\hyperlink{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}{send\+Message}} (int accepted\+Socket\+Descriptor, char $\ast$message)
+\item 
+void \mbox{\hyperlink{send_8c_a7c3db8391bee9ddd7d4d297ee83d5778}{send\+To\+Channel}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client, char $\ast$message)
+\item 
+void \mbox{\hyperlink{send_8c_a4baf4d0414081a482415084713b917b6}{send\+File}} (int client\+Socket\+For\+File, FILE $\ast$file)
+\item 
+void \mbox{\hyperlink{send_8c_ae43456bfb14820623a3d579cb841ddc0}{send\+Port}} (int port)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{send_8c_a4baf4d0414081a482415084713b917b6}\label{send_8c_a4baf4d0414081a482415084713b917b6}} 
+\index{send.c@{send.c}!sendFile@{sendFile}}
+\index{sendFile@{sendFile}!send.c@{send.c}}
+\doxysubsubsection{\texorpdfstring{sendFile()}{sendFile()}}
+{\footnotesize\ttfamily void send\+File (\begin{DoxyParamCaption}\item[{int}]{client\+Socket\+For\+File,  }\item[{FILE $\ast$}]{file }\end{DoxyParamCaption})}
+
+Send the file in params to the client\textquotesingle{}s socket also in params. The file is sent by blocs of size MAX\+\_\+\+SIZE\+\_\+\+SENT.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+Socket\+For\+File} & \\
+\hline
+{\em file} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{send_8c_source_l00097}{97}} of file \mbox{\hyperlink{send_8c_source}{send.\+c}}.
+
+\mbox{\Hypertarget{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}\label{send_8c_ad0918a45bba2cf75a7b3b13e1e4e1e92}} 
+\index{send.c@{send.c}!sendMessage@{sendMessage}}
+\index{sendMessage@{sendMessage}!send.c@{send.c}}
+\doxysubsubsection{\texorpdfstring{sendMessage()}{sendMessage()}}
+{\footnotesize\ttfamily void send\+Message (\begin{DoxyParamCaption}\item[{int}]{accepted\+Socket\+Descriptor,  }\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Firstly, send the message\+Size through the accepted socket descriptor. Secondly, send the message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em accepted\+Socket\+Descriptor} & \\
+\hline
+{\em message} & \\
+\hline
+{\em message\+Size} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{send_8c_source_l00043}{43}} of file \mbox{\hyperlink{send_8c_source}{send.\+c}}.
+
+\mbox{\Hypertarget{send_8c_a592e2bf7700b3e975ea53992cf1a7a99}\label{send_8c_a592e2bf7700b3e975ea53992cf1a7a99}} 
+\index{send.c@{send.c}!sendMessageInt@{sendMessageInt}}
+\index{sendMessageInt@{sendMessageInt}!send.c@{send.c}}
+\doxysubsubsection{\texorpdfstring{sendMessageInt()}{sendMessageInt()}}
+{\footnotesize\ttfamily void send\+Message\+Int (\begin{DoxyParamCaption}\item[{int}]{accepted\+Socket\+Descriptor,  }\item[{int}]{message\+Int }\end{DoxyParamCaption})}
+
+For an accepted socket descriptor in params, send a message of type int. This message is usually used to send the message\textquotesingle{}s size which will be sent after. Or also, it sends a status.
+
+
+\begin{DoxyParams}{Parameters}
+{\em accepted\+Socket\+Descriptor} & \\
+\hline
+{\em message\+Int} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{send_8c_source_l00008}{8}} of file \mbox{\hyperlink{send_8c_source}{send.\+c}}.
+
+\mbox{\Hypertarget{send_8c_adfc2559fd434eeb9067159920b6d7d19}\label{send_8c_adfc2559fd434eeb9067159920b6d7d19}} 
+\index{send.c@{send.c}!sendMessageString@{sendMessageString}}
+\index{sendMessageString@{sendMessageString}!send.c@{send.c}}
+\doxysubsubsection{\texorpdfstring{sendMessageString()}{sendMessageString()}}
+{\footnotesize\ttfamily void send\+Message\+String (\begin{DoxyParamCaption}\item[{int}]{accepted\+Socket\+Descriptor,  }\item[{char $\ast$}]{message,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+For an accepted socket descriptor and a message size, send the message in params.
+
+
+\begin{DoxyParams}{Parameters}
+{\em accepted\+Socket\+Descriptor} & \\
+\hline
+{\em message} & \\
+\hline
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{send_8c_source_l00025}{25}} of file \mbox{\hyperlink{send_8c_source}{send.\+c}}.
+
+\mbox{\Hypertarget{send_8c_ae43456bfb14820623a3d579cb841ddc0}\label{send_8c_ae43456bfb14820623a3d579cb841ddc0}} 
+\index{send.c@{send.c}!sendPort@{sendPort}}
+\index{sendPort@{sendPort}!send.c@{send.c}}
+\doxysubsubsection{\texorpdfstring{sendPort()}{sendPort()}}
+{\footnotesize\ttfamily void send\+Port (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
+
+Connection with the client\+Targeted to the switch socket. After that, send the new port.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{send_8c_source_l00129}{129}} of file \mbox{\hyperlink{send_8c_source}{send.\+c}}.
+
+\mbox{\Hypertarget{send_8c_a7c3db8391bee9ddd7d4d297ee83d5778}\label{send_8c_a7c3db8391bee9ddd7d4d297ee83d5778}} 
+\index{send.c@{send.c}!sendToChannel@{sendToChannel}}
+\index{sendToChannel@{sendToChannel}!send.c@{send.c}}
+\doxysubsubsection{\texorpdfstring{sendToChannel()}{sendToChannel()}}
+{\footnotesize\ttfamily void send\+To\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client,  }\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Send the message to every clients connected, excepted the sender.
+
+
+\begin{DoxyParams}{Parameters}
+{\em accepted\+Socket\+Descriptor\+Sender} & \\
+\hline
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{send_8c_source_l00058}{58}} of file \mbox{\hyperlink{send_8c_source}{send.\+c}}.
+

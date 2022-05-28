@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,17 +69,22 @@ $(function() {
   <div class="headertitle"><div class="title">Client.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><a class="code hl_struct" href="struct_client.html">Client</a> *createClient (<span class="keywordtype">char</span> *username, <span class="keywordtype">int</span> acceptedSocketDescriptor, <span class="keywordtype">int</span> indexCurrentChannel) {</div>
+<a href="_client_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno"><a class="line" href="_client_8c.html#aac95c9864d1606a5da49921f5013d51f">    2</a></span><a class="code hl_struct" href="struct_client.html">Client</a> *<a class="code hl_function" href="_client_8c.html#aac95c9864d1606a5da49921f5013d51f">createClient</a> (<span class="keywordtype">char</span> *username, <span class="keywordtype">int</span> acceptedSocketDescriptor, <span class="keywordtype">int</span> indexCurrentChannel) {</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>    <a class="code hl_struct" href="struct_client.html">Client</a> *client = (<a class="code hl_struct" href="struct_client.html">Client</a> *)malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_client.html">Client</a>));</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    client-&gt;username = username;</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    client-&gt;acceptedSocketDescriptor = acceptedSocketDescriptor;</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    client-&gt;indexCurrentChannel = indexCurrentChannel;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    client-&gt;thread = (pthread_t)malloc(<span class="keyword">sizeof</span>(pthread_t));</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    client-&gt;<a class="code hl_variable" href="struct_client.html#a9b20c006bd90a09e1465fb668700e81d">username</a> = username;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    client-&gt;<a class="code hl_variable" href="struct_client.html#af3026a10afe86549e403ed46b8ff437a">acceptedSocketDescriptor</a> = acceptedSocketDescriptor;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    client-&gt;<a class="code hl_variable" href="struct_client.html#ac68008534f800db5b81ce5d08d0dc768">indexCurrentChannel</a> = indexCurrentChannel;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    client-&gt;<a class="code hl_variable" href="struct_client.html#a01f75a9ad916f63a94e06a27635ba278">thread</a> = (pthread_t)malloc(<span class="keyword">sizeof</span>(pthread_t));</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordflow">return</span> client;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>}</div>
+<div class="ttc" id="a_client_8c_html_aac95c9864d1606a5da49921f5013d51f"><div class="ttname"><a href="_client_8c.html#aac95c9864d1606a5da49921f5013d51f">createClient</a></div><div class="ttdeci">Client * createClient(char *username, int acceptedSocketDescriptor, int indexCurrentChannel)</div><div class="ttdef"><b>Definition:</b> <a href="_client_8c_source.html#l00002">Client.c:2</a></div></div>
 <div class="ttc" id="astruct_client_html"><div class="ttname"><a href="struct_client.html">Client</a></div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00002">Client.h:2</a></div></div>
+<div class="ttc" id="astruct_client_html_a01f75a9ad916f63a94e06a27635ba278"><div class="ttname"><a href="struct_client.html#a01f75a9ad916f63a94e06a27635ba278">Client::thread</a></div><div class="ttdeci">pthread_t thread</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00006">Client.h:6</a></div></div>
+<div class="ttc" id="astruct_client_html_a9b20c006bd90a09e1465fb668700e81d"><div class="ttname"><a href="struct_client.html#a9b20c006bd90a09e1465fb668700e81d">Client::username</a></div><div class="ttdeci">char * username</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00003">Client.h:3</a></div></div>
+<div class="ttc" id="astruct_client_html_ac68008534f800db5b81ce5d08d0dc768"><div class="ttname"><a href="struct_client.html#ac68008534f800db5b81ce5d08d0dc768">Client::indexCurrentChannel</a></div><div class="ttdeci">int indexCurrentChannel</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00005">Client.h:5</a></div></div>
+<div class="ttc" id="astruct_client_html_af3026a10afe86549e403ed46b8ff437a"><div class="ttname"><a href="struct_client.html#af3026a10afe86549e403ed46b8ff437a">Client::acceptedSocketDescriptor</a></div><div class="ttdeci">int acceptedSocketDescriptor</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00004">Client.h:4</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

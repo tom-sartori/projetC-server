@@ -1,0 +1,97 @@
+\hypertarget{_channel_8c}{}\doxysection{src/channel/\+Channel.c File Reference}
+\label{_channel_8c}\index{src/channel/Channel.c@{src/channel/Channel.c}}
+{\ttfamily \#include \char`\"{}conf.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_channel_8c_ae2427715adefa98050ac86d6fa54dbfe}{CHANNEL\+\_\+3\+\_\+\+PORT}}~3003
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_channel}{Channel}} $\ast$ \mbox{\hyperlink{_channel_8c_a393d23d573edc2dd962be8215af86e44}{create\+Channel}} (char $\ast$name, int port, int is\+Public, int size)
+\item 
+void \mbox{\hyperlink{_channel_8c_a5714d30f144b9605b48778b16511c270}{init\+Channel\+List}} ()
+\item 
+int \mbox{\hyperlink{_channel_8c_a6c94b305d8738925f917a9254116df1a}{is\+Full}} (\mbox{\hyperlink{struct_channel}{Channel}} $\ast$channel)
+\item 
+void \mbox{\hyperlink{_channel_8c_ae97a443c46c5ae230dddb773becca255}{get\+Channel\+Name}} (int channel\+Index, char $\ast$buffer, int buffer\+Size)
+\item 
+void \mbox{\hyperlink{_channel_8c_a4c6d599cdbb89a864d628b8a6a3e3e45}{get\+Full\+Channel\+Name}} (int channel\+Index, char $\ast$buffer, int buffer\+Size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_channel_8c_ae2427715adefa98050ac86d6fa54dbfe}\label{_channel_8c_ae2427715adefa98050ac86d6fa54dbfe}} 
+\index{Channel.c@{Channel.c}!CHANNEL\_3\_PORT@{CHANNEL\_3\_PORT}}
+\index{CHANNEL\_3\_PORT@{CHANNEL\_3\_PORT}!Channel.c@{Channel.c}}
+\doxysubsubsection{\texorpdfstring{CHANNEL\_3\_PORT}{CHANNEL\_3\_PORT}}
+{\footnotesize\ttfamily \#define CHANNEL\+\_\+3\+\_\+\+PORT~3003}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_channel_8c_a393d23d573edc2dd962be8215af86e44}\label{_channel_8c_a393d23d573edc2dd962be8215af86e44}} 
+\index{Channel.c@{Channel.c}!createChannel@{createChannel}}
+\index{createChannel@{createChannel}!Channel.c@{Channel.c}}
+\doxysubsubsection{\texorpdfstring{createChannel()}{createChannel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_channel}{Channel}} $\ast$ create\+Channel (\begin{DoxyParamCaption}\item[{char $\ast$}]{name,  }\item[{int}]{port,  }\item[{int}]{is\+Public,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+Malloc and create a channel. Launch socket.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em port} & \\
+\hline
+{\em is\+Public} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+TODO \+: Check unique name.
+
+Definition at line \mbox{\hyperlink{_channel_8c_source_l00012}{12}} of file \mbox{\hyperlink{_channel_8c_source}{Channel.\+c}}.
+
+\mbox{\Hypertarget{_channel_8c_ae97a443c46c5ae230dddb773becca255}\label{_channel_8c_ae97a443c46c5ae230dddb773becca255}} 
+\index{Channel.c@{Channel.c}!getChannelName@{getChannelName}}
+\index{getChannelName@{getChannelName}!Channel.c@{Channel.c}}
+\doxysubsubsection{\texorpdfstring{getChannelName()}{getChannelName()}}
+{\footnotesize\ttfamily void get\+Channel\+Name (\begin{DoxyParamCaption}\item[{int}]{channel\+Index,  }\item[{char $\ast$}]{buffer,  }\item[{int}]{buffer\+Size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_channel_8c_source_l00040}{40}} of file \mbox{\hyperlink{_channel_8c_source}{Channel.\+c}}.
+
+\mbox{\Hypertarget{_channel_8c_a4c6d599cdbb89a864d628b8a6a3e3e45}\label{_channel_8c_a4c6d599cdbb89a864d628b8a6a3e3e45}} 
+\index{Channel.c@{Channel.c}!getFullChannelName@{getFullChannelName}}
+\index{getFullChannelName@{getFullChannelName}!Channel.c@{Channel.c}}
+\doxysubsubsection{\texorpdfstring{getFullChannelName()}{getFullChannelName()}}
+{\footnotesize\ttfamily void get\+Full\+Channel\+Name (\begin{DoxyParamCaption}\item[{int}]{channel\+Index,  }\item[{char $\ast$}]{buffer,  }\item[{int}]{buffer\+Size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_channel_8c_source_l00052}{52}} of file \mbox{\hyperlink{_channel_8c_source}{Channel.\+c}}.
+
+\mbox{\Hypertarget{_channel_8c_a5714d30f144b9605b48778b16511c270}\label{_channel_8c_a5714d30f144b9605b48778b16511c270}} 
+\index{Channel.c@{Channel.c}!initChannelList@{initChannelList}}
+\index{initChannelList@{initChannelList}!Channel.c@{Channel.c}}
+\doxysubsubsection{\texorpdfstring{initChannelList()}{initChannelList()}}
+{\footnotesize\ttfamily void init\+Channel\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_channel_8c_source_l00026}{26}} of file \mbox{\hyperlink{_channel_8c_source}{Channel.\+c}}.
+
+\mbox{\Hypertarget{_channel_8c_a6c94b305d8738925f917a9254116df1a}\label{_channel_8c_a6c94b305d8738925f917a9254116df1a}} 
+\index{Channel.c@{Channel.c}!isFull@{isFull}}
+\index{isFull@{isFull}!Channel.c@{Channel.c}}
+\doxysubsubsection{\texorpdfstring{isFull()}{isFull()}}
+{\footnotesize\ttfamily int is\+Full (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_channel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_channel_8c_source_l00036}{36}} of file \mbox{\hyperlink{_channel_8c_source}{Channel.\+c}}.
+

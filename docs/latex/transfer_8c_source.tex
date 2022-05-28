@@ -1,21 +1,21 @@
 \hypertarget{transfer_8c_source}{}\doxysection{transfer.\+c}
 \label{transfer_8c_source}\index{src/socket/transfer.c@{src/socket/transfer.c}}
-
+\mbox{\hyperlink{transfer_8c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00001}00001 }
-\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00009}00009 \textcolor{keywordtype}{void} transferFile (\textcolor{keywordtype}{int} sourceSocket, \textcolor{keywordtype}{int} targetedSocket) \{}
+\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00009}\mbox{\hyperlink{transfer_8c_af79642ec432465ae3aebcd917b999e8f}{00009}} \textcolor{keywordtype}{void} \mbox{\hyperlink{transfer_8c_af79642ec432465ae3aebcd917b999e8f}{transferFile}} (\textcolor{keywordtype}{int} sourceSocket, \textcolor{keywordtype}{int} targetedSocket) \{}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00010}00010     \textcolor{comment}{// Get file blocSize.}}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00011}00011     \textcolor{keywordtype}{long} filelen;}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00012}00012     recv(sourceSocket, \&filelen, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{long}), 0);}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00013}00013     send(targetedSocket, \&filelen, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{long}), 0);}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00015}00015     \textcolor{keywordtype}{long} blocSize = MAX\_SIZE\_SENT;}
+\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00015}00015     \textcolor{keywordtype}{long} blocSize = \mbox{\hyperlink{global_8c_a4da35cd01e3a4eb2711d8531f9fefdd7}{MAX\_SIZE\_SENT}};}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00016}00016     \textcolor{keywordtype}{char} subBuffer[blocSize];}
-\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00017}00017     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < filelen; i += MAX\_SIZE\_SENT) \{}
-\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00018}00018         blocSize = (i + MAX\_SIZE\_SENT < filelen) ? MAX\_SIZE\_SENT : filelen -\/ i; \textcolor{comment}{// Calculate the bloc's blocSize.}}
+\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00017}00017     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < filelen; i += \mbox{\hyperlink{global_8c_a4da35cd01e3a4eb2711d8531f9fefdd7}{MAX\_SIZE\_SENT}}) \{}
+\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00018}00018         blocSize = (i + \mbox{\hyperlink{global_8c_a4da35cd01e3a4eb2711d8531f9fefdd7}{MAX\_SIZE\_SENT}} < filelen) ? \mbox{\hyperlink{global_8c_a4da35cd01e3a4eb2711d8531f9fefdd7}{MAX\_SIZE\_SENT}} : filelen -\/ i; \textcolor{comment}{// Calculate the bloc's blocSize.}}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00019}00019         recv(sourceSocket, subBuffer, blocSize, 0);}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00020}00020         send(targetedSocket, subBuffer, blocSize, 0);}
-\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00021}00021         bzero(subBuffer, MAX\_SIZE\_SENT);    \textcolor{comment}{// Clear the buffer.}}
+\DoxyCodeLine{\Hypertarget{transfer_8c_source_l00021}00021         bzero(subBuffer, \mbox{\hyperlink{global_8c_a4da35cd01e3a4eb2711d8531f9fefdd7}{MAX\_SIZE\_SENT}});    \textcolor{comment}{// Clear the buffer.}}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00022}00022     \}}
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00023}00023 }
 \DoxyCodeLine{\Hypertarget{transfer_8c_source_l00024}00024     printf(\textcolor{stringliteral}{"{}File transferred. \(\backslash\)n"{}});}

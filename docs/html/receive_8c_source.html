@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,11 +69,11 @@ $(function() {
   <div class="headertitle"><div class="title">receive.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keywordtype">int</span> receiveMessageInt (<span class="keywordtype">int</span> acceptedSocketDescriptor) {</div>
+<a href="receive_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="receive_8c.html#aa12efe3d3dc97511267471d3f4110f88">    8</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="receive_8c.html#aa12efe3d3dc97511267471d3f4110f88">receiveMessageInt</a> (<span class="keywordtype">int</span> acceptedSocketDescriptor) {</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordtype">int</span> size;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">if</span>(recv(acceptedSocketDescriptor, &amp;size, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>), 0) == -1){</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        throwError(<span class="stringliteral">&quot;Erreur lors de la reception du message. \n&quot;</span>, 0);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Erreur lors de la reception du message. \n&quot;</span>, 0);</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    }</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">//    else {</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">//        printf(&quot;Message de taille %d recu. \n&quot;, size);</span></div>
@@ -81,32 +81,32 @@ $(function() {
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">return</span> size;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">char</span> *receiveMessageString (<span class="keywordtype">int</span> acceptedSocketDescriptor, <span class="keywordtype">int</span> size) {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="receive_8c.html#a8dead87472860c0a3f0d6c22e98261e4">   26</a></span><span class="keywordtype">char</span> *<a class="code hl_function" href="receive_8c.html#a8dead87472860c0a3f0d6c22e98261e4">receiveMessageString</a> (<span class="keywordtype">int</span> acceptedSocketDescriptor, <span class="keywordtype">int</span> size) {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">char</span> *message = (<span class="keywordtype">char</span>*)malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * (size + 1));</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    bzero(message, <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * (size + 1));</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span>(recv(acceptedSocketDescriptor, message, <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * size, 0) == -1){</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        throwError(<span class="stringliteral">&quot;Erreur lors de la reception du message. \n&quot;</span>, 0);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Erreur lors de la reception du message. \n&quot;</span>, 0);</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> message;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">char</span> *receiveMessage (<span class="keywordtype">int</span> acceptedSocketDescriptor) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="receive_8c.html#a580528be3e8d4c7ea7babc61d35721ee">   42</a></span><span class="keywordtype">char</span> *<a class="code hl_function" href="receive_8c.html#a580528be3e8d4c7ea7babc61d35721ee">receiveMessage</a> (<span class="keywordtype">int</span> acceptedSocketDescriptor) {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// Receive messageSize.</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">int</span> messageSize = receiveMessageInt(acceptedSocketDescriptor);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">int</span> messageSize = <a class="code hl_function" href="receive_8c.html#aa12efe3d3dc97511267471d3f4110f88">receiveMessageInt</a>(acceptedSocketDescriptor);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// Receive message.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">return</span> receiveMessageString(acceptedSocketDescriptor, messageSize);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="receive_8c.html#a8dead87472860c0a3f0d6c22e98261e4">receiveMessageString</a>(acceptedSocketDescriptor, messageSize);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> receiveFile(<span class="keywordtype">int</span> clientFileSocket, <span class="keywordtype">char</span> *fileName){</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="receive_8c.html#abfb406ecc63776dd30c6006b04109ef3">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="receive_8c.html#abfb406ecc63776dd30c6006b04109ef3">receiveFile</a>(<span class="keywordtype">int</span> clientFileSocket, <span class="keywordtype">char</span> *fileName){</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// Get file blocSize.</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">long</span> filelen;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    recv(clientFileSocket, &amp;filelen, <span class="keyword">sizeof</span>(<span class="keywordtype">long</span>), 0);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// Get current path.</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">char</span> filePath[200];</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    getUploadDirectoryPath(filePath);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_function" href="util_8c.html#aba1623ca3e44b15e0920f664207587c0">getUploadDirectoryPath</a>(filePath);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    strcat(filePath, fileName);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// File creation.</span></div>
@@ -114,18 +114,25 @@ $(function() {
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    file = fopen(filePath, <span class="stringliteral">&quot;wb&quot;</span>);</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">long</span> blocSize = MAX_SIZE_SENT;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">long</span> blocSize = <a class="code hl_define" href="global_8c.html#a4da35cd01e3a4eb2711d8531f9fefdd7">MAX_SIZE_SENT</a>;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">char</span> subBuffer[blocSize];</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filelen; i += MAX_SIZE_SENT) {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        blocSize = (i + MAX_SIZE_SENT &lt; filelen) ? MAX_SIZE_SENT : filelen - i; <span class="comment">// Calculate the bloc&#39;s blocSize.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filelen; i += <a class="code hl_define" href="global_8c.html#a4da35cd01e3a4eb2711d8531f9fefdd7">MAX_SIZE_SENT</a>) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        blocSize = (i + <a class="code hl_define" href="global_8c.html#a4da35cd01e3a4eb2711d8531f9fefdd7">MAX_SIZE_SENT</a> &lt; filelen) ? <a class="code hl_define" href="global_8c.html#a4da35cd01e3a4eb2711d8531f9fefdd7">MAX_SIZE_SENT</a> : filelen - i; <span class="comment">// Calculate the bloc&#39;s blocSize.</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        recv(clientFileSocket, subBuffer, blocSize, 0);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        fwrite(subBuffer, blocSize, 1, file);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        bzero(subBuffer, MAX_SIZE_SENT);    <span class="comment">// Clear the buffer.</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        bzero(subBuffer, <a class="code hl_define" href="global_8c.html#a4da35cd01e3a4eb2711d8531f9fefdd7">MAX_SIZE_SENT</a>);    <span class="comment">// Clear the buffer.</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    fclose(file);</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    printf(<span class="stringliteral">&quot;File imported. \n&quot;</span>);</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
+<div class="ttc" id="aerror_8c_html_ad5fd1194b361cfb4bc723c13d4b2182b"><div class="ttname"><a href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a></div><div class="ttdeci">void throwError(char *errorMessage, int hasErrno)</div><div class="ttdef"><b>Definition:</b> <a href="error_8c_source.html#l00010">error.c:10</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a4da35cd01e3a4eb2711d8531f9fefdd7"><div class="ttname"><a href="global_8c.html#a4da35cd01e3a4eb2711d8531f9fefdd7">MAX_SIZE_SENT</a></div><div class="ttdeci">#define MAX_SIZE_SENT</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00001">global.c:1</a></div></div>
+<div class="ttc" id="areceive_8c_html_a580528be3e8d4c7ea7babc61d35721ee"><div class="ttname"><a href="receive_8c.html#a580528be3e8d4c7ea7babc61d35721ee">receiveMessage</a></div><div class="ttdeci">char * receiveMessage(int acceptedSocketDescriptor)</div><div class="ttdef"><b>Definition:</b> <a href="receive_8c_source.html#l00042">receive.c:42</a></div></div>
+<div class="ttc" id="areceive_8c_html_a8dead87472860c0a3f0d6c22e98261e4"><div class="ttname"><a href="receive_8c.html#a8dead87472860c0a3f0d6c22e98261e4">receiveMessageString</a></div><div class="ttdeci">char * receiveMessageString(int acceptedSocketDescriptor, int size)</div><div class="ttdef"><b>Definition:</b> <a href="receive_8c_source.html#l00026">receive.c:26</a></div></div>
+<div class="ttc" id="areceive_8c_html_aa12efe3d3dc97511267471d3f4110f88"><div class="ttname"><a href="receive_8c.html#aa12efe3d3dc97511267471d3f4110f88">receiveMessageInt</a></div><div class="ttdeci">int receiveMessageInt(int acceptedSocketDescriptor)</div><div class="ttdef"><b>Definition:</b> <a href="receive_8c_source.html#l00008">receive.c:8</a></div></div>
+<div class="ttc" id="areceive_8c_html_abfb406ecc63776dd30c6006b04109ef3"><div class="ttname"><a href="receive_8c.html#abfb406ecc63776dd30c6006b04109ef3">receiveFile</a></div><div class="ttdeci">void receiveFile(int clientFileSocket, char *fileName)</div><div class="ttdef"><b>Definition:</b> <a href="receive_8c_source.html#l00055">receive.c:55</a></div></div>
+<div class="ttc" id="autil_8c_html_aba1623ca3e44b15e0920f664207587c0"><div class="ttname"><a href="util_8c.html#aba1623ca3e44b15e0920f664207587c0">getUploadDirectoryPath</a></div><div class="ttdeci">void getUploadDirectoryPath(char *filePath)</div><div class="ttdef"><b>Definition:</b> <a href="util_8c_source.html#l00005">util.c:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,11 +69,11 @@ $(function() {
   <div class="headertitle"><div class="title">serverSocket.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keywordtype">int</span> socketCreation () {</div>
+<a href="server_socket_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="server_socket_8c.html#a5b3877e0bfe9bc1047fa5d7997c1392a">    7</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_socket_8c.html#a5b3877e0bfe9bc1047fa5d7997c1392a">socketCreation</a> () {</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keywordtype">int</span> socketDescriptor = socket(PF_INET, SOCK_STREAM, 0);</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordflow">if</span> (socketDescriptor == -1) {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        throwError(<span class="stringliteral">&quot;Erreur lors de la création du socket. \n&quot;</span>, 0);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Erreur lors de la création du socket. \n&quot;</span>, 0);</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    }</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        printf(<span class="stringliteral">&quot;Socket Créé. \n&quot;</span>);</div>
@@ -82,13 +82,13 @@ $(function() {
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// Fix errors of bind.</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">int</span> enable = 1;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (setsockopt(socketDescriptor, SOL_SOCKET, SO_REUSEADDR, &amp;enable, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)) &lt; 0) {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        throwError(<span class="stringliteral">&quot;setsockopt(SO_REUSEADDR) failed&quot;</span>, 0);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;setsockopt(SO_REUSEADDR) failed&quot;</span>, 0);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">return</span> socketDescriptor;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">int</span> launchServer(<span class="keywordtype">int</span> port) {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">int</span> socketDescriptor = socketCreation();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="server_socket_8c.html#ac947a8c43f060d67918ba87cb280ab35">   30</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="server_socket_8c.html#ac947a8c43f060d67918ba87cb280ab35">launchServer</a>(<span class="keywordtype">int</span> port) {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">int</span> socketDescriptor = <a class="code hl_function" href="server_socket_8c.html#a5b3877e0bfe9bc1047fa5d7997c1392a">socketCreation</a>();</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">struct </span>sockaddr_in ad;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    ad.sin_family = AF_INET;</div>
@@ -96,14 +96,14 @@ $(function() {
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    ad.sin_port = htons(port);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (bind(socketDescriptor, (<span class="keyword">struct</span> sockaddr*)&amp;ad, <span class="keyword">sizeof</span>(ad)) == -1) {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        throwError(<span class="stringliteral">&quot;Erreur lors du bind. \n&quot;</span>, 1);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Erreur lors du bind. \n&quot;</span>, 1);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        printf(<span class="stringliteral">&quot;Socket Nommé\n&quot;</span>);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">if</span> (listen(socketDescriptor, 7) == -1) {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        throwError(<span class="stringliteral">&quot;Erreur lors du listen. \n&quot;</span>,  1);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Erreur lors du listen. \n&quot;</span>,  1);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        printf(<span class="stringliteral">&quot;Mode écoute\n&quot;</span>);</div>
@@ -111,7 +111,7 @@ $(function() {
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span> socketDescriptor;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keywordtype">void</span> closeSocket(<span class="keywordtype">int</span> serverSocketDescriptor){</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="server_socket_8c.html#a0c58d6ee4d1a062815803d2b5ba45c4a">   59</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="server_socket_8c.html#a0c58d6ee4d1a062815803d2b5ba45c4a">closeSocket</a>(<span class="keywordtype">int</span> serverSocketDescriptor){</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// If the socket is set, we run shutdown on it</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">if</span>(serverSocketDescriptor != -1){</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        shutdown(serverSocketDescriptor, 2);    <span class="comment">// Not working for mac.</span></div>
@@ -119,15 +119,22 @@ $(function() {
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">void</span> finishProgram () {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NB_CHANNEL; i++) {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        closeSocket(channelList[i]-&gt;serverSocketDescriptor);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="server_socket_8c.html#a24202776b3f9578bfd38f1ab542e57bb">   67</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="server_socket_8c.html#a24202776b3f9578bfd38f1ab542e57bb">finishProgram</a> () {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="global_8c.html#a3a5d7a6cec8e2e13fd52da8cf4fb8125">NB_CHANNEL</a>; i++) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_function" href="server_socket_8c.html#a0c58d6ee4d1a062815803d2b5ba45c4a">closeSocket</a>(<a class="code hl_variable" href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">channelList</a>[i]-&gt;serverSocketDescriptor);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// End of program with success</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    printf(<span class="stringliteral">&quot;Fin du programme. \n&quot;</span>);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    exit(EXIT_SUCCESS);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
+<div class="ttc" id="aerror_8c_html_ad5fd1194b361cfb4bc723c13d4b2182b"><div class="ttname"><a href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a></div><div class="ttdeci">void throwError(char *errorMessage, int hasErrno)</div><div class="ttdef"><b>Definition:</b> <a href="error_8c_source.html#l00010">error.c:10</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a3a5d7a6cec8e2e13fd52da8cf4fb8125"><div class="ttname"><a href="global_8c.html#a3a5d7a6cec8e2e13fd52da8cf4fb8125">NB_CHANNEL</a></div><div class="ttdeci">#define NB_CHANNEL</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00010">global.c:10</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a86cd9048b82fd91e3260fd17b880d223"><div class="ttname"><a href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">channelList</a></div><div class="ttdeci">Channel * channelList[NB_CHANNEL]</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00011">global.c:11</a></div></div>
+<div class="ttc" id="aserver_socket_8c_html_a0c58d6ee4d1a062815803d2b5ba45c4a"><div class="ttname"><a href="server_socket_8c.html#a0c58d6ee4d1a062815803d2b5ba45c4a">closeSocket</a></div><div class="ttdeci">void closeSocket(int serverSocketDescriptor)</div><div class="ttdef"><b>Definition:</b> <a href="server_socket_8c_source.html#l00059">serverSocket.c:59</a></div></div>
+<div class="ttc" id="aserver_socket_8c_html_a24202776b3f9578bfd38f1ab542e57bb"><div class="ttname"><a href="server_socket_8c.html#a24202776b3f9578bfd38f1ab542e57bb">finishProgram</a></div><div class="ttdeci">void finishProgram()</div><div class="ttdef"><b>Definition:</b> <a href="server_socket_8c_source.html#l00067">serverSocket.c:67</a></div></div>
+<div class="ttc" id="aserver_socket_8c_html_a5b3877e0bfe9bc1047fa5d7997c1392a"><div class="ttname"><a href="server_socket_8c.html#a5b3877e0bfe9bc1047fa5d7997c1392a">socketCreation</a></div><div class="ttdeci">int socketCreation()</div><div class="ttdef"><b>Definition:</b> <a href="server_socket_8c_source.html#l00007">serverSocket.c:7</a></div></div>
+<div class="ttc" id="aserver_socket_8c_html_ac947a8c43f060d67918ba87cb280ab35"><div class="ttname"><a href="server_socket_8c.html#ac947a8c43f060d67918ba87cb280ab35">launchServer</a></div><div class="ttdeci">int launchServer(int port)</div><div class="ttdef"><b>Definition:</b> <a href="server_socket_8c_source.html#l00030">serverSocket.c:30</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

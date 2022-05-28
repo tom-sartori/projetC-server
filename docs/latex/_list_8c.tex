@@ -1,0 +1,105 @@
+\hypertarget{_list_8c}{}\doxysection{src/client/\+List.c File Reference}
+\label{_list_8c}\index{src/client/List.c@{src/client/List.c}}
+{\ttfamily \#include \char`\"{}Node.\+c\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_list}{List}} $\ast$ \mbox{\hyperlink{_list_8c_a6ae10f3a23dc25c7f1e1dd7d2de3d487}{create\+List}} ()
+\item 
+int \mbox{\hyperlink{_list_8c_ac5b3cc3f57d146c45ed97a020807074c}{is\+Empty}} (\mbox{\hyperlink{struct_list}{List}} $\ast$list)
+\item 
+void \mbox{\hyperlink{_list_8c_a971206958c5754d7adc0042058ba4130}{add}} (\mbox{\hyperlink{struct_list}{List}} $\ast$list, \mbox{\hyperlink{struct_client}{Client}} $\ast$client)
+\item 
+\mbox{\hyperlink{struct_node}{Node}} $\ast$ \mbox{\hyperlink{_list_8c_a747eb18625a1312ab4b20c9bd2fc6508}{next}} (\mbox{\hyperlink{struct_node}{Node}} $\ast$node)
+\item 
+\mbox{\hyperlink{struct_node}{Node}} $\ast$ \mbox{\hyperlink{_list_8c_ab5d5eb53823602b9bdb74519135a7117}{previous}} (\mbox{\hyperlink{struct_node}{Node}} $\ast$node)
+\item 
+void \mbox{\hyperlink{_list_8c_ab78f32d3967891ed4f49703aa04cd742}{delete}} (\mbox{\hyperlink{struct_list}{List}} $\ast$list, \mbox{\hyperlink{struct_client}{Client}} $\ast$client)
+\item 
+\mbox{\hyperlink{struct_client}{Client}} $\ast$ \mbox{\hyperlink{_list_8c_a1007aa3bf350bf7783048f059d8becd9}{contains}} (\mbox{\hyperlink{struct_list}{List}} $\ast$list, char $\ast$username)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_list_8c_a971206958c5754d7adc0042058ba4130}\label{_list_8c_a971206958c5754d7adc0042058ba4130}} 
+\index{List.c@{List.c}!add@{add}}
+\index{add@{add}!List.c@{List.c}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_list}{List}} $\ast$}]{list,  }\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_list_8c_source_l00014}{14}} of file \mbox{\hyperlink{_list_8c_source}{List.\+c}}.
+
+\mbox{\Hypertarget{_list_8c_a1007aa3bf350bf7783048f059d8becd9}\label{_list_8c_a1007aa3bf350bf7783048f059d8becd9}} 
+\index{List.c@{List.c}!contains@{contains}}
+\index{contains@{contains}!List.c@{List.c}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_client}{Client}} $\ast$ contains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_list}{List}} $\ast$}]{list,  }\item[{char $\ast$}]{username }\end{DoxyParamCaption})}
+
+Check if a client\textquotesingle{}s username is contained in the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \+: Linked list of clients. \\
+\hline
+{\em username} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the a user has the username in params or NULL. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_list_8c_source_l00086}{86}} of file \mbox{\hyperlink{_list_8c_source}{List.\+c}}.
+
+\mbox{\Hypertarget{_list_8c_a6ae10f3a23dc25c7f1e1dd7d2de3d487}\label{_list_8c_a6ae10f3a23dc25c7f1e1dd7d2de3d487}} 
+\index{List.c@{List.c}!createList@{createList}}
+\index{createList@{createList}!List.c@{List.c}}
+\doxysubsubsection{\texorpdfstring{createList()}{createList()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_list}{List}} $\ast$ create\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_list_8c_source_l00003}{3}} of file \mbox{\hyperlink{_list_8c_source}{List.\+c}}.
+
+\mbox{\Hypertarget{_list_8c_ab78f32d3967891ed4f49703aa04cd742}\label{_list_8c_ab78f32d3967891ed4f49703aa04cd742}} 
+\index{List.c@{List.c}!delete@{delete}}
+\index{delete@{delete}!List.c@{List.c}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily void delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_list}{List}} $\ast$}]{list,  }\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_list_8c_source_l00046}{46}} of file \mbox{\hyperlink{_list_8c_source}{List.\+c}}.
+
+\mbox{\Hypertarget{_list_8c_ac5b3cc3f57d146c45ed97a020807074c}\label{_list_8c_ac5b3cc3f57d146c45ed97a020807074c}} 
+\index{List.c@{List.c}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!List.c@{List.c}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily int is\+Empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_list}{List}} $\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_list_8c_source_l00010}{10}} of file \mbox{\hyperlink{_list_8c_source}{List.\+c}}.
+
+\mbox{\Hypertarget{_list_8c_a747eb18625a1312ab4b20c9bd2fc6508}\label{_list_8c_a747eb18625a1312ab4b20c9bd2fc6508}} 
+\index{List.c@{List.c}!next@{next}}
+\index{next@{next}!List.c@{List.c}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node}{Node}} $\ast$ next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node}{Node}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_list_8c_source_l00038}{38}} of file \mbox{\hyperlink{_list_8c_source}{List.\+c}}.
+
+\mbox{\Hypertarget{_list_8c_ab5d5eb53823602b9bdb74519135a7117}\label{_list_8c_ab5d5eb53823602b9bdb74519135a7117}} 
+\index{List.c@{List.c}!previous@{previous}}
+\index{previous@{previous}!List.c@{List.c}}
+\doxysubsubsection{\texorpdfstring{previous()}{previous()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_node}{Node}} $\ast$ previous (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node}{Node}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_list_8c_source_l00042}{42}} of file \mbox{\hyperlink{_list_8c_source}{List.\+c}}.
+

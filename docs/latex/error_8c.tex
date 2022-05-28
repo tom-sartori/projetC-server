@@ -1,0 +1,29 @@
+\hypertarget{error_8c}{}\doxysection{src/util/error.c File Reference}
+\label{error_8c}\index{src/util/error.c@{src/util/error.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{error_8c_ad5fd1194b361cfb4bc723c13d4b2182b}{throw\+Error}} (char $\ast$error\+Message, int has\+Errno)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{error_8c_ad5fd1194b361cfb4bc723c13d4b2182b}\label{error_8c_ad5fd1194b361cfb4bc723c13d4b2182b}} 
+\index{error.c@{error.c}!throwError@{throwError}}
+\index{throwError@{throwError}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{throwError()}{throwError()}}
+{\footnotesize\ttfamily void throw\+Error (\begin{DoxyParamCaption}\item[{char $\ast$}]{error\+Message,  }\item[{int}]{has\+Errno }\end{DoxyParamCaption})}
+
+Perror the message in params and exit the programme. If has\+Errno, print it. 
+\begin{DoxyParams}{Parameters}
+{\em error\+Message} & \\
+\hline
+{\em has\+Errno} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{error_8c_source_l00010}{10}} of file \mbox{\hyperlink{error_8c_source}{error.\+c}}.
+

@@ -1,0 +1,56 @@
+\hypertarget{regex_8c}{}\doxysection{src/util/regex.c File Reference}
+\label{regex_8c}\index{src/util/regex.c@{src/util/regex.c}}
+{\ttfamily \#include $<$regex.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{regex_8c_a7e3aa9478821ab94f37a66a529cac597}{is\+Match}} (char $\ast$message, char $\ast$reg)
+\item 
+void \mbox{\hyperlink{regex_8c_aa65837f664d674ef7d9dbc95bf926990}{get\+Regex\+Group}} (char $\ast$list\mbox{[}$\,$\mbox{]}, char $\ast$message, char $\ast$regex\+String)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{regex_8c_aa65837f664d674ef7d9dbc95bf926990}\label{regex_8c_aa65837f664d674ef7d9dbc95bf926990}} 
+\index{regex.c@{regex.c}!getRegexGroup@{getRegexGroup}}
+\index{getRegexGroup@{getRegexGroup}!regex.c@{regex.c}}
+\doxysubsubsection{\texorpdfstring{getRegexGroup()}{getRegexGroup()}}
+{\footnotesize\ttfamily void get\+Regex\+Group (\begin{DoxyParamCaption}\item[{char $\ast$}]{list\mbox{[}$\,$\mbox{]},  }\item[{char $\ast$}]{message,  }\item[{char $\ast$}]{regex\+String }\end{DoxyParamCaption})}
+
+Match the message with the regex and set groups gotten in the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \+: size 3. \\
+\hline
+{\em message} & \\
+\hline
+{\em regex\+String} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{regex_8c_source_l00047}{47}} of file \mbox{\hyperlink{regex_8c_source}{regex.\+c}}.
+
+\mbox{\Hypertarget{regex_8c_a7e3aa9478821ab94f37a66a529cac597}\label{regex_8c_a7e3aa9478821ab94f37a66a529cac597}} 
+\index{regex.c@{regex.c}!isMatch@{isMatch}}
+\index{isMatch@{isMatch}!regex.c@{regex.c}}
+\doxysubsubsection{\texorpdfstring{isMatch()}{isMatch()}}
+{\footnotesize\ttfamily int is\+Match (\begin{DoxyParamCaption}\item[{char $\ast$}]{message,  }\item[{char $\ast$}]{reg }\end{DoxyParamCaption})}
+
+Return true if the message match with the regex in params.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+{\em reg} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{regex_8c_source_l00010}{10}} of file \mbox{\hyperlink{regex_8c_source}{regex.\+c}}.
+

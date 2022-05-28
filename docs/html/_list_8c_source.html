@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,108 +69,124 @@ $(function() {
   <div class="headertitle"><div class="title">List.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;Node.c&quot;</span></div>
+<a href="_list_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_node_8c.html">Node.c</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><a class="code hl_struct" href="struct_list.html">List</a> *createList() {</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="_list_8c.html#a6ae10f3a23dc25c7f1e1dd7d2de3d487">    3</a></span><a class="code hl_struct" href="struct_list.html">List</a> *<a class="code hl_function" href="_list_8c.html#a6ae10f3a23dc25c7f1e1dd7d2de3d487">createList</a>() {</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    <a class="code hl_struct" href="struct_list.html">List</a> *list = (<a class="code hl_struct" href="struct_list.html">List</a>*)malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_list.html">List</a>));</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    list-&gt;head = createNode();</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    list-&gt;size = 0;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    list-&gt;<a class="code hl_variable" href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">head</a> = <a class="code hl_function" href="_node_8c.html#abfeb9ab3275c1344431cdd9b99ed870a">createNode</a>();</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    list-&gt;<a class="code hl_variable" href="struct_list.html#a439227feff9d7f55384e8780cfc2eb82">size</a> = 0;</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">return</span> list;</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>}</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">int</span> isEmpty(<a class="code hl_struct" href="struct_list.html">List</a> *list) {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">return</span> list-&gt;head-&gt;next == NULL ? 1 : 0;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="_list_8c.html#ac5b3cc3f57d146c45ed97a020807074c">   10</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="_list_8c.html#ac5b3cc3f57d146c45ed97a020807074c">isEmpty</a>(<a class="code hl_struct" href="struct_list.html">List</a> *list) {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">return</span> list-&gt;<a class="code hl_variable" href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">head</a>-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a> == NULL ? 1 : 0;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keywordtype">void</span> add(<a class="code hl_struct" href="struct_list.html">List</a> *list, <a class="code hl_struct" href="struct_client.html">Client</a> *client) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="_list_8c.html#a971206958c5754d7adc0042058ba4130">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_list_8c.html#a971206958c5754d7adc0042058ba4130">add</a>(<a class="code hl_struct" href="struct_list.html">List</a> *list, <a class="code hl_struct" href="struct_client.html">Client</a> *client) {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// Lock mutex.</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    pthread_mutex_lock(&amp;mutex);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    pthread_mutex_lock(&amp;<a class="code hl_variable" href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a>);</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_struct" href="struct_node.html">Node</a> *node = createNode();</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    node-&gt;client = client;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_struct" href="struct_node.html">Node</a> *node = <a class="code hl_function" href="_node_8c.html#abfeb9ab3275c1344431cdd9b99ed870a">createNode</a>();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    node-&gt;<a class="code hl_variable" href="struct_node.html#af10e4a54385eb944ebb7b2d136388256">client</a> = client;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    node-&gt;previous = list-&gt;head;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    node-&gt;next = list-&gt;head-&gt;next;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    node-&gt;<a class="code hl_variable" href="struct_node.html#a9a9311efc5dc64017bf492a386b77b0d">previous</a> = list-&gt;<a class="code hl_variable" href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">head</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    node-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a> = list-&gt;<a class="code hl_variable" href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">head</a>-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a>;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> (isEmpty(list)) {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        list-&gt;head-&gt;next = node;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="_list_8c.html#ac5b3cc3f57d146c45ed97a020807074c">isEmpty</a>(list)) {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        list-&gt;<a class="code hl_variable" href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">head</a>-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a> = node;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        list-&gt;head-&gt;next-&gt;previous = node;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        list-&gt;head-&gt;next = node;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        list-&gt;<a class="code hl_variable" href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">head</a>-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a>-&gt;<a class="code hl_variable" href="struct_node.html#a9a9311efc5dc64017bf492a386b77b0d">previous</a> = node;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        list-&gt;<a class="code hl_variable" href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">head</a>-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a> = node;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    list-&gt;size++;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    list-&gt;<a class="code hl_variable" href="struct_list.html#a439227feff9d7f55384e8780cfc2eb82">size</a>++;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// Unlock mutex.</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    pthread_mutex_unlock(&amp;mutex);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    pthread_mutex_unlock(&amp;<a class="code hl_variable" href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a>);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><a class="code hl_struct" href="struct_node.html">Node</a> *next(<a class="code hl_struct" href="struct_node.html">Node</a> *node){</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">return</span> node-&gt;next;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="_list_8c.html#a747eb18625a1312ab4b20c9bd2fc6508">   38</a></span><a class="code hl_struct" href="struct_node.html">Node</a> *<a class="code hl_function" href="_list_8c.html#a747eb18625a1312ab4b20c9bd2fc6508">next</a>(<a class="code hl_struct" href="struct_node.html">Node</a> *node){</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">return</span> node-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a>;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><a class="code hl_struct" href="struct_node.html">Node</a> *previous (<a class="code hl_struct" href="struct_node.html">Node</a> *node) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> node-&gt;previous;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="_list_8c.html#ab5d5eb53823602b9bdb74519135a7117">   42</a></span><a class="code hl_struct" href="struct_node.html">Node</a> *<a class="code hl_function" href="_list_8c.html#ab5d5eb53823602b9bdb74519135a7117">previous</a> (<a class="code hl_struct" href="struct_node.html">Node</a> *node) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> node-&gt;<a class="code hl_variable" href="struct_node.html#a9a9311efc5dc64017bf492a386b77b0d">previous</a>;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">void</span> <span class="keyword">delete</span> (<a class="code hl_struct" href="struct_list.html">List</a> *list, <a class="code hl_struct" href="struct_client.html">Client</a> *client) {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (isEmpty(list)) {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="_list_8c.html#ab78f32d3967891ed4f49703aa04cd742">   46</a></span><span class="keywordtype">void</span> <span class="keyword">delete</span> (<a class="code hl_struct" href="struct_list.html">List</a> *list, <a class="code hl_struct" href="struct_client.html">Client</a> *client) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="_list_8c.html#ac5b3cc3f57d146c45ed97a020807074c">isEmpty</a>(list)) {</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">//        throwError(&quot;List already empty. \n&quot;, 0);</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Lock mutex.</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    pthread_mutex_lock(&amp;mutex);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    pthread_mutex_lock(&amp;<a class="code hl_variable" href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a>);</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">int</span> isDeleted = 0;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_struct" href="struct_node.html">Node</a> *current = next(list-&gt;head);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_struct" href="struct_node.html">Node</a> *current = <a class="code hl_function" href="_list_8c.html#a747eb18625a1312ab4b20c9bd2fc6508">next</a>(list-&gt;<a class="code hl_variable" href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">head</a>);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">while</span> (!isDeleted &amp;&amp; current != NULL) {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">if</span> (strcmp(current-&gt;client-&gt;username, client-&gt;username) == 0) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            current-&gt;previous-&gt;next = current-&gt;next;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordflow">if</span> (hasNext(current)) {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                current-&gt;next-&gt;previous = current-&gt;previous;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">if</span> (strcmp(current-&gt;<a class="code hl_variable" href="struct_node.html#af10e4a54385eb944ebb7b2d136388256">client</a>-&gt;<a class="code hl_variable" href="struct_client.html#a9b20c006bd90a09e1465fb668700e81d">username</a>, client-&gt;username) == 0) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            current-&gt;<a class="code hl_variable" href="struct_node.html#a9a9311efc5dc64017bf492a386b77b0d">previous</a>-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a> = current-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_node_8c.html#a5354819a06d5b856c0a2e167f9147817">hasNext</a>(current)) {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                current-&gt;<a class="code hl_variable" href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">next</a>-&gt;<a class="code hl_variable" href="struct_node.html#a9a9311efc5dc64017bf492a386b77b0d">previous</a> = current-&gt;<a class="code hl_variable" href="struct_node.html#a9a9311efc5dc64017bf492a386b77b0d">previous</a>;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            }</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            free(current);</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            isDeleted = 1;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            current = next(current);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            current = <a class="code hl_function" href="_list_8c.html#a747eb18625a1312ab4b20c9bd2fc6508">next</a>(current);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    list-&gt;size--;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    list-&gt;<a class="code hl_variable" href="struct_list.html#a439227feff9d7f55384e8780cfc2eb82">size</a>--;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// Unlock mutex.</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    pthread_mutex_unlock(&amp;mutex);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    pthread_mutex_unlock(&amp;<a class="code hl_variable" href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a>);</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><a class="code hl_struct" href="struct_client.html">Client</a> *contains (<a class="code hl_struct" href="struct_list.html">List</a> *list, <span class="keywordtype">char</span> *username) {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">if</span> (isEmpty(list)) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="_list_8c.html#a1007aa3bf350bf7783048f059d8becd9">   86</a></span><a class="code hl_struct" href="struct_client.html">Client</a> *<a class="code hl_function" href="_list_8c.html#a1007aa3bf350bf7783048f059d8becd9">contains</a> (<a class="code hl_struct" href="struct_list.html">List</a> *list, <span class="keywordtype">char</span> *username) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="_list_8c.html#ac5b3cc3f57d146c45ed97a020807074c">isEmpty</a>(list)) {</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="comment">// Lock mutex.</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    pthread_mutex_lock(&amp;mutex);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    pthread_mutex_lock(&amp;<a class="code hl_variable" href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a>);</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <a class="code hl_struct" href="struct_node.html">Node</a> *current = next(list-&gt;head);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <a class="code hl_struct" href="struct_node.html">Node</a> *current = <a class="code hl_function" href="_list_8c.html#a747eb18625a1312ab4b20c9bd2fc6508">next</a>(list-&gt;<a class="code hl_variable" href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">head</a>);</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">while</span> (current != NULL) {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="keywordflow">if</span> (strcmp(username, current-&gt;client-&gt;username) == 0) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="keywordflow">if</span> (strcmp(username, current-&gt;<a class="code hl_variable" href="struct_node.html#af10e4a54385eb944ebb7b2d136388256">client</a>-&gt;<a class="code hl_variable" href="struct_client.html#a9b20c006bd90a09e1465fb668700e81d">username</a>) == 0) {</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                <span class="comment">// Unlock mutex.</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                pthread_mutex_unlock(&amp;mutex);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                <span class="keywordflow">return</span> current-&gt;client;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                pthread_mutex_unlock(&amp;<a class="code hl_variable" href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                <span class="keywordflow">return</span> current-&gt;<a class="code hl_variable" href="struct_node.html#af10e4a54385eb944ebb7b2d136388256">client</a>;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            }</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            current = next(current);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            current = <a class="code hl_function" href="_list_8c.html#a747eb18625a1312ab4b20c9bd2fc6508">next</a>(current);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="comment">// Unlock mutex.</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    pthread_mutex_unlock(&amp;mutex);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    pthread_mutex_unlock(&amp;<a class="code hl_variable" href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a>);</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
+<div class="ttc" id="a_list_8c_html_a1007aa3bf350bf7783048f059d8becd9"><div class="ttname"><a href="_list_8c.html#a1007aa3bf350bf7783048f059d8becd9">contains</a></div><div class="ttdeci">Client * contains(List *list, char *username)</div><div class="ttdef"><b>Definition:</b> <a href="_list_8c_source.html#l00086">List.c:86</a></div></div>
+<div class="ttc" id="a_list_8c_html_a6ae10f3a23dc25c7f1e1dd7d2de3d487"><div class="ttname"><a href="_list_8c.html#a6ae10f3a23dc25c7f1e1dd7d2de3d487">createList</a></div><div class="ttdeci">List * createList()</div><div class="ttdef"><b>Definition:</b> <a href="_list_8c_source.html#l00003">List.c:3</a></div></div>
+<div class="ttc" id="a_list_8c_html_a747eb18625a1312ab4b20c9bd2fc6508"><div class="ttname"><a href="_list_8c.html#a747eb18625a1312ab4b20c9bd2fc6508">next</a></div><div class="ttdeci">Node * next(Node *node)</div><div class="ttdef"><b>Definition:</b> <a href="_list_8c_source.html#l00038">List.c:38</a></div></div>
+<div class="ttc" id="a_list_8c_html_a971206958c5754d7adc0042058ba4130"><div class="ttname"><a href="_list_8c.html#a971206958c5754d7adc0042058ba4130">add</a></div><div class="ttdeci">void add(List *list, Client *client)</div><div class="ttdef"><b>Definition:</b> <a href="_list_8c_source.html#l00014">List.c:14</a></div></div>
+<div class="ttc" id="a_list_8c_html_ab5d5eb53823602b9bdb74519135a7117"><div class="ttname"><a href="_list_8c.html#ab5d5eb53823602b9bdb74519135a7117">previous</a></div><div class="ttdeci">Node * previous(Node *node)</div><div class="ttdef"><b>Definition:</b> <a href="_list_8c_source.html#l00042">List.c:42</a></div></div>
+<div class="ttc" id="a_list_8c_html_ac5b3cc3f57d146c45ed97a020807074c"><div class="ttname"><a href="_list_8c.html#ac5b3cc3f57d146c45ed97a020807074c">isEmpty</a></div><div class="ttdeci">int isEmpty(List *list)</div><div class="ttdef"><b>Definition:</b> <a href="_list_8c_source.html#l00010">List.c:10</a></div></div>
+<div class="ttc" id="a_node_8c_html"><div class="ttname"><a href="_node_8c.html">Node.c</a></div></div>
+<div class="ttc" id="a_node_8c_html_a5354819a06d5b856c0a2e167f9147817"><div class="ttname"><a href="_node_8c.html#a5354819a06d5b856c0a2e167f9147817">hasNext</a></div><div class="ttdeci">int hasNext(Node *node)</div><div class="ttdef"><b>Definition:</b> <a href="_node_8c_source.html#l00010">Node.c:10</a></div></div>
+<div class="ttc" id="a_node_8c_html_abfeb9ab3275c1344431cdd9b99ed870a"><div class="ttname"><a href="_node_8c.html#abfeb9ab3275c1344431cdd9b99ed870a">createNode</a></div><div class="ttdeci">Node * createNode()</div><div class="ttdef"><b>Definition:</b> <a href="_node_8c_source.html#l00002">Node.c:2</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a4acff8232e4aec9cd5c6dc200ac55ef3"><div class="ttname"><a href="global_8c.html#a4acff8232e4aec9cd5c6dc200ac55ef3">mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00002">global.c:2</a></div></div>
 <div class="ttc" id="astruct_client_html"><div class="ttname"><a href="struct_client.html">Client</a></div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00002">Client.h:2</a></div></div>
+<div class="ttc" id="astruct_client_html_a9b20c006bd90a09e1465fb668700e81d"><div class="ttname"><a href="struct_client.html#a9b20c006bd90a09e1465fb668700e81d">Client::username</a></div><div class="ttdeci">char * username</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00003">Client.h:3</a></div></div>
 <div class="ttc" id="astruct_list_html"><div class="ttname"><a href="struct_list.html">List</a></div><div class="ttdef"><b>Definition:</b> <a href="_list_8h_source.html#l00001">List.h:1</a></div></div>
+<div class="ttc" id="astruct_list_html_a439227feff9d7f55384e8780cfc2eb82"><div class="ttname"><a href="struct_list.html#a439227feff9d7f55384e8780cfc2eb82">List::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> <a href="_list_8h_source.html#l00003">List.h:3</a></div></div>
+<div class="ttc" id="astruct_list_html_aa3e81b47ac0637ebb1ea7cc12812405a"><div class="ttname"><a href="struct_list.html#aa3e81b47ac0637ebb1ea7cc12812405a">List::head</a></div><div class="ttdeci">Node * head</div><div class="ttdef"><b>Definition:</b> <a href="_list_8h_source.html#l00002">List.h:2</a></div></div>
 <div class="ttc" id="astruct_node_html"><div class="ttname"><a href="struct_node.html">Node</a></div><div class="ttdef"><b>Definition:</b> <a href="_node_8h_source.html#l00001">Node.h:1</a></div></div>
+<div class="ttc" id="astruct_node_html_a9a9311efc5dc64017bf492a386b77b0d"><div class="ttname"><a href="struct_node.html#a9a9311efc5dc64017bf492a386b77b0d">Node::previous</a></div><div class="ttdeci">struct Node * previous</div><div class="ttdef"><b>Definition:</b> <a href="_node_8h_source.html#l00002">Node.h:2</a></div></div>
+<div class="ttc" id="astruct_node_html_aa162dd1e0693188a22b1f13b9a2a0ef0"><div class="ttname"><a href="struct_node.html#aa162dd1e0693188a22b1f13b9a2a0ef0">Node::next</a></div><div class="ttdeci">struct Node * next</div><div class="ttdef"><b>Definition:</b> <a href="_node_8h_source.html#l00004">Node.h:4</a></div></div>
+<div class="ttc" id="astruct_node_html_af10e4a54385eb944ebb7b2d136388256"><div class="ttname"><a href="struct_node.html#af10e4a54385eb944ebb7b2d136388256">Node::client</a></div><div class="ttdeci">struct Client * client</div><div class="ttdef"><b>Definition:</b> <a href="_node_8h_source.html#l00003">Node.h:3</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

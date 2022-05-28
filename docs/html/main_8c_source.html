@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,7 +69,7 @@ $(function() {
   <div class="headertitle"><div class="title">main.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;sys/socket.h&gt;</span></div>
+<a href="main_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;sys/socket.h&gt;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;arpa/inet.h&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
@@ -77,104 +77,149 @@ $(function() {
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;client/Client.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;client/Node.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;client/List.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;channel/Channel.h&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;command/Command.h&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;global.c&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_client_8h.html">client/Client.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_node_8h.html">client/Node.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_list_8h.html">client/List.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_channel_8h.html">channel/Channel.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="_command_8h.html">command/Command.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="global_8c.html">global.c</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;util/color.c&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;util/error.c&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;util/regex.c&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;util/util.c&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;util/semaphore.c&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="color_8c.html">util/color.c</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="error_8c.html">util/error.c</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="regex_8c.html">util/regex.c</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="util_8c.html">util/util.c</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="semaphore_8c.html">util/semaphore.c</a>&quot;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;client/Client.c&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;client/List.c&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="_client_8c.html">client/Client.c</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="_list_8c.html">client/List.c</a>&quot;</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;socket/serverSocket.c&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;socket/clientSocket.c&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;socket/receive.c&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;socket/send.c&quot;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;socket/transfer.c&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="server_socket_8c.html">socket/serverSocket.c</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="client_socket_8c.html">socket/clientSocket.c</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="receive_8c.html">socket/receive.c</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="send_8c.html">socket/send.c</a>&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="transfer_8c.html">socket/transfer.c</a>&quot;</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;util/ask.c&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="ask_8c.html">util/ask.c</a>&quot;</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;command/router.c&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="router_8c.html">command/router.c</a>&quot;</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;channel/Channel.c&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;<a class="code" href="_channel_8c.html">channel/Channel.c</a>&quot;</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">void</span> readingLoop(<a class="code hl_struct" href="struct_client.html">Client</a> *client){</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="main_8c.html#a447bfa09604b3b934218f394f72d5755">   45</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8c.html#a447bfa09604b3b934218f394f72d5755">readingLoop</a>(<a class="code hl_struct" href="struct_client.html">Client</a> *client){</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">while</span>(1){</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">char</span> *message = receiveMessage(client-&gt;acceptedSocketDescriptor);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        printf(<span class="stringliteral">&quot;%s: %s&quot;</span>, client-&gt;username, message);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">char</span> *message = <a class="code hl_function" href="receive_8c.html#a580528be3e8d4c7ea7babc61d35721ee">receiveMessage</a>(client-&gt;<a class="code hl_variable" href="struct_client.html#af3026a10afe86549e403ed46b8ff437a">acceptedSocketDescriptor</a>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        printf(<span class="stringliteral">&quot;%s: %s&quot;</span>, client-&gt;<a class="code hl_variable" href="struct_client.html#a9b20c006bd90a09e1465fb668700e81d">username</a>, message);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="comment">// If the message is a command, do the command, else send broadcast to all connected clients</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">if</span> (isCommand(message)) {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            doCommandAction(client, message);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="_command_8c.html#aa3d9fcc59bb4194ba72397423febb9d7">isCommand</a>(message)) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <a class="code hl_function" href="router_8c.html#a556c2dc8bc51f16b7574ccd996899a73">doCommandAction</a>(client, message);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            sendToChannel(client, message);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <a class="code hl_function" href="send_8c.html#a7c3db8391bee9ddd7d4d297ee83d5778">sendToChannel</a>(client, message);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        }</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">void</span> *createNewClient (<span class="keywordtype">int</span> newClientSocketDescriptor) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">char</span> *username = askForUsername(newClientSocketDescriptor);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="main_8c.html#a3fd5e182cf88dc45cb691918943a9af0">   62</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="main_8c.html#a3fd5e182cf88dc45cb691918943a9af0">createNewClient</a> (<span class="keywordtype">int</span> newClientSocketDescriptor) {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">char</span> *username = <a class="code hl_function" href="ask_8c.html#a7150b23295b7b6e1fd852dcb2c97be1d">askForUsername</a>(newClientSocketDescriptor);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">if</span> (username == NULL) {</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="comment">// User has been logout.</span></div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        close(newClientSocketDescriptor);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        rk_sema_post(&amp;semaphore);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        rk_sema_post(&amp;<a class="code hl_variable" href="semaphore_8c.html#a4d70d99de0b3d7b4d554647e24bebebc">semaphore</a>);</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        pthread_exit(NULL);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_struct" href="struct_client.html">Client</a> *newClient = createClient(username, newClientSocketDescriptor, INDEX_DEFAULT_CHANNEL);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        newClient-&gt;thread = pthread_self();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_struct" href="struct_client.html">Client</a> *newClient = <a class="code hl_function" href="_client_8c.html#aac95c9864d1606a5da49921f5013d51f">createClient</a>(username, newClientSocketDescriptor, <a class="code hl_define" href="global_8c.html#ad2c12562002af7a58df1592b0655c9cf">INDEX_DEFAULT_CHANNEL</a>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        newClient-&gt;<a class="code hl_variable" href="struct_client.html#a01f75a9ad916f63a94e06a27635ba278">thread</a> = pthread_self();</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">// Adding Client to clientList</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        add(clientList, newClient);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        add(channelList[INDEX_DEFAULT_CHANNEL]-&gt;clientList, newClient);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_function" href="_list_8c.html#a971206958c5754d7adc0042058ba4130">add</a>(<a class="code hl_variable" href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a>, newClient);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_function" href="_list_8c.html#a971206958c5754d7adc0042058ba4130">add</a>(<a class="code hl_variable" href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">channelList</a>[<a class="code hl_define" href="global_8c.html#ad2c12562002af7a58df1592b0655c9cf">INDEX_DEFAULT_CHANNEL</a>]-&gt;<a class="code hl_variable" href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a>, newClient);</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment">// launch client thread</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        readingLoop(newClient);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_function" href="main_8c.html#a447bfa09604b3b934218f394f72d5755">readingLoop</a>(newClient);</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">   86</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    printf(<span class="stringliteral">&quot;Début programme. \n&quot;</span>);</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">// Assigning function closeSocket() to SIGTERM signal</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    signal(SIGTERM, finishProgram);   <span class="comment">// Signal shutdown from ide.</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    signal(SIGINT, finishProgram);    <span class="comment">// Signal shutdown from ctr+c in terminal.</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    signal(SIGTERM, <a class="code hl_function" href="server_socket_8c.html#a24202776b3f9578bfd38f1ab542e57bb">finishProgram</a>);   <span class="comment">// Signal shutdown from ide.</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    signal(SIGINT, <a class="code hl_function" href="server_socket_8c.html#a24202776b3f9578bfd38f1ab542e57bb">finishProgram</a>);    <span class="comment">// Signal shutdown from ctr+c in terminal.</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="comment">// Initialize the list of channels and launch them.</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    initChannelList();</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <a class="code hl_function" href="_channel_8c.html#a5714d30f144b9605b48778b16511c270">initChannelList</a>();</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">// Servers are launched</span></div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    rk_sema_init(&amp;semaphore, NB_MAX_CLIENT);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    initCommandList();</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    rk_sema_init(&amp;<a class="code hl_variable" href="semaphore_8c.html#a4d70d99de0b3d7b4d554647e24bebebc">semaphore</a>, <a class="code hl_define" href="global_8c.html#a013246eb689a04f7ab63f0d37a30615b">NB_MAX_CLIENT</a>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <a class="code hl_function" href="_command_8c.html#abd3bceb28341368efbdc81ec71893dfa">initCommandList</a>();</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    clientList = createList();</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <a class="code hl_variable" href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a> = <a class="code hl_function" href="_list_8c.html#a6ae10f3a23dc25c7f1e1dd7d2de3d487">createList</a>();</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">int</span> newClientSocketDescriptor;</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    pthread_t pthread;</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">while</span>(1){</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="comment">// Wait for a place.</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        rk_sema_wait(&amp;semaphore);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        rk_sema_wait(&amp;<a class="code hl_variable" href="semaphore_8c.html#a4d70d99de0b3d7b4d554647e24bebebc">semaphore</a>);</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="comment">// Waiting for a client connection.</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        newClientSocketDescriptor = connectToClient(channelList[INDEX_DEFAULT_CHANNEL]-&gt;serverSocketDescriptor);    <span class="comment">// Connect to default socket.</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        newClientSocketDescriptor = <a class="code hl_function" href="client_socket_8c.html#a4cfd20ed36939fbc7c7ab4a583296212">connectToClient</a>(<a class="code hl_variable" href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">channelList</a>[<a class="code hl_define" href="global_8c.html#ad2c12562002af7a58df1592b0655c9cf">INDEX_DEFAULT_CHANNEL</a>]-&gt;serverSocketDescriptor);    <span class="comment">// Connect to default socket.</span></div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="comment">// launch client thread</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">if</span> (pthread_create(&amp;pthread, NULL, createNewClient, newClientSocketDescriptor)) {</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            throwError(<span class="stringliteral">&quot;Error : unable to create thread, %d\n&quot;</span>, 0);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">if</span> (pthread_create(&amp;pthread, NULL, <a class="code hl_function" href="main_8c.html#a3fd5e182cf88dc45cb691918943a9af0">createNewClient</a>, newClientSocketDescriptor)) {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Error : unable to create thread, %d\n&quot;</span>, 0);</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        }</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    }</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
+<div class="ttc" id="a_channel_8c_html"><div class="ttname"><a href="_channel_8c.html">Channel.c</a></div></div>
+<div class="ttc" id="a_channel_8c_html_a5714d30f144b9605b48778b16511c270"><div class="ttname"><a href="_channel_8c.html#a5714d30f144b9605b48778b16511c270">initChannelList</a></div><div class="ttdeci">void initChannelList()</div><div class="ttdef"><b>Definition:</b> <a href="_channel_8c_source.html#l00026">Channel.c:26</a></div></div>
+<div class="ttc" id="a_channel_8h_html"><div class="ttname"><a href="_channel_8h.html">Channel.h</a></div></div>
+<div class="ttc" id="a_client_8c_html"><div class="ttname"><a href="_client_8c.html">Client.c</a></div></div>
+<div class="ttc" id="a_client_8c_html_aac95c9864d1606a5da49921f5013d51f"><div class="ttname"><a href="_client_8c.html#aac95c9864d1606a5da49921f5013d51f">createClient</a></div><div class="ttdeci">Client * createClient(char *username, int acceptedSocketDescriptor, int indexCurrentChannel)</div><div class="ttdef"><b>Definition:</b> <a href="_client_8c_source.html#l00002">Client.c:2</a></div></div>
+<div class="ttc" id="a_client_8h_html"><div class="ttname"><a href="_client_8h.html">Client.h</a></div></div>
+<div class="ttc" id="a_command_8c_html_aa3d9fcc59bb4194ba72397423febb9d7"><div class="ttname"><a href="_command_8c.html#aa3d9fcc59bb4194ba72397423febb9d7">isCommand</a></div><div class="ttdeci">int isCommand(char *message)</div><div class="ttdef"><b>Definition:</b> <a href="_command_8c_source.html#l00044">Command.c:44</a></div></div>
+<div class="ttc" id="a_command_8c_html_abd3bceb28341368efbdc81ec71893dfa"><div class="ttname"><a href="_command_8c.html#abd3bceb28341368efbdc81ec71893dfa">initCommandList</a></div><div class="ttdeci">void initCommandList()</div><div class="ttdef"><b>Definition:</b> <a href="_command_8c_source.html#l00023">Command.c:23</a></div></div>
+<div class="ttc" id="a_command_8h_html"><div class="ttname"><a href="_command_8h.html">Command.h</a></div></div>
+<div class="ttc" id="a_list_8c_html"><div class="ttname"><a href="_list_8c.html">List.c</a></div></div>
+<div class="ttc" id="a_list_8c_html_a6ae10f3a23dc25c7f1e1dd7d2de3d487"><div class="ttname"><a href="_list_8c.html#a6ae10f3a23dc25c7f1e1dd7d2de3d487">createList</a></div><div class="ttdeci">List * createList()</div><div class="ttdef"><b>Definition:</b> <a href="_list_8c_source.html#l00003">List.c:3</a></div></div>
+<div class="ttc" id="a_list_8c_html_a971206958c5754d7adc0042058ba4130"><div class="ttname"><a href="_list_8c.html#a971206958c5754d7adc0042058ba4130">add</a></div><div class="ttdeci">void add(List *list, Client *client)</div><div class="ttdef"><b>Definition:</b> <a href="_list_8c_source.html#l00014">List.c:14</a></div></div>
+<div class="ttc" id="a_list_8h_html"><div class="ttname"><a href="_list_8h.html">List.h</a></div></div>
+<div class="ttc" id="a_node_8h_html"><div class="ttname"><a href="_node_8h.html">Node.h</a></div></div>
+<div class="ttc" id="aask_8c_html"><div class="ttname"><a href="ask_8c.html">ask.c</a></div></div>
+<div class="ttc" id="aask_8c_html_a7150b23295b7b6e1fd852dcb2c97be1d"><div class="ttname"><a href="ask_8c.html#a7150b23295b7b6e1fd852dcb2c97be1d">askForUsername</a></div><div class="ttdeci">char * askForUsername(int newClientSocketDescriptor)</div><div class="ttdef"><b>Definition:</b> <a href="ask_8c_source.html#l00010">ask.c:10</a></div></div>
+<div class="ttc" id="aclient_socket_8c_html"><div class="ttname"><a href="client_socket_8c.html">clientSocket.c</a></div></div>
+<div class="ttc" id="aclient_socket_8c_html_a4cfd20ed36939fbc7c7ab4a583296212"><div class="ttname"><a href="client_socket_8c.html#a4cfd20ed36939fbc7c7ab4a583296212">connectToClient</a></div><div class="ttdeci">int connectToClient(int serverSocket)</div><div class="ttdef"><b>Definition:</b> <a href="client_socket_8c_source.html#l00008">clientSocket.c:8</a></div></div>
+<div class="ttc" id="acolor_8c_html"><div class="ttname"><a href="color_8c.html">color.c</a></div></div>
+<div class="ttc" id="aerror_8c_html"><div class="ttname"><a href="error_8c.html">error.c</a></div></div>
+<div class="ttc" id="aerror_8c_html_ad5fd1194b361cfb4bc723c13d4b2182b"><div class="ttname"><a href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a></div><div class="ttdeci">void throwError(char *errorMessage, int hasErrno)</div><div class="ttdef"><b>Definition:</b> <a href="error_8c_source.html#l00010">error.c:10</a></div></div>
+<div class="ttc" id="aglobal_8c_html"><div class="ttname"><a href="global_8c.html">global.c</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a013246eb689a04f7ab63f0d37a30615b"><div class="ttname"><a href="global_8c.html#a013246eb689a04f7ab63f0d37a30615b">NB_MAX_CLIENT</a></div><div class="ttdeci">#define NB_MAX_CLIENT</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00004">global.c:4</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a86cd9048b82fd91e3260fd17b880d223"><div class="ttname"><a href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">channelList</a></div><div class="ttdeci">Channel * channelList[NB_CHANNEL]</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00011">global.c:11</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a8bbe5cfb41fbe6b27337c128ed94cf2c"><div class="ttname"><a href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a></div><div class="ttdeci">List * clientList</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00005">global.c:5</a></div></div>
+<div class="ttc" id="aglobal_8c_html_ad2c12562002af7a58df1592b0655c9cf"><div class="ttname"><a href="global_8c.html#ad2c12562002af7a58df1592b0655c9cf">INDEX_DEFAULT_CHANNEL</a></div><div class="ttdeci">#define INDEX_DEFAULT_CHANNEL</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00014">global.c:14</a></div></div>
+<div class="ttc" id="amain_8c_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00086">main.c:86</a></div></div>
+<div class="ttc" id="amain_8c_html_a3fd5e182cf88dc45cb691918943a9af0"><div class="ttname"><a href="main_8c.html#a3fd5e182cf88dc45cb691918943a9af0">createNewClient</a></div><div class="ttdeci">void * createNewClient(int newClientSocketDescriptor)</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00062">main.c:62</a></div></div>
+<div class="ttc" id="amain_8c_html_a447bfa09604b3b934218f394f72d5755"><div class="ttname"><a href="main_8c.html#a447bfa09604b3b934218f394f72d5755">readingLoop</a></div><div class="ttdeci">void readingLoop(Client *client)</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00045">main.c:45</a></div></div>
+<div class="ttc" id="areceive_8c_html"><div class="ttname"><a href="receive_8c.html">receive.c</a></div></div>
+<div class="ttc" id="areceive_8c_html_a580528be3e8d4c7ea7babc61d35721ee"><div class="ttname"><a href="receive_8c.html#a580528be3e8d4c7ea7babc61d35721ee">receiveMessage</a></div><div class="ttdeci">char * receiveMessage(int acceptedSocketDescriptor)</div><div class="ttdef"><b>Definition:</b> <a href="receive_8c_source.html#l00042">receive.c:42</a></div></div>
+<div class="ttc" id="aregex_8c_html"><div class="ttname"><a href="regex_8c.html">regex.c</a></div></div>
+<div class="ttc" id="arouter_8c_html"><div class="ttname"><a href="router_8c.html">router.c</a></div></div>
+<div class="ttc" id="arouter_8c_html_a556c2dc8bc51f16b7574ccd996899a73"><div class="ttname"><a href="router_8c.html#a556c2dc8bc51f16b7574ccd996899a73">doCommandAction</a></div><div class="ttdeci">void doCommandAction(Client *client, char *message)</div><div class="ttdef"><b>Definition:</b> <a href="router_8c_source.html#l00011">router.c:11</a></div></div>
+<div class="ttc" id="asemaphore_8c_html"><div class="ttname"><a href="semaphore_8c.html">semaphore.c</a></div></div>
+<div class="ttc" id="asemaphore_8c_html_a4d70d99de0b3d7b4d554647e24bebebc"><div class="ttname"><a href="semaphore_8c.html#a4d70d99de0b3d7b4d554647e24bebebc">semaphore</a></div><div class="ttdeci">struct rk_sema semaphore</div><div class="ttdef"><b>Definition:</b> <a href="semaphore_8c_source.html#l00046">semaphore.c:46</a></div></div>
+<div class="ttc" id="asend_8c_html"><div class="ttname"><a href="send_8c.html">send.c</a></div></div>
+<div class="ttc" id="asend_8c_html_a7c3db8391bee9ddd7d4d297ee83d5778"><div class="ttname"><a href="send_8c.html#a7c3db8391bee9ddd7d4d297ee83d5778">sendToChannel</a></div><div class="ttdeci">void sendToChannel(Client *client, char *message)</div><div class="ttdef"><b>Definition:</b> <a href="send_8c_source.html#l00058">send.c:58</a></div></div>
+<div class="ttc" id="aserver_socket_8c_html"><div class="ttname"><a href="server_socket_8c.html">serverSocket.c</a></div></div>
+<div class="ttc" id="aserver_socket_8c_html_a24202776b3f9578bfd38f1ab542e57bb"><div class="ttname"><a href="server_socket_8c.html#a24202776b3f9578bfd38f1ab542e57bb">finishProgram</a></div><div class="ttdeci">void finishProgram()</div><div class="ttdef"><b>Definition:</b> <a href="server_socket_8c_source.html#l00067">serverSocket.c:67</a></div></div>
 <div class="ttc" id="astruct_client_html"><div class="ttname"><a href="struct_client.html">Client</a></div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00002">Client.h:2</a></div></div>
+<div class="ttc" id="astruct_client_html_a01f75a9ad916f63a94e06a27635ba278"><div class="ttname"><a href="struct_client.html#a01f75a9ad916f63a94e06a27635ba278">Client::thread</a></div><div class="ttdeci">pthread_t thread</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00006">Client.h:6</a></div></div>
+<div class="ttc" id="astruct_client_html_a9b20c006bd90a09e1465fb668700e81d"><div class="ttname"><a href="struct_client.html#a9b20c006bd90a09e1465fb668700e81d">Client::username</a></div><div class="ttdeci">char * username</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00003">Client.h:3</a></div></div>
+<div class="ttc" id="astruct_client_html_af3026a10afe86549e403ed46b8ff437a"><div class="ttname"><a href="struct_client.html#af3026a10afe86549e403ed46b8ff437a">Client::acceptedSocketDescriptor</a></div><div class="ttdeci">int acceptedSocketDescriptor</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00004">Client.h:4</a></div></div>
+<div class="ttc" id="atransfer_8c_html"><div class="ttname"><a href="transfer_8c.html">transfer.c</a></div></div>
+<div class="ttc" id="autil_8c_html"><div class="ttname"><a href="util_8c.html">util.c</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

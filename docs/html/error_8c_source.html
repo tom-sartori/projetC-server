@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,19 +69,22 @@ $(function() {
   <div class="headertitle"><div class="title">error.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<a href="error_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">void</span> throwError (<span class="keywordtype">char</span> *errorMessage, <span class="keywordtype">int</span> hasErrno) {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">   10</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a> (<span class="keywordtype">char</span> *errorMessage, <span class="keywordtype">int</span> hasErrno) {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">if</span> (hasErrno) {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        perror(errorMessage);</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }<span class="keywordflow">else</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        setRedText();</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_function" href="color_8c.html#a9b1d81b6ed7366e7318a8844d8f7fd83">setRedText</a>();</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        printf(<span class="stringliteral">&quot;%s \n&quot;</span>, errorMessage);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        setWhiteText();</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <a class="code hl_function" href="color_8c.html#afd76a53ec373d21d8ff3009a03ce0e4f">setWhiteText</a>();</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    }</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    exit(EXIT_FAILURE);</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
+<div class="ttc" id="acolor_8c_html_a9b1d81b6ed7366e7318a8844d8f7fd83"><div class="ttname"><a href="color_8c.html#a9b1d81b6ed7366e7318a8844d8f7fd83">setRedText</a></div><div class="ttdeci">void setRedText()</div><div class="ttdef"><b>Definition:</b> <a href="color_8c_source.html#l00007">color.c:7</a></div></div>
+<div class="ttc" id="acolor_8c_html_afd76a53ec373d21d8ff3009a03ce0e4f"><div class="ttname"><a href="color_8c.html#afd76a53ec373d21d8ff3009a03ce0e4f">setWhiteText</a></div><div class="ttdeci">void setWhiteText()</div><div class="ttdef"><b>Definition:</b> <a href="color_8c_source.html#l00059">color.c:59</a></div></div>
+<div class="ttc" id="aerror_8c_html_ad5fd1194b361cfb4bc723c13d4b2182b"><div class="ttname"><a href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a></div><div class="ttdeci">void throwError(char *errorMessage, int hasErrno)</div><div class="ttdef"><b>Definition:</b> <a href="error_8c_source.html#l00010">error.c:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

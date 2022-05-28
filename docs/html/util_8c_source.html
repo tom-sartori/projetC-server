@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,10 +69,10 @@ $(function() {
   <div class="headertitle"><div class="title">util.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keywordtype">void</span> getUploadDirectoryPath (<span class="keywordtype">char</span> *filePath) {</div>
+<a href="util_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="util_8c.html#aba1623ca3e44b15e0920f664207587c0">    5</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="util_8c.html#aba1623ca3e44b15e0920f664207587c0">getUploadDirectoryPath</a> (<span class="keywordtype">char</span> *filePath) {</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    getwd(filePath);</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">if</span> (isMatch(filePath, <span class="stringliteral">&quot;cmake-build-debug&quot;</span>)) {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a>(filePath, <span class="stringliteral">&quot;cmake-build-debug&quot;</span>)) {</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        <span class="comment">// Program launched by Cmake project. It means that the current pwd is the directory cmake-build-debug.</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        strcat(filePath, <span class="stringliteral">&quot;/../uploads/&quot;</span>);</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    } <span class="keywordflow">else</span> {</div>
@@ -81,13 +81,16 @@ $(function() {
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">void</span> strcatArray(<span class="keywordtype">char</span> *buffer, <span class="keywordtype">int</span> bufferSize, <span class="keywordtype">char</span> *tab[], <span class="keywordtype">int</span> tabSize) {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="util_8c.html#a1e8548bc90b2ba5fb3773896ee778721">   24</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="util_8c.html#a1e8548bc90b2ba5fb3773896ee778721">strcatArray</a>(<span class="keywordtype">char</span> *buffer, <span class="keywordtype">int</span> bufferSize, <span class="keywordtype">char</span> *tab[], <span class="keywordtype">int</span> tabSize) {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    bzero(buffer, bufferSize);</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; tabSize; i++) {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        strcat(buffer, tab[i]);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+<div class="ttc" id="aregex_8c_html_a7e3aa9478821ab94f37a66a529cac597"><div class="ttname"><a href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a></div><div class="ttdeci">int isMatch(char *message, char *reg)</div><div class="ttdef"><b>Definition:</b> <a href="regex_8c_source.html#l00010">regex.c:10</a></div></div>
+<div class="ttc" id="autil_8c_html_a1e8548bc90b2ba5fb3773896ee778721"><div class="ttname"><a href="util_8c.html#a1e8548bc90b2ba5fb3773896ee778721">strcatArray</a></div><div class="ttdeci">void strcatArray(char *buffer, int bufferSize, char *tab[], int tabSize)</div><div class="ttdoc">: Concatenation of a tab of strings within the buffer.</div><div class="ttdef"><b>Definition:</b> <a href="util_8c_source.html#l00024">util.c:24</a></div></div>
+<div class="ttc" id="autil_8c_html_aba1623ca3e44b15e0920f664207587c0"><div class="ttname"><a href="util_8c.html#aba1623ca3e44b15e0920f664207587c0">getUploadDirectoryPath</a></div><div class="ttdeci">void getUploadDirectoryPath(char *filePath)</div><div class="ttdef"><b>Definition:</b> <a href="util_8c_source.html#l00005">util.c:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

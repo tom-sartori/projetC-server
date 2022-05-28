@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,16 +69,16 @@ $(function() {
   <div class="headertitle"><div class="title">regex.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;regex.h&gt;</span></div>
+<a href="regex_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;regex.h&gt;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">int</span> isMatch (<span class="keywordtype">char</span> *message, <span class="keywordtype">char</span> *reg) {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">   10</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a> (<span class="keywordtype">char</span> *message, <span class="keywordtype">char</span> *reg) {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    regex_t regex;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">int</span> regexValue;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">int</span> isMatch = 0;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a> = 0;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    regexValue = regcomp(&amp;regex, reg, REG_EXTENDED);</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">if</span> (regexValue) {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        throwError(<span class="stringliteral">&quot;Could not compile regex. \n&quot;</span>, 0);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Could not compile regex. \n&quot;</span>, 0);</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    }</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">//Execute regular expression.</span></div>
@@ -86,29 +86,29 @@ $(function() {
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> (!regexValue) {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">//        printf(&quot;Regex match. \n&quot;);</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        isMatch = 1;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_function" href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a> = 1;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (regexValue == REG_NOMATCH) {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">//        printf(&quot;Regex no match. \n&quot;);</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        isMatch = 0;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_function" href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a> = 0;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        throwError(<span class="stringliteral">&quot;Regex error. \n&quot;</span>, 0);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Regex error. \n&quot;</span>, 0);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// Free memory allocated to the pattern buffer by regcomp().</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    regfree(&amp;regex);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">return</span> isMatch;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a>;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">void</span> getRegexGroup (<span class="keywordtype">char</span> *list[], <span class="keywordtype">char</span> *message, <span class="keywordtype">char</span> *regexString) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="regex_8c.html#aa65837f664d674ef7d9dbc95bf926990">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="regex_8c.html#aa65837f664d674ef7d9dbc95bf926990">getRegexGroup</a> (<span class="keywordtype">char</span> *list[], <span class="keywordtype">char</span> *message, <span class="keywordtype">char</span> *regexString) {</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    regex_t regexCompiled;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">size_t</span> maxGroups = 3;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    regmatch_t groupArray[maxGroups];</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (regcomp(&amp;regexCompiled, regexString, REG_EXTENDED)){</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        throwError(<span class="stringliteral">&quot;Could not compile regex. \n&quot;</span>, 0);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Could not compile regex. \n&quot;</span>, 0);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">if</span> (regexec(&amp;regexCompiled, message, maxGroups, groupArray, 0) == 0) {</div>
@@ -128,6 +128,9 @@ $(function() {
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    regfree(&amp;regexCompiled);</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="ttc" id="aerror_8c_html_ad5fd1194b361cfb4bc723c13d4b2182b"><div class="ttname"><a href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a></div><div class="ttdeci">void throwError(char *errorMessage, int hasErrno)</div><div class="ttdef"><b>Definition:</b> <a href="error_8c_source.html#l00010">error.c:10</a></div></div>
+<div class="ttc" id="aregex_8c_html_a7e3aa9478821ab94f37a66a529cac597"><div class="ttname"><a href="regex_8c.html#a7e3aa9478821ab94f37a66a529cac597">isMatch</a></div><div class="ttdeci">int isMatch(char *message, char *reg)</div><div class="ttdef"><b>Definition:</b> <a href="regex_8c_source.html#l00010">regex.c:10</a></div></div>
+<div class="ttc" id="aregex_8c_html_aa65837f664d674ef7d9dbc95bf926990"><div class="ttname"><a href="regex_8c.html#aa65837f664d674ef7d9dbc95bf926990">getRegexGroup</a></div><div class="ttdeci">void getRegexGroup(char *list[], char *message, char *regexString)</div><div class="ttdef"><b>Definition:</b> <a href="regex_8c_source.html#l00047">regex.c:47</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

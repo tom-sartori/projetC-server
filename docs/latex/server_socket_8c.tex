@@ -1,0 +1,78 @@
+\hypertarget{server_socket_8c}{}\doxysection{src/socket/server\+Socket.c File Reference}
+\label{server_socket_8c}\index{src/socket/serverSocket.c@{src/socket/serverSocket.c}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{server_socket_8c_a5b3877e0bfe9bc1047fa5d7997c1392a}{socket\+Creation}} ()
+\item 
+int \mbox{\hyperlink{server_socket_8c_ac947a8c43f060d67918ba87cb280ab35}{launch\+Server}} (int port)
+\item 
+void \mbox{\hyperlink{server_socket_8c_a0c58d6ee4d1a062815803d2b5ba45c4a}{close\+Socket}} (int server\+Socket\+Descriptor)
+\item 
+void \mbox{\hyperlink{server_socket_8c_a24202776b3f9578bfd38f1ab542e57bb}{finish\+Program}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{server_socket_8c_a0c58d6ee4d1a062815803d2b5ba45c4a}\label{server_socket_8c_a0c58d6ee4d1a062815803d2b5ba45c4a}} 
+\index{serverSocket.c@{serverSocket.c}!closeSocket@{closeSocket}}
+\index{closeSocket@{closeSocket}!serverSocket.c@{serverSocket.c}}
+\doxysubsubsection{\texorpdfstring{closeSocket()}{closeSocket()}}
+{\footnotesize\ttfamily void close\+Socket (\begin{DoxyParamCaption}\item[{int}]{server\+Socket\+Descriptor }\end{DoxyParamCaption})}
+
+Shut down the server.
+
+
+\begin{DoxyParams}{Parameters}
+{\em server\+Socket\+Descriptor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{server_socket_8c_source_l00059}{59}} of file \mbox{\hyperlink{server_socket_8c_source}{server\+Socket.\+c}}.
+
+\mbox{\Hypertarget{server_socket_8c_a24202776b3f9578bfd38f1ab542e57bb}\label{server_socket_8c_a24202776b3f9578bfd38f1ab542e57bb}} 
+\index{serverSocket.c@{serverSocket.c}!finishProgram@{finishProgram}}
+\index{finishProgram@{finishProgram}!serverSocket.c@{serverSocket.c}}
+\doxysubsubsection{\texorpdfstring{finishProgram()}{finishProgram()}}
+{\footnotesize\ttfamily void finish\+Program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{server_socket_8c_source_l00067}{67}} of file \mbox{\hyperlink{server_socket_8c_source}{server\+Socket.\+c}}.
+
+\mbox{\Hypertarget{server_socket_8c_ac947a8c43f060d67918ba87cb280ab35}\label{server_socket_8c_ac947a8c43f060d67918ba87cb280ab35}} 
+\index{serverSocket.c@{serverSocket.c}!launchServer@{launchServer}}
+\index{launchServer@{launchServer}!serverSocket.c@{serverSocket.c}}
+\doxysubsubsection{\texorpdfstring{launchServer()}{launchServer()}}
+{\footnotesize\ttfamily int launch\+Server (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
+
+Create, bind and make listening a socket.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the descriptor of the socket created. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{server_socket_8c_source_l00030}{30}} of file \mbox{\hyperlink{server_socket_8c_source}{server\+Socket.\+c}}.
+
+\mbox{\Hypertarget{server_socket_8c_a5b3877e0bfe9bc1047fa5d7997c1392a}\label{server_socket_8c_a5b3877e0bfe9bc1047fa5d7997c1392a}} 
+\index{serverSocket.c@{serverSocket.c}!socketCreation@{socketCreation}}
+\index{socketCreation@{socketCreation}!serverSocket.c@{serverSocket.c}}
+\doxysubsubsection{\texorpdfstring{socketCreation()}{socketCreation()}}
+{\footnotesize\ttfamily int socket\+Creation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Create a socket and return his descriptor.
+
+\begin{DoxyReturn}{Returns}
+the descriptor of the socket created. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{server_socket_8c_source_l00007}{7}} of file \mbox{\hyperlink{server_socket_8c_source}{server\+Socket.\+c}}.
+

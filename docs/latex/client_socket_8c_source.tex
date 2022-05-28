@@ -1,9 +1,9 @@
 \hypertarget{client_socket_8c_source}{}\doxysection{client\+Socket.\+c}
 \label{client_socket_8c_source}\index{src/socket/clientSocket.c@{src/socket/clientSocket.c}}
-
+\mbox{\hyperlink{client_socket_8c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00001}00001 }
-\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00008}00008 \textcolor{keywordtype}{int} connectToClient (\textcolor{keywordtype}{int} serverSocket) \{}
+\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00008}\mbox{\hyperlink{client_socket_8c_a4cfd20ed36939fbc7c7ab4a583296212}{00008}} \textcolor{keywordtype}{int} \mbox{\hyperlink{client_socket_8c_a4cfd20ed36939fbc7c7ab4a583296212}{connectToClient}} (\textcolor{keywordtype}{int} serverSocket) \{}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00009}00009     \textcolor{keyword}{struct }sockaddr\_in aC;}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00010}00010     socklen\_t lg = \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct }sockaddr\_in);}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00011}00011 }
@@ -15,7 +15,7 @@
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00017}00017 }
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00018}00018     \textcolor{comment}{// Checking for errors}}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00019}00019     \textcolor{keywordflow}{if} (acceptedSocketDescriptor == -\/1) \{}
-\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00020}00020         throwError(\textcolor{stringliteral}{"{}Erreur lors de la connexion. \(\backslash\)n"{}}, 1);}
+\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00020}00020         \mbox{\hyperlink{error_8c_ad5fd1194b361cfb4bc723c13d4b2182b}{throwError}}(\textcolor{stringliteral}{"{}Erreur lors de la connexion. \(\backslash\)n"{}}, 1);}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00021}00021     \}}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00022}00022     \textcolor{keywordflow}{else} \{}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00023}00023         printf(\textcolor{stringliteral}{"{}Client Connecté. \(\backslash\)n"{}});}
@@ -23,7 +23,7 @@
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00025}00025     \textcolor{keywordflow}{return} acceptedSocketDescriptor;}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00026}00026 \}}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00027}00027 }
-\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00034}00034 \textcolor{keywordtype}{int} isSocketConnected (\textcolor{keywordtype}{int} acceptedSocketDescriptor) \{}
+\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00034}\mbox{\hyperlink{client_socket_8c_a2d7d327343fcb081adaced431ae05bd2}{00034}} \textcolor{keywordtype}{int} \mbox{\hyperlink{client_socket_8c_a2d7d327343fcb081adaced431ae05bd2}{isSocketConnected}} (\textcolor{keywordtype}{int} acceptedSocketDescriptor) \{}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00035}00035     \textcolor{keywordtype}{int} error = 0;}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00036}00036     socklen\_t len = \textcolor{keyword}{sizeof} (error);}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00037}00037     \textcolor{keywordtype}{int} retval = getsockopt (acceptedSocketDescriptor, SOL\_SOCKET, SO\_ERROR, \&error, \&len);}
@@ -32,13 +32,13 @@
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00040}00040     \textcolor{keywordflow}{return} retval == 0;}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00041}00041 \}}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00042}00042 }
-\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00047}00047 \textcolor{keywordtype}{void} closeClient (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
-\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00048}00048     printf(\textcolor{stringliteral}{"{}Déconnexion du client : \%s\(\backslash\)n"{}}, client-\/>username);}
+\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00047}\mbox{\hyperlink{client_socket_8c_ad4aa03313e40843342c7ad4c42152baf}{00047}} \textcolor{keywordtype}{void} \mbox{\hyperlink{client_socket_8c_ad4aa03313e40843342c7ad4c42152baf}{closeClient}} (\mbox{\hyperlink{struct_client}{Client}} *client) \{}
+\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00048}00048     printf(\textcolor{stringliteral}{"{}Déconnexion du client : \%s\(\backslash\)n"{}}, client-\/>\mbox{\hyperlink{struct_client_a9b20c006bd90a09e1465fb668700e81d}{username}});}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00049}00049 \textcolor{comment}{//    shutdown(acceptedSocketDescriptor, 2);    // Commented because doesn't close.}}
-\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00050}00050     close(client-\/>acceptedSocketDescriptor);    \textcolor{comment}{// Close client's socket.}}
-\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00051}00051     \textcolor{keyword}{delete}(clientList, client);     \textcolor{comment}{// Remove from the list, to node which contain the client.}}
-\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00052}00052     \textcolor{keyword}{delete}(channelList[client-\/>indexCurrentChannel]-\/>clientList, client);   \textcolor{comment}{// Delete the client from his channel list.}}
-\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00053}00053     rk\_sema\_post(\&semaphore);}
+\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00050}00050     close(client-\/>\mbox{\hyperlink{struct_client_af3026a10afe86549e403ed46b8ff437a}{acceptedSocketDescriptor}});    \textcolor{comment}{// Close client's socket.}}
+\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00051}00051     \textcolor{keyword}{delete}(\mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}, client);     \textcolor{comment}{// Remove from the list, to node which contain the client.}}
+\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00052}00052     \textcolor{keyword}{delete}(\mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[client-\/>\mbox{\hyperlink{struct_client_ac68008534f800db5b81ce5d08d0dc768}{indexCurrentChannel}}]-\/>\mbox{\hyperlink{struct_channel_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}, client);   \textcolor{comment}{// Delete the client from his channel list.}}
+\DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00053}00053     rk\_sema\_post(\&\mbox{\hyperlink{semaphore_8c_a4d70d99de0b3d7b4d554647e24bebebc}{semaphore}});}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00054}00054     pthread\_exit(NULL);     \textcolor{comment}{// Kill of the thread associated.}}
 \DoxyCodeLine{\Hypertarget{client_socket_8c_source_l00055}00055 \}}
 

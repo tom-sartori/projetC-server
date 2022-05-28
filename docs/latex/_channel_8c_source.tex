@@ -1,58 +1,58 @@
 \hypertarget{_channel_8c_source}{}\doxysection{Channel.\+c}
 \label{_channel_8c_source}\index{src/channel/Channel.c@{src/channel/Channel.c}}
-
+\mbox{\hyperlink{_channel_8c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00001}00001 \textcolor{preprocessor}{\#include "{}conf.h"{}}}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{conf_8h}{conf.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00012}00012 \mbox{\hyperlink{struct_channel}{Channel}} *createChannel (\textcolor{keywordtype}{char} *name, \textcolor{keywordtype}{int} port, \textcolor{keywordtype}{int} isPublic, \textcolor{keywordtype}{int} size) \{}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00012}\mbox{\hyperlink{_channel_8c_a393d23d573edc2dd962be8215af86e44}{00012}} \mbox{\hyperlink{struct_channel}{Channel}} *\mbox{\hyperlink{_channel_8c_a393d23d573edc2dd962be8215af86e44}{createChannel}} (\textcolor{keywordtype}{char} *name, \textcolor{keywordtype}{int} port, \textcolor{keywordtype}{int} isPublic, \textcolor{keywordtype}{int} size) \{}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00013}00013     \mbox{\hyperlink{struct_channel}{Channel}} *channel = (\mbox{\hyperlink{struct_channel}{Channel}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_channel}{Channel}}));}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00015}00015     channel-\/>name = name;   }
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00016}00016     channel-\/>port = port;}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00017}00017     channel-\/>serverSocketDescriptor = launchServer(port);}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00018}00018     channel-\/>isPublic = isPublic;}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00019}00019     channel-\/>size = size;}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00020}00020     channel-\/>clientList = createList();}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00015}00015     channel-\/>\mbox{\hyperlink{struct_channel_a5ac083a645d964373f022d03df4849c8}{name}} = name;   }
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00016}00016     channel-\/>\mbox{\hyperlink{struct_channel_a63c89c04d1feae07ca35558055155ffb}{port}} = port;}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00017}00017     channel-\/>\mbox{\hyperlink{struct_channel_aaa8e65eee827dd115f3a79a0690d63e1}{serverSocketDescriptor}} = \mbox{\hyperlink{server_socket_8c_ac947a8c43f060d67918ba87cb280ab35}{launchServer}}(port);}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00018}00018     channel-\/>\mbox{\hyperlink{struct_channel_ac97afd1849b19732411ba46e7da5fb98}{isPublic}} = isPublic;}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00019}00019     channel-\/>\mbox{\hyperlink{struct_channel_a439227feff9d7f55384e8780cfc2eb82}{size}} = size;}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00020}00020     channel-\/>\mbox{\hyperlink{struct_channel_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}} = \mbox{\hyperlink{_list_8c_a6ae10f3a23dc25c7f1e1dd7d2de3d487}{createList}}();}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00021}00021 }
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00022}00022     \textcolor{keywordflow}{return} channel;}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00023}00023 \}}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00024}00024 }
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00025}00025 }
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00026}00026 \textcolor{keywordtype}{void} initChannelList () \{}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00027}00027     channelList[0] = createChannel(CHANNEL\_FILE\_NAME, CHANNEL\_FILE\_PORT, 0, NB\_MAX\_CLIENT);}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00028}00028     channelList[1] = createChannel(CHANNEL\_SWITCH\_NAME, CHANNEL\_SWITCH\_PORT, 0, NB\_MAX\_CLIENT);}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00029}00029     channelList[2] = createChannel(CHANNEL\_DEFAULT\_NAME, CHANNEL\_DEFAULT\_PORT, 0, NB\_MAX\_CLIENT);}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00030}00030     channelList[3] = createChannel(CHANNEL\_1\_NAME, CHANNEL\_1\_PORT, 1, NB\_MAX\_CLIENT);}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00031}00031     channelList[4] = createChannel(CHANNEL\_2\_NAME, CHANNEL\_2\_PORT, 1, DEFAULT\_CHANNEL\_SIZE);}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00032}00032     channelList[5] = createChannel(CHANNEL\_3\_NAME, CHANNEL\_3\_PORT, 1, DEFAULT\_CHANNEL\_SIZE);}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00026}\mbox{\hyperlink{_channel_8c_a5714d30f144b9605b48778b16511c270}{00026}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_channel_8c_a5714d30f144b9605b48778b16511c270}{initChannelList}} () \{}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00027}00027     \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[0] = \mbox{\hyperlink{_channel_8c_a393d23d573edc2dd962be8215af86e44}{createChannel}}(\mbox{\hyperlink{conf_8h_a9f7328647487f87e2b84d249c210e8a5}{CHANNEL\_FILE\_NAME}}, \mbox{\hyperlink{conf_8h_a68c2e67cdf57412d6dd6848a97dbc293}{CHANNEL\_FILE\_PORT}}, 0, \mbox{\hyperlink{global_8c_a013246eb689a04f7ab63f0d37a30615b}{NB\_MAX\_CLIENT}});}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00028}00028     \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[1] = \mbox{\hyperlink{_channel_8c_a393d23d573edc2dd962be8215af86e44}{createChannel}}(\mbox{\hyperlink{conf_8h_a2915491738c8e511acd255303fd418c1}{CHANNEL\_SWITCH\_NAME}}, \mbox{\hyperlink{conf_8h_ad7f270ccd216bd1f1ad29effb2dc82fa}{CHANNEL\_SWITCH\_PORT}}, 0, \mbox{\hyperlink{global_8c_a013246eb689a04f7ab63f0d37a30615b}{NB\_MAX\_CLIENT}});}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00029}00029     \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[2] = \mbox{\hyperlink{_channel_8c_a393d23d573edc2dd962be8215af86e44}{createChannel}}(\mbox{\hyperlink{conf_8h_a1fd9f12e76e37e5aada4d74d8b69dd68}{CHANNEL\_DEFAULT\_NAME}}, \mbox{\hyperlink{conf_8h_aba5431d531f986c4f7969bf01d0b452e}{CHANNEL\_DEFAULT\_PORT}}, 0, \mbox{\hyperlink{global_8c_a013246eb689a04f7ab63f0d37a30615b}{NB\_MAX\_CLIENT}});}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00030}00030     \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[3] = \mbox{\hyperlink{_channel_8c_a393d23d573edc2dd962be8215af86e44}{createChannel}}(\mbox{\hyperlink{conf_8h_a82ed54304cc8164a8b0b42fbd54cfc07}{CHANNEL\_1\_NAME}}, \mbox{\hyperlink{conf_8h_a63a53657e8a1a3d5cba7828a6d4fcde4}{CHANNEL\_1\_PORT}}, 1, \mbox{\hyperlink{global_8c_a013246eb689a04f7ab63f0d37a30615b}{NB\_MAX\_CLIENT}});}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00031}00031     \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[4] = \mbox{\hyperlink{_channel_8c_a393d23d573edc2dd962be8215af86e44}{createChannel}}(\mbox{\hyperlink{conf_8h_a3e7cd6e8f1c9aa8ee436eab82567f3b5}{CHANNEL\_2\_NAME}}, \mbox{\hyperlink{conf_8h_a602543f7a832693bc971efb62142dbb1}{CHANNEL\_2\_PORT}}, 1, \mbox{\hyperlink{global_8c_a5a19b2fb8b6ddb997ed49b89d2bfeef3}{DEFAULT\_CHANNEL\_SIZE}});}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00032}00032     \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[5] = \mbox{\hyperlink{_channel_8c_a393d23d573edc2dd962be8215af86e44}{createChannel}}(\mbox{\hyperlink{conf_8h_a2cab1276c9e508ac5d6b0180a562ea6f}{CHANNEL\_3\_NAME}}, \mbox{\hyperlink{_channel_8c_ae2427715adefa98050ac86d6fa54dbfe}{CHANNEL\_3\_PORT}}, 1, \mbox{\hyperlink{global_8c_a5a19b2fb8b6ddb997ed49b89d2bfeef3}{DEFAULT\_CHANNEL\_SIZE}});}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00033}00033     \textcolor{comment}{// Don't forget to update NB\_CHANNEL and create at the new index.}}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00034}00034 \}}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00035}00035 }
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00036}00036 \textcolor{keywordtype}{int} isFull (\mbox{\hyperlink{struct_channel}{Channel}} *channel) \{}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00037}00037     \textcolor{keywordflow}{return} channel-\/>size <= channel-\/>clientList-\/>size;}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00036}\mbox{\hyperlink{_channel_8c_a6c94b305d8738925f917a9254116df1a}{00036}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_channel_8c_a6c94b305d8738925f917a9254116df1a}{isFull}} (\mbox{\hyperlink{struct_channel}{Channel}} *channel) \{}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00037}00037     \textcolor{keywordflow}{return} channel-\/>\mbox{\hyperlink{struct_channel_a439227feff9d7f55384e8780cfc2eb82}{size}} <= channel-\/>\mbox{\hyperlink{struct_channel_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}-\/>\mbox{\hyperlink{struct_list_a439227feff9d7f55384e8780cfc2eb82}{size}};}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00038}00038 \}}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00040}00040 \textcolor{keywordtype}{void} getChannelName (\textcolor{keywordtype}{int} channelIndex, \textcolor{keywordtype}{char} *buffer, \textcolor{keywordtype}{int} bufferSize) \{}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00040}\mbox{\hyperlink{_channel_8c_ae97a443c46c5ae230dddb773becca255}{00040}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_channel_8c_ae97a443c46c5ae230dddb773becca255}{getChannelName}} (\textcolor{keywordtype}{int} channelIndex, \textcolor{keywordtype}{char} *buffer, \textcolor{keywordtype}{int} bufferSize) \{}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00041}00041     \textcolor{keywordtype}{char} bufferIndex[\textcolor{keyword}{sizeof}(int)];}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00042}00042     sprintf(bufferIndex, \textcolor{stringliteral}{"{}\%d"{}}, channelIndex);}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00043}00043 }
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00044}00044     \textcolor{keywordtype}{char} *tab[] = \{}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00045}00045             bufferIndex,}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00046}00046             \textcolor{stringliteral}{"{} : "{}},}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00047}00047             channelList[channelIndex]-\/>name,}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00047}00047             \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[channelIndex]-\/>\mbox{\hyperlink{struct_channel_a5ac083a645d964373f022d03df4849c8}{name}},}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00048}00048             \textcolor{stringliteral}{"{}\(\backslash\)n"{}} \};}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00049}00049     strcatArray(buffer, bufferSize, tab, 4);}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00049}00049     \mbox{\hyperlink{util_8c_a1e8548bc90b2ba5fb3773896ee778721}{strcatArray}}(buffer, bufferSize, tab, 4);}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00050}00050 \}}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00051}00051 }
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00052}00052 \textcolor{keywordtype}{void} getFullChannelName (\textcolor{keywordtype}{int} channelIndex, \textcolor{keywordtype}{char} *buffer, \textcolor{keywordtype}{int} bufferSize) \{}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00052}\mbox{\hyperlink{_channel_8c_a4c6d599cdbb89a864d628b8a6a3e3e45}{00052}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_channel_8c_a4c6d599cdbb89a864d628b8a6a3e3e45}{getFullChannelName}} (\textcolor{keywordtype}{int} channelIndex, \textcolor{keywordtype}{char} *buffer, \textcolor{keywordtype}{int} bufferSize) \{}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00053}00053     \textcolor{keywordtype}{char} bufferIndex[\textcolor{keyword}{sizeof}(int)];}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00054}00054     sprintf(bufferIndex, \textcolor{stringliteral}{"{}\%d"{}}, channelIndex);}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00055}00055 }
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00056}00056     \textcolor{keywordtype}{char} bufferNbUser[\textcolor{keyword}{sizeof}(int)];}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00057}00057     sprintf(bufferNbUser, \textcolor{stringliteral}{"{}\%d"{}}, channelList[channelIndex]-\/>clientList-\/>size);}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00057}00057     sprintf(bufferNbUser, \textcolor{stringliteral}{"{}\%d"{}}, \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[channelIndex]-\/>\mbox{\hyperlink{global_8c_a8bbe5cfb41fbe6b27337c128ed94cf2c}{clientList}}-\/>\mbox{\hyperlink{struct_list_a439227feff9d7f55384e8780cfc2eb82}{size}});}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00058}00058 }
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00059}00059     \textcolor{keywordtype}{char} bufferNbUserMax[\textcolor{keyword}{sizeof}(int)];}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00060}00060     sprintf(bufferNbUserMax, \textcolor{stringliteral}{"{}\%d"{}}, channelList[channelIndex]-\/>size);}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00060}00060     sprintf(bufferNbUserMax, \textcolor{stringliteral}{"{}\%d"{}}, \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[channelIndex]-\/>size);}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00061}00061 }
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00062}00062     \textcolor{comment}{// Concatenation of strings.}}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00063}00063     \textcolor{keywordtype}{char} *tab[] = \{}
@@ -62,9 +62,9 @@
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00067}00067             \textcolor{stringliteral}{"{}/"{}},}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00068}00068             bufferNbUserMax,}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00069}00069             \textcolor{stringliteral}{"{}) "{}},}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00070}00070             channelList[channelIndex]-\/>name,}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00070}00070             \mbox{\hyperlink{global_8c_a86cd9048b82fd91e3260fd17b880d223}{channelList}}[channelIndex]-\/>\mbox{\hyperlink{struct_channel_a5ac083a645d964373f022d03df4849c8}{name}},}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00071}00071             \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\};}
-\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00072}00072     strcatArray(buffer, bufferSize, tab, 8);}
+\DoxyCodeLine{\Hypertarget{_channel_8c_source_l00072}00072     \mbox{\hyperlink{util_8c_a1e8548bc90b2ba5fb3773896ee778721}{strcatArray}}(buffer, bufferSize, tab, 8);}
 \DoxyCodeLine{\Hypertarget{_channel_8c_source_l00073}00073 \}}
 
 \end{DoxyCode}

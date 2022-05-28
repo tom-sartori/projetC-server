@@ -1,0 +1,272 @@
+\hypertarget{action_8c}{}\doxysection{src/command/action.c File Reference}
+\label{action_8c}\index{src/command/action.c@{src/command/action.c}}
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}action\+Threaded.\+c\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{action_8c_a0b2e6edc1666bb6244d6026f27389719}{help\+Action}} (int accepted\+Socket\+Descriptor)
+\item 
+void \mbox{\hyperlink{action_8c_a580906a3bf469d010207a1dc68a20160}{disconnect\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client)
+\item 
+void \mbox{\hyperlink{action_8c_a2e5b2c185f3a59e1edd93156a1ff9e27}{users\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client)
+\item 
+void \mbox{\hyperlink{action_8c_acb873e3def8aed76f2cdfdb730634054}{mp\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client\+Sender, \mbox{\hyperlink{struct_command}{Command}} $\ast$command, char $\ast$message)
+\item 
+void \mbox{\hyperlink{action_8c_aaa9a1375e669fd7686c7628599f0fcc4}{file\+Action}} (\mbox{\hyperlink{struct_command}{Command}} $\ast$command, char $\ast$message)
+\item 
+void \mbox{\hyperlink{action_8c_a7f9a96f67c1213c54a7c1ad6bcb89905}{unknown\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client)
+\item 
+void \mbox{\hyperlink{action_8c_add4076230c6f628c411c6224b03081fe}{files\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client)
+\item 
+void \mbox{\hyperlink{action_8c_ae26ad26fea3b105269a46a6abb845391}{kick\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client\+Kicker, \mbox{\hyperlink{struct_command}{Command}} $\ast$command, char $\ast$message)
+\item 
+void \mbox{\hyperlink{action_8c_a80cf338e739a31297792a9b4a0e1f971}{rename\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client, \mbox{\hyperlink{struct_command}{Command}} $\ast$command, char $\ast$message)
+\item 
+void \mbox{\hyperlink{action_8c_a97c0c442c45d34d7562b4f50c5289e32}{channel\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client)
+\item 
+void \mbox{\hyperlink{action_8c_aaa010505a4945d6981c93bf0f1084a1e}{channels\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client)
+\item 
+void \mbox{\hyperlink{action_8c_ac2fb235f9f56b1af349ece85a2ed77c0}{join\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client, \mbox{\hyperlink{struct_command}{Command}} $\ast$command, char $\ast$message)
+\item 
+void \mbox{\hyperlink{action_8c_af07f65fd4959f197bf7f2d14b1187485}{all\+Action}} (\mbox{\hyperlink{struct_client}{Client}} $\ast$client, \mbox{\hyperlink{struct_command}{Command}} $\ast$command, char $\ast$message)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{action_8c_af07f65fd4959f197bf7f2d14b1187485}\label{action_8c_af07f65fd4959f197bf7f2d14b1187485}} 
+\index{action.c@{action.c}!allAction@{allAction}}
+\index{allAction@{allAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{allAction()}{allAction()}}
+{\footnotesize\ttfamily void all\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client,  }\item[{\mbox{\hyperlink{struct_command}{Command}} $\ast$}]{command,  }\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Send a message to every clients.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & \\
+\hline
+{\em command} & \\
+\hline
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00368}{368}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_a97c0c442c45d34d7562b4f50c5289e32}\label{action_8c_a97c0c442c45d34d7562b4f50c5289e32}} 
+\index{action.c@{action.c}!channelAction@{channelAction}}
+\index{channelAction@{channelAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{channelAction()}{channelAction()}}
+{\footnotesize\ttfamily void channel\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client }\end{DoxyParamCaption})}
+
+Action which send to the client his current channel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00256}{256}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_aaa010505a4945d6981c93bf0f1084a1e}\label{action_8c_aaa010505a4945d6981c93bf0f1084a1e}} 
+\index{action.c@{action.c}!channelsAction@{channelsAction}}
+\index{channelsAction@{channelsAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{channelsAction()}{channelsAction()}}
+{\footnotesize\ttfamily void channels\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client }\end{DoxyParamCaption})}
+
+Action which send to the client a list of every public sockets.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00270}{270}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_a580906a3bf469d010207a1dc68a20160}\label{action_8c_a580906a3bf469d010207a1dc68a20160}} 
+\index{action.c@{action.c}!disconnectAction@{disconnectAction}}
+\index{disconnectAction@{disconnectAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{disconnectAction()}{disconnectAction()}}
+{\footnotesize\ttfamily void disconnect\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client }\end{DoxyParamCaption})}
+
+Disconnect action which is called by the method /disconnect.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00036}{36}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_aaa9a1375e669fd7686c7628599f0fcc4}\label{action_8c_aaa9a1375e669fd7686c7628599f0fcc4}} 
+\index{action.c@{action.c}!fileAction@{fileAction}}
+\index{fileAction@{fileAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{fileAction()}{fileAction()}}
+{\footnotesize\ttfamily void file\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_command}{Command}} $\ast$}]{command,  }\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Action used to send a file to the server. Create a thread which use file\+Action\+Threaded(...).
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & \\
+\hline
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00111}{111}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_add4076230c6f628c411c6224b03081fe}\label{action_8c_add4076230c6f628c411c6224b03081fe}} 
+\index{action.c@{action.c}!filesAction@{filesAction}}
+\index{filesAction@{filesAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{filesAction()}{filesAction()}}
+{\footnotesize\ttfamily void files\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client }\end{DoxyParamCaption})}
+
+Print directory\textquotesingle{}s names within uploads/.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00164}{164}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_a0b2e6edc1666bb6244d6026f27389719}\label{action_8c_a0b2e6edc1666bb6244d6026f27389719}} 
+\index{action.c@{action.c}!helpAction@{helpAction}}
+\index{helpAction@{helpAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{helpAction()}{helpAction()}}
+{\footnotesize\ttfamily void help\+Action (\begin{DoxyParamCaption}\item[{int}]{accepted\+Socket\+Descriptor }\end{DoxyParamCaption})}
+
+Regroup every actions which are called by commands. Help action which send to the user a list of commands that he can use.
+
+
+\begin{DoxyParams}{Parameters}
+{\em accepted\+Socket\+Descriptor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00014}{14}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_ac2fb235f9f56b1af349ece85a2ed77c0}\label{action_8c_ac2fb235f9f56b1af349ece85a2ed77c0}} 
+\index{action.c@{action.c}!joinAction@{joinAction}}
+\index{joinAction@{joinAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{joinAction()}{joinAction()}}
+{\footnotesize\ttfamily void join\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client,  }\item[{\mbox{\hyperlink{struct_command}{Command}} $\ast$}]{command,  }\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Switch a client from a channel to another.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & \\
+\hline
+{\em command} & \\
+\hline
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00298}{298}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_ae26ad26fea3b105269a46a6abb845391}\label{action_8c_ae26ad26fea3b105269a46a6abb845391}} 
+\index{action.c@{action.c}!kickAction@{kickAction}}
+\index{kickAction@{kickAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{kickAction()}{kickAction()}}
+{\footnotesize\ttfamily void kick\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client\+Kicker,  }\item[{\mbox{\hyperlink{struct_command}{Command}} $\ast$}]{command,  }\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Action called by an user to disconnect another user.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+Kicker} & \\
+\hline
+{\em command} & \\
+\hline
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00201}{201}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_acb873e3def8aed76f2cdfdb730634054}\label{action_8c_acb873e3def8aed76f2cdfdb730634054}} 
+\index{action.c@{action.c}!mpAction@{mpAction}}
+\index{mpAction@{mpAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{mpAction()}{mpAction()}}
+{\footnotesize\ttfamily void mp\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client\+Sender,  }\item[{\mbox{\hyperlink{struct_command}{Command}} $\ast$}]{command,  }\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Private message action which is called by command /mp user message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+Sender} & \\
+\hline
+{\em command} & \\
+\hline
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00065}{65}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_a80cf338e739a31297792a9b4a0e1f971}\label{action_8c_a80cf338e739a31297792a9b4a0e1f971}} 
+\index{action.c@{action.c}!renameAction@{renameAction}}
+\index{renameAction@{renameAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{renameAction()}{renameAction()}}
+{\footnotesize\ttfamily void rename\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client,  }\item[{\mbox{\hyperlink{struct_command}{Command}} $\ast$}]{command,  }\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Action which rename the user.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & \\
+\hline
+{\em command} & \\
+\hline
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00230}{230}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_a7f9a96f67c1213c54a7c1ad6bcb89905}\label{action_8c_a7f9a96f67c1213c54a7c1ad6bcb89905}} 
+\index{action.c@{action.c}!unknownAction@{unknownAction}}
+\index{unknownAction@{unknownAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{unknownAction()}{unknownAction()}}
+{\footnotesize\ttfamily void unknown\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client }\end{DoxyParamCaption})}
+
+Action called when the user call an unknown command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00155}{155}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+
+\mbox{\Hypertarget{action_8c_a2e5b2c185f3a59e1edd93156a1ff9e27}\label{action_8c_a2e5b2c185f3a59e1edd93156a1ff9e27}} 
+\index{action.c@{action.c}!usersAction@{usersAction}}
+\index{usersAction@{usersAction}!action.c@{action.c}}
+\doxysubsubsection{\texorpdfstring{usersAction()}{usersAction()}}
+{\footnotesize\ttfamily void users\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_client}{Client}} $\ast$}]{client }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{action_8c_source_l00040}{40}} of file \mbox{\hyperlink{action_8c_source}{action.\+c}}.
+

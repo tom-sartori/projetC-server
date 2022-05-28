@@ -1,17 +1,17 @@
 \hypertarget{error_8c_source}{}\doxysection{error.\+c}
 \label{error_8c_source}\index{src/util/error.c@{src/util/error.c}}
-
+\mbox{\hyperlink{error_8c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00001}00001 \textcolor{preprocessor}{\#include <stdio.h>}}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00002}00002 \textcolor{preprocessor}{\#include <errno.h>}}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00003}00003 }
-\DoxyCodeLine{\Hypertarget{error_8c_source_l00010}00010 \textcolor{keywordtype}{void} throwError (\textcolor{keywordtype}{char} *errorMessage, \textcolor{keywordtype}{int} hasErrno) \{}
+\DoxyCodeLine{\Hypertarget{error_8c_source_l00010}\mbox{\hyperlink{error_8c_ad5fd1194b361cfb4bc723c13d4b2182b}{00010}} \textcolor{keywordtype}{void} \mbox{\hyperlink{error_8c_ad5fd1194b361cfb4bc723c13d4b2182b}{throwError}} (\textcolor{keywordtype}{char} *errorMessage, \textcolor{keywordtype}{int} hasErrno) \{}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00011}00011     \textcolor{keywordflow}{if} (hasErrno) \{}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00012}00012         perror(errorMessage);}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00013}00013     \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{\Hypertarget{error_8c_source_l00014}00014         setRedText();}
+\DoxyCodeLine{\Hypertarget{error_8c_source_l00014}00014         \mbox{\hyperlink{color_8c_a9b1d81b6ed7366e7318a8844d8f7fd83}{setRedText}}();}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00015}00015         printf(\textcolor{stringliteral}{"{}\%s \(\backslash\)n"{}}, errorMessage);}
-\DoxyCodeLine{\Hypertarget{error_8c_source_l00016}00016         setWhiteText();}
+\DoxyCodeLine{\Hypertarget{error_8c_source_l00016}00016         \mbox{\hyperlink{color_8c_afd76a53ec373d21d8ff3009a03ce0e4f}{setWhiteText}}();}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00017}00017     \}}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00018}00018     exit(EXIT\_FAILURE);}
 \DoxyCodeLine{\Hypertarget{error_8c_source_l00019}00019 \}}

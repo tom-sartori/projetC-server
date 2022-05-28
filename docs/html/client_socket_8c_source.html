@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">projetC-server<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">projetC-server
    </div>
   </td>
  </tr>
@@ -69,8 +69,8 @@ $(function() {
   <div class="headertitle"><div class="title">clientSocket.c</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keywordtype">int</span> connectToClient (<span class="keywordtype">int</span> serverSocket) {</div>
+<a href="client_socket_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="client_socket_8c.html#a4cfd20ed36939fbc7c7ab4a583296212">    8</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_socket_8c.html#a4cfd20ed36939fbc7c7ab4a583296212">connectToClient</a> (<span class="keywordtype">int</span> serverSocket) {</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keyword">struct </span>sockaddr_in aC;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    socklen_t lg = <span class="keyword">sizeof</span>(<span class="keyword">struct </span>sockaddr_in);</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// Checking for errors</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">if</span> (acceptedSocketDescriptor == -1) {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        throwError(<span class="stringliteral">&quot;Erreur lors de la connexion. \n&quot;</span>, 1);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_function" href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a>(<span class="stringliteral">&quot;Erreur lors de la connexion. \n&quot;</span>, 1);</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        printf(<span class="stringliteral">&quot;Client Connecté. \n&quot;</span>);</div>
@@ -90,7 +90,7 @@ $(function() {
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">return</span> acceptedSocketDescriptor;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">int</span> isSocketConnected (<span class="keywordtype">int</span> acceptedSocketDescriptor) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="client_socket_8c.html#a2d7d327343fcb081adaced431ae05bd2">   34</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="client_socket_8c.html#a2d7d327343fcb081adaced431ae05bd2">isSocketConnected</a> (<span class="keywordtype">int</span> acceptedSocketDescriptor) {</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">int</span> error = 0;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    socklen_t len = <span class="keyword">sizeof</span> (error);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">int</span> retval = getsockopt (acceptedSocketDescriptor, SOL_SOCKET, SO_ERROR, &amp;error, &amp;len);</div>
@@ -99,16 +99,27 @@ $(function() {
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">return</span> retval == 0;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">void</span> closeClient (<a class="code hl_struct" href="struct_client.html">Client</a> *client) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    printf(<span class="stringliteral">&quot;Déconnexion du client : %s\n&quot;</span>, client-&gt;username);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="client_socket_8c.html#ad4aa03313e40843342c7ad4c42152baf">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="client_socket_8c.html#ad4aa03313e40843342c7ad4c42152baf">closeClient</a> (<a class="code hl_struct" href="struct_client.html">Client</a> *client) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    printf(<span class="stringliteral">&quot;Déconnexion du client : %s\n&quot;</span>, client-&gt;<a class="code hl_variable" href="struct_client.html#a9b20c006bd90a09e1465fb668700e81d">username</a>);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">//    shutdown(acceptedSocketDescriptor, 2);    // Commented because doesn&#39;t close.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    close(client-&gt;acceptedSocketDescriptor);    <span class="comment">// Close client&#39;s socket.</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">delete</span>(clientList, client);     <span class="comment">// Remove from the list, to node which contain the client.</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">delete</span>(channelList[client-&gt;indexCurrentChannel]-&gt;clientList, client);   <span class="comment">// Delete the client from his channel list.</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    rk_sema_post(&amp;semaphore);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    close(client-&gt;<a class="code hl_variable" href="struct_client.html#af3026a10afe86549e403ed46b8ff437a">acceptedSocketDescriptor</a>);    <span class="comment">// Close client&#39;s socket.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">delete</span>(<a class="code hl_variable" href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a>, client);     <span class="comment">// Remove from the list, to node which contain the client.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">delete</span>(<a class="code hl_variable" href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">channelList</a>[client-&gt;<a class="code hl_variable" href="struct_client.html#ac68008534f800db5b81ce5d08d0dc768">indexCurrentChannel</a>]-&gt;<a class="code hl_variable" href="struct_channel.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a>, client);   <span class="comment">// Delete the client from his channel list.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    rk_sema_post(&amp;<a class="code hl_variable" href="semaphore_8c.html#a4d70d99de0b3d7b4d554647e24bebebc">semaphore</a>);</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    pthread_exit(NULL);     <span class="comment">// Kill of the thread associated.</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
+<div class="ttc" id="aclient_socket_8c_html_a2d7d327343fcb081adaced431ae05bd2"><div class="ttname"><a href="client_socket_8c.html#a2d7d327343fcb081adaced431ae05bd2">isSocketConnected</a></div><div class="ttdeci">int isSocketConnected(int acceptedSocketDescriptor)</div><div class="ttdef"><b>Definition:</b> <a href="client_socket_8c_source.html#l00034">clientSocket.c:34</a></div></div>
+<div class="ttc" id="aclient_socket_8c_html_a4cfd20ed36939fbc7c7ab4a583296212"><div class="ttname"><a href="client_socket_8c.html#a4cfd20ed36939fbc7c7ab4a583296212">connectToClient</a></div><div class="ttdeci">int connectToClient(int serverSocket)</div><div class="ttdef"><b>Definition:</b> <a href="client_socket_8c_source.html#l00008">clientSocket.c:8</a></div></div>
+<div class="ttc" id="aclient_socket_8c_html_ad4aa03313e40843342c7ad4c42152baf"><div class="ttname"><a href="client_socket_8c.html#ad4aa03313e40843342c7ad4c42152baf">closeClient</a></div><div class="ttdeci">void closeClient(Client *client)</div><div class="ttdef"><b>Definition:</b> <a href="client_socket_8c_source.html#l00047">clientSocket.c:47</a></div></div>
+<div class="ttc" id="aerror_8c_html_ad5fd1194b361cfb4bc723c13d4b2182b"><div class="ttname"><a href="error_8c.html#ad5fd1194b361cfb4bc723c13d4b2182b">throwError</a></div><div class="ttdeci">void throwError(char *errorMessage, int hasErrno)</div><div class="ttdef"><b>Definition:</b> <a href="error_8c_source.html#l00010">error.c:10</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a86cd9048b82fd91e3260fd17b880d223"><div class="ttname"><a href="global_8c.html#a86cd9048b82fd91e3260fd17b880d223">channelList</a></div><div class="ttdeci">Channel * channelList[NB_CHANNEL]</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00011">global.c:11</a></div></div>
+<div class="ttc" id="aglobal_8c_html_a8bbe5cfb41fbe6b27337c128ed94cf2c"><div class="ttname"><a href="global_8c.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">clientList</a></div><div class="ttdeci">List * clientList</div><div class="ttdef"><b>Definition:</b> <a href="global_8c_source.html#l00005">global.c:5</a></div></div>
+<div class="ttc" id="asemaphore_8c_html_a4d70d99de0b3d7b4d554647e24bebebc"><div class="ttname"><a href="semaphore_8c.html#a4d70d99de0b3d7b4d554647e24bebebc">semaphore</a></div><div class="ttdeci">struct rk_sema semaphore</div><div class="ttdef"><b>Definition:</b> <a href="semaphore_8c_source.html#l00046">semaphore.c:46</a></div></div>
+<div class="ttc" id="astruct_channel_html_a8bbe5cfb41fbe6b27337c128ed94cf2c"><div class="ttname"><a href="struct_channel.html#a8bbe5cfb41fbe6b27337c128ed94cf2c">Channel::clientList</a></div><div class="ttdeci">List * clientList</div><div class="ttdef"><b>Definition:</b> <a href="_channel_8h_source.html#l00007">Channel.h:7</a></div></div>
 <div class="ttc" id="astruct_client_html"><div class="ttname"><a href="struct_client.html">Client</a></div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00002">Client.h:2</a></div></div>
+<div class="ttc" id="astruct_client_html_a9b20c006bd90a09e1465fb668700e81d"><div class="ttname"><a href="struct_client.html#a9b20c006bd90a09e1465fb668700e81d">Client::username</a></div><div class="ttdeci">char * username</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00003">Client.h:3</a></div></div>
+<div class="ttc" id="astruct_client_html_ac68008534f800db5b81ce5d08d0dc768"><div class="ttname"><a href="struct_client.html#ac68008534f800db5b81ce5d08d0dc768">Client::indexCurrentChannel</a></div><div class="ttdeci">int indexCurrentChannel</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00005">Client.h:5</a></div></div>
+<div class="ttc" id="astruct_client_html_af3026a10afe86549e403ed46b8ff437a"><div class="ttname"><a href="struct_client.html#af3026a10afe86549e403ed46b8ff437a">Client::acceptedSocketDescriptor</a></div><div class="ttdeci">int acceptedSocketDescriptor</div><div class="ttdef"><b>Definition:</b> <a href="_client_8h_source.html#l00004">Client.h:4</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
