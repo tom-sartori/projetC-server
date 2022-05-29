@@ -63,6 +63,12 @@ void doCommandAction (Client *client, char *message) {
         // Broadcast message to every clients.
         allAction(client, command, message);
     }
+    else if (strcmp("disco", command->name) == 0) {
+        // Do nothing, it's handled client-side
+    }
+    else if (strcmp("pewpew", command->name) == 0) {
+        // Do nothing, it's handled client-side
+    }
     else {
         // Unknown action.
         unknownAction(client);

@@ -32,3 +32,5 @@ open docs/index.html
 | Liste channel     | Liste les différents channels accessibles.                           | /channels   |              |            |
 | Rejoindre channel | Rejoint le channel spécifié.                                         | /join       | channelIndex |            |
 | Message public    | Envoi du message à tous les clients de tous les channels.            | /all        |   message    |            |
+| Mode disco        | Active le mode disco!                                                | /disco      |              |            |
+| Pew pew           | Pew pew!                                                             | /pew pew    |              |            |

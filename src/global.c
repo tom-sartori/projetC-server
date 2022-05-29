@@ -4,7 +4,7 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 #define NB_MAX_CLIENT 100
 List *clientList;
 
-#define NB_COMMAND 12
+#define NB_COMMAND 14
 Command *commandList[NB_COMMAND];
 
 #define NB_CHANNEL 6
