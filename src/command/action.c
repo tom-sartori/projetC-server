@@ -37,11 +37,25 @@ void disconnectAction (Client *client) {
     closeClient(client);
 }
 
-void usersAction (Client *client) {
+void usersAction (Client *client, Command *command, char *message) {
+    char *regexGroupList[3];
+    getRegexGroup(regexGroupList, message, command->regex);
+    // regexGroupList[0] == full message.
+    // regexGroupList[1] == -all ?
+
     char *text = (char *) malloc(sizeof(char) * 1000);
     strcpy(text, "Liste des utilisateurs : \n");
 
-    Node *current = next(clientList->head);
+    Node *current;
+    if (strcmp("a", regexGroupList[1]) == 0) {
+        // List of every user in the server.
+        current = next(clientList->head);
+    }
+    else {
+        // List of every user in the client's channel.
+        current = next(channelList[client->indexCurrentChannel]->clientList->head);
+    }
+
     while (current != NULL) {
         if (isSocketConnected(current->client->acceptedSocketDescriptor)) {
             strcat(text, current->client->username);
@@ -53,6 +67,7 @@ void usersAction (Client *client) {
     strcat(text, "\n");
     sendMessage(client->acceptedSocketDescriptor, text);
     free(text);
+    free(regexGroupList[0]);
 }
 
 /**

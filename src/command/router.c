@@ -25,7 +25,7 @@ void doCommandAction (Client *client, char *message) {
     }
     else if (strcmp("users", command->name) == 0) {
         // List of users.
-        usersAction(client);
+        usersAction(client, command, message);
     }
     else if (strcmp("mp", command->name) == 0) {
         // Private message.
