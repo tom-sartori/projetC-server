@@ -7,7 +7,7 @@ List *clientList;
 #define NB_COMMAND 14
 Command *commandList[NB_COMMAND];
 
-#define NB_CHANNEL 6
+#define NB_CHANNEL 9
 Channel *channelList[NB_CHANNEL];
 #define INDEX_FILE_CHANNEL 0
 #define INDEX_SWITCH_CHANNEL 1

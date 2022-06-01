@@ -30,6 +30,9 @@ void initChannelList () {
     channelList[3] = createChannel(CHANNEL_1_NAME, CHANNEL_1_PORT, 1, NB_MAX_CLIENT);
     channelList[4] = createChannel(CHANNEL_2_NAME, CHANNEL_2_PORT, 1, DEFAULT_CHANNEL_SIZE);
     channelList[5] = createChannel(CHANNEL_3_NAME, CHANNEL_3_PORT, 1, DEFAULT_CHANNEL_SIZE);
+    channelList[6] = createChannel(CHANNEL_4_NAME, CHANNEL_4_PORT, 1, DEFAULT_CHANNEL_SIZE);
+    channelList[7] = createChannel(CHANNEL_5_NAME, CHANNEL_5_PORT, 1, DEFAULT_CHANNEL_SIZE);
+    channelList[8] = createChannel(CHANNEL_6_NAME, CHANNEL_6_PORT, 1, DEFAULT_CHANNEL_SIZE);
     // Don't forget to update NB_CHANNEL and create at the new index.
 }
 
